@@ -47,11 +47,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void PlaceTraps()
+    public void PlaceTraps(int index)
     {
 
         var mousePos = Input.mousePosition;
-        trapsInArray[0].transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+        trapsInArray[index].transform.position = Camera.main.ScreenToWorldPoint(mousePos);
     }
 
     public void GetEnemy()
