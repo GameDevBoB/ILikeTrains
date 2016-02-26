@@ -4,6 +4,7 @@ using System.Collections;
 public class SpawnPoint : MonoBehaviour {
     public int enemyNumber;
     public float cooldown;
+    [Range(0, 10)]
     public float distanceTrigger;
     public float spawnDelay;
 
