@@ -16,16 +16,29 @@ public class Traps : MonoBehaviour {
 	}
 
 
-	void OnMouseOver()
+	void OnMouseEnter()
 	{
-		Debug.Log ("Ciao");
-		if (Input.GetMouseButtonDown (0))
-			this.GetComponent<Collider> ().enabled = true;
+        if (gameObject.CompareTag("Trap"))
+        {
+            Debug.Log("ENTRATO");
+            if (Input.GetMouseButtonDown(0))
+                this.GetComponent<Collider>().enabled = true;
+        }
 		
 }
+    void OnMouseExit()
+    {
+        if (gameObject.CompareTag("Trap"))
+        {
+            Debug.Log("USCITO");
+            if (Input.GetMouseButtonDown(0))
+                this.GetComponent<Collider>().enabled = true;
+        }
+
+    }
 
 
-	void OnTriggerEnter(Collider col){
+    void OnTriggerEnter(Collider col){
 		if (col.gameObject.tag == "Enemy") {
 
 		}
