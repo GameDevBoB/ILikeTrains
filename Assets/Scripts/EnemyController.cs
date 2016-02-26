@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 	//enemyVar
 	public int life;
-	[HideInInspector]
+	//[HideInInspector]
 	public int actualLife;
 	public float speed;
 	public float rotationSpeed;
@@ -30,13 +30,28 @@ public class EnemyController : MonoBehaviour {
 		transform.LookAt (target.transform.position);
 	}
 
+
+	void Deactivate()
+	{
+		gameObject.SetActive(false);
+	}
+
 	void Activate()
 	{
 		gameObject.SetActive(true);
 	}
-	void OnCollisonEnter()
+
+	void OnCollisonEnter(Collision collision)
 	{
-		target.SendMessage("GetDamage", damage); 
+		target.SendMessage("GetDamages", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
+		Debug.Log("ciao");
+		if (actualLife<=0)
+		{
+			Deactivate();
+			//transform.position = startPosition.position;    
+			// qua bisogna mettere il trasform dello SpawnPoint 
+		}
+
 	}
 
 	void GetDamage(int damage)
@@ -44,7 +59,9 @@ public class EnemyController : MonoBehaviour {
 		actualLife -= damage;
 		if (actualLife<=0)
 		{
-			gameObject.SetActive(false);
+			Deactivate();
+			//transform.position = startPosition.position;    
+			// qua bisogna mettere il trasform dello SpawnPoint 
 		}
 
 	}
