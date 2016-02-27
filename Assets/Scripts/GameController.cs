@@ -17,6 +17,10 @@ public class GameController : MonoBehaviour
     public bool isPlaceable;
     private int trapIndex;
     // Use this for initialization
+    void Awake()
+    {
+        Physics.queriesHitTriggers = false;
+    }
     void Start()
     {
         instance = this;

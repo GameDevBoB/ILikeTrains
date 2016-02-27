@@ -3,8 +3,6 @@ StandaloneWindows
 F:/Programmi/Unity/Editor/Data/Managed/UnityEngine.dll
 f:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 f:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 F:/Programmi/Unity/Editor/Data/Managed/UnityEditor.dll
 f:\Programmi\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Xcode.dll
 f:\Programmi\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Common.dll
