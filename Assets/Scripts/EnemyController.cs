@@ -44,25 +44,17 @@ public class EnemyController : MonoBehaviour {
 	void OnCollisonEnter(Collision collision)
 	{
 		target.SendMessage("GetDamages", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
-		Debug.Log("ciao");
-		if (actualLife<=0)
-		{
-			Deactivate();
-			//transform.position = startPosition.position;    
-			// qua bisogna mettere il trasform dello SpawnPoint 
-		}
+		
 
 	}
 
 	void GetDamage(int damage)
 	{
 		actualLife -= damage;
-		if (actualLife<=0)
-		{
-			Deactivate();
-			//transform.position = startPosition.position;    
-			// qua bisogna mettere il trasform dello SpawnPoint 
-		}
+        if (actualLife <= 0)
+        {
+            Deactivate();
+        }
 
 	}
 	/* Utile in futuro forse
