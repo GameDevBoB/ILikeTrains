@@ -25,7 +25,28 @@ public class SpawnPoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
         
+=======
+        if (!GameController.instance.isPaused)
+        {
+            if (isTrainInRadius)
+            {
+                if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
+                {
+                    if (counter < enemyNumber)
+                    {
+                        spawnEnemies();
+                    }
+                    else
+                    {
+                        counter = 0;
+                        startCooldown = Time.time;
+                    }
+                }
+            }
+        }
+>>>>>>> origin/master
 	}
 
     private void spawnEnemies()
