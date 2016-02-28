@@ -26,8 +26,11 @@ public class EnemyController : MonoBehaviour {
 
 	void Update() 
 	{
-		transform.Translate (Vector3.forward * speed * Time.deltaTime);
-		transform.LookAt (target.transform.position);
+        if (!GameController.instance.isPaused)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.LookAt(target.transform.position);
+        }
 	}
 
 

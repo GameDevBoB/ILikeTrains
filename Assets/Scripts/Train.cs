@@ -13,18 +13,21 @@ public class Train : MonoBehaviour {
 
 
 	void Start() {
-
-		startTime = Time.time;
+        transform.position = startMarker.position;
 		journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
 
 	}
 
 
 	void Update() {
-
-		float distCovered = (Time.time - startTime) * speed;
-		float fracJourney = distCovered / journeyLength;
-		transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
+        if (!GameController.instance.isPaused)
+        {
+            if(startTime == 0)
+                startTime = Time.time;
+            float distCovered = (Time.time - startTime) * speed;
+            float fracJourney = distCovered / journeyLength;
+            transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
+        }
 
 	}
 

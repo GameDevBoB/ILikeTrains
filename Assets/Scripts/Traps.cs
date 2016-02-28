@@ -20,10 +20,13 @@ public class Traps : MonoBehaviour {
 	
 
 	void FixedUpdate () {
-        if (myTrigger.radius < ColliderRay)
-            myTrigger.radius += 0.5f;
-        else
-            myTrigger.enabled = false;
+        if (!GameController.instance.isPaused)
+        {
+            if (myTrigger.radius < ColliderRay)
+                myTrigger.radius += 0.5f;
+            else
+                myTrigger.enabled = false;
+        }
     }
 
     void OnMouseOver()
