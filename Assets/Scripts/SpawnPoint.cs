@@ -25,21 +25,7 @@ public class SpawnPoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(isTrainInRadius)
-        {
-            if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
-            {
-                if (counter < enemyNumber)
-                {
-                    spawnEnemies();
-                }
-                else
-                {
-                    counter = 0;
-                    startCooldown = Time.time;
-                }
-            }
-        }
+        
 	}
 
     private void spawnEnemies()
@@ -50,16 +36,31 @@ public class SpawnPoint : MonoBehaviour {
             myEnemy = GameController.instance.GetEnemy();
             myEnemy.transform.position = transform.position;
             myEnemy.SetActive(true);
+            myEnemy.SendMessage("Activate");
             startDelay = Time.time;
             counter++;
         }
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        if(col.gameObject.tag.Equals("Train"))
+        if (col.gameObject.tag.Equals("Train"))
         {
-            isTrainInRadius = true;
+            if (!GameController.instance.isPaused)
+            {
+                if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
+                {
+                    if (counter < enemyNumber)
+                    {
+                        spawnEnemies();
+                    }
+                    else
+                    {
+                        counter = 0;
+                        startCooldown = Time.time;
+                    }
+                }
+            }
         }
     }
 
