@@ -25,9 +25,7 @@ public class SpawnPoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
-        
-=======
+
         if (!GameController.instance.isPaused)
         {
             if (isTrainInRadius)
@@ -46,7 +44,7 @@ public class SpawnPoint : MonoBehaviour {
                 }
             }
         }
->>>>>>> origin/master
+
 	}
 
     private void spawnEnemies()

@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour
     private int enemyArrayCounter;
     private bool trapIsBeingPlaced;
     public bool isPlaceable;
-    private int trapIndex=0;
     private Vector3 screenPoint;
     private Vector3 offset;
     private GameObject selectedTrap;
