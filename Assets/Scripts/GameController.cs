@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private int enemyArrayCounter;
     private bool trapIsBeingPlaced;
     public bool isPlaceable;
+<<<<<<< HEAD
     private int trapIndex=0;
     private Vector3 screenPoint;
     private Vector3 offset;
@@ -21,6 +22,11 @@ public class GameController : MonoBehaviour
     private RaycastHit hit;
     private LayerMask placeableLayer;
     private LayerMask unplaceableLayer;
+=======
+    private Vector3 screenPoint;
+    private Vector3 offset;
+    private GameObject selectedTrap;
+>>>>>>> origin/master
     // Use this for initialization
     void Awake()
     {
@@ -39,6 +45,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
+=======
+        isPlaceable = true;
+>>>>>>> origin/master
         //trapIsBeingPlaced = true;
         if (!trapIsBeingPlaced && selectedTrap!= null)
         {
@@ -46,6 +56,7 @@ public class GameController : MonoBehaviour
             screenPoint = Camera.main.ScreenToWorldPoint(mousePos);
 
             //selectedTrap.SetActive(true);
+<<<<<<< HEAD
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f, placeableLayer | unplaceableLayer))
             {
@@ -67,6 +78,12 @@ public class GameController : MonoBehaviour
                     previousTerrainHit.SendMessage("BackToNormalColor");
                     GUIController.instance.ActivateInstanceButton();
                 }
+=======
+            selectedTrap.transform.position = new Vector3(screenPoint.x, 0, screenPoint.z);
+            if (Input.GetMouseButtonDown(0) && isPlaceable)
+            {
+                PlaceTrap();
+>>>>>>> origin/master
             }
             
             
@@ -89,7 +106,10 @@ public class GameController : MonoBehaviour
     {
         
         trapIsBeingPlaced = false;
+<<<<<<< HEAD
         isPlaceable = false;
+=======
+>>>>>>> origin/master
         //trapIndex = index;
         selectedTrap = Instantiate(trapsPrefab[index], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         selectedTrap.SetActive(true);
@@ -126,9 +146,12 @@ public class GameController : MonoBehaviour
     {
         trapIsBeingPlaced = true;
         selectedTrap = null;
+<<<<<<< HEAD
         previousTerrainHit.SendMessage("BackToNormalColor");
         previousTerrainHit = null;
         hit.transform.gameObject.SendMessage("SetUnplaceable");
+=======
+>>>>>>> origin/master
         GUIController.instance.ActivateInstanceButton();
         /*var mousePos = Input.mousePosition;
         screenPoint = Camera.main.ScreenToWorldPoint(mousePos);

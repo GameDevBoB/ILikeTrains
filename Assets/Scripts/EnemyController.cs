@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour {
         }
 	}
 	/* Utile in futuro forse
-	 public void reset()
+	 public void Reset()
 	{
 		actualLife = life;
 		transform.position = startPosition.position;
