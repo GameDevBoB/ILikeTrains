@@ -51,7 +51,11 @@ public class EnemyController : MonoBehaviour {
         if (col.gameObject.tag == "Train")
         {
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
+<<<<<<< HEAD
             Deactivate();
+=======
+            Deactivate(); ;
+>>>>>>> origin/master
         }
 	}
 
@@ -64,7 +68,7 @@ public class EnemyController : MonoBehaviour {
         }
 	}
 	/* Utile in futuro forse
-	 public void reset()
+	 public void Reset()
 	{
 		actualLife = life;
 		transform.position = startPosition.position;
