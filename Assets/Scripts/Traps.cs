@@ -30,6 +30,7 @@ public class Traps : MonoBehaviour {
                 myTrigger.radius += 0.5f;
             else
                 myTrigger.enabled = false;
+<<<<<<< HEAD
 
             if(trapCanvas.gameObject.activeSelf)
             {
@@ -38,6 +39,8 @@ public class Traps : MonoBehaviour {
                 if ((Time.time - explosionStart) > explosionCooldown)
                     trapCanvas.gameObject.SetActive(false);
             }
+=======
+>>>>>>> origin/master
         }
     }
 

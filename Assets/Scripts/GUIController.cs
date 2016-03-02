@@ -8,9 +8,12 @@ public class GUIController : MonoBehaviour {
     public Button instantiateButton;
     public Text phaseText;
 
+<<<<<<< HEAD
 	public Text ResourcesText;
 
 
+=======
+>>>>>>> origin/master
     void Awake()
     {
         instance = this;
