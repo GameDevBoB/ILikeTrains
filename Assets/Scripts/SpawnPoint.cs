@@ -9,7 +9,6 @@ public class SpawnPoint : MonoBehaviour {
 
     private float startCooldown;
     private float startDelay;
-    private bool isTrainInRadius;
     private int counter;
 
     void Awake()
@@ -19,27 +18,12 @@ public class SpawnPoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        isTrainInRadius = false;
         counter = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if(isTrainInRadius)
-        {
-            if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
-            {
-                if (counter < enemyNumber)
-                {
-                    spawnEnemies();
-                }
-                else
-                {
-                    counter = 0;
-                    startCooldown = Time.time;
-                }
-            }
-        }
+        
 	}
 
     private void spawnEnemies()
@@ -50,24 +34,31 @@ public class SpawnPoint : MonoBehaviour {
             myEnemy = GameController.instance.GetEnemy();
             myEnemy.transform.position = transform.position;
             myEnemy.SetActive(true);
+            myEnemy.SendMessage("Activate");
             startDelay = Time.time;
             counter++;
         }
     }
 
-    void OnTriggerEnter(Collider col)
-    {
-        if(col.gameObject.tag.Equals("Train"))
-        {
-            isTrainInRadius = true;
-        }
-    }
-
-    void OnTriggerExit(Collider col)
+    void OnTriggerStay(Collider col)
     {
         if (col.gameObject.tag.Equals("Train"))
         {
-            isTrainInRadius = false;
+            if (!GameController.instance.isPaused)
+            {
+                if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
+                {
+                    if (counter < enemyNumber)
+                    {
+                        spawnEnemies();
+                    }
+                    else
+                    {
+                        counter = 0;
+                        startCooldown = Time.time;
+                    }
+                }
+            }
         }
     }
 }
