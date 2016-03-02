@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 	//enemyVar
 	public int life;
+    public int earnValue;
 	//[HideInInspector]
 	public int actualLife;
 	public float speed;
@@ -26,8 +27,11 @@ public class EnemyController : MonoBehaviour {
 
 	void Update() 
 	{
-		transform.Translate (Vector3.forward * speed * Time.deltaTime);
-		transform.LookAt (target.transform.position);
+        if (!GameController.instance.isPaused)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.LookAt(target.transform.position);
+        }
 	}
 
 
@@ -38,14 +42,16 @@ public class EnemyController : MonoBehaviour {
 
 	void Activate()
 	{
-		gameObject.SetActive(true);
-	}
+        actualLife = life;
+    }
 
-	void OnCollisonEnter(Collision collision)
+	void OnCollisionEnter(Collision col)
 	{
-		target.SendMessage("GetDamages", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
-		
-
+        if (col.gameObject.tag == "Train")
+        {
+            col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
+            Deactivate();
+        }
 	}
 
 	void GetDamage(int damage)
@@ -53,9 +59,9 @@ public class EnemyController : MonoBehaviour {
 		actualLife -= damage;
         if (actualLife <= 0)
         {
+            GameController.instance.UpdateResources(earnValue);
             Deactivate();
         }
-
 	}
 	/* Utile in futuro forse
 	 public void reset()
