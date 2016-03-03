@@ -23,38 +23,7 @@ public class SpawnPoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
         
-=======
-<<<<<<< HEAD
-        
-=======
-<<<<<<< HEAD
-        
-=======
-
-        if (!GameController.instance.isPaused)
-        {
-            if (isTrainInRadius)
-            {
-                if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
-                {
-                    if (counter < enemyNumber)
-                    {
-                        spawnEnemies();
-                    }
-                    else
-                    {
-                        counter = 0;
-                        startCooldown = Time.time;
-                    }
-                }
-            }
-        }
-
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
 	}
 
     private void spawnEnemies()
@@ -72,34 +41,6 @@ public class SpawnPoint : MonoBehaviour {
     }
 
     void OnTriggerStay(Collider col)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    {
-        if (col.gameObject.tag.Equals("Train"))
-        {
-            if (!GameController.instance.isPaused)
-            {
-                if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
-                {
-                    if (counter < enemyNumber)
-                    {
-                        spawnEnemies();
-                    }
-                    else
-                    {
-                        counter = 0;
-                        startCooldown = Time.time;
-                    }
-                }
-            }
-        }
-    }
-
-    void OnTriggerExit(Collider col)
->>>>>>> origin/master
->>>>>>> origin/master
     {
         if (col.gameObject.tag.Equals("Train"))
         {

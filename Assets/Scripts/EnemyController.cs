@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour {
 	public int actualLife;
 	public float speed;
 	public float rotationSpeed;
-	private Rigidbody rb;
+	//private Rigidbody rb;
 	public float damage= 5.0f;
 
 	//TrainTarget
@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour {
 
 	void Start ()
 	{
-		rb = GetComponent<Rigidbody> ();
+		//rb = GetComponent<Rigidbody> ();
 		target = GameObject.FindWithTag ("Train");
 		actualLife = life;
 		//startPosition = transform;
@@ -38,7 +38,6 @@ public class EnemyController : MonoBehaviour {
 	void Deactivate()
 	{
 		gameObject.SetActive(false);
-        GameController.instance.UpdateResources(earnValue);
 	}
 
 	void Activate()
@@ -51,15 +50,7 @@ public class EnemyController : MonoBehaviour {
         if (col.gameObject.tag == "Train")
         {
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
-<<<<<<< HEAD
             Deactivate();
-=======
-<<<<<<< HEAD
-            Deactivate();
-=======
-            Deactivate(); ;
->>>>>>> origin/master
->>>>>>> origin/master
         }
 	}
 
@@ -73,7 +64,7 @@ public class EnemyController : MonoBehaviour {
         }
 	}
 	/* Utile in futuro forse
-	 public void Reset()
+	 public void reset()
 	{
 		actualLife = life;
 		transform.position = startPosition.position;

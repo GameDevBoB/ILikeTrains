@@ -4,33 +4,49 @@ using UnityEngine.UI;
 
 public class Traps : MonoBehaviour {
 
-	public int ColliderRay=10;
+	public int colliderRadius=10;
     public float damage;
+	public float explosionSpeed;
     public float explosionCooldown;
     public Canvas trapCanvas;
+	public GameObject explosionSprite;
     public Text cooldownText;
     public Image cooldownImage;
 
     private SphereCollider myTrigger;
     private float explosionStart;
+	private Vector3 explosionStartScale;
+	private Vector3 adder;
 
 	void Awake() {
         myTrigger = GetComponent<SphereCollider>();
-		myTrigger.radius = ColliderRay;
+		myTrigger.radius = colliderRadius;
 		//this.GetComponent<SphereCollider>().enabled = true;
         Physics.queriesHitTriggers = false;
-        explosionStart = 0;
+	}
+
+	void Start()
+	{
+		explosionStart = 0;
+		explosionStartScale = explosionSprite.transform.localScale;
+		adder = explosionStartScale * explosionSpeed * 2;
 	}
 	
 
 	void FixedUpdate () {
+
         if (!GameController.instance.isPaused)
         {
-            if (myTrigger.radius < ColliderRay)
-                myTrigger.radius += 0.5f;
+            if (myTrigger.radius < colliderRadius)
+			{
+                myTrigger.radius +=explosionSpeed;
+				explosionSprite.transform.localScale = new Vector3( explosionSprite.transform.localScale.x +adder.x, explosionSprite.transform.localScale.y + adder.y, explosionSprite.transform.localScale.z + adder.z);
+			}
             else
+			{
                 myTrigger.enabled = false;
-<<<<<<< HEAD
+				explosionSprite.gameObject.SetActive(false);
+			}
 
             if(trapCanvas.gameObject.activeSelf)
             {
@@ -39,8 +55,6 @@ public class Traps : MonoBehaviour {
                 if ((Time.time - explosionStart) > explosionCooldown)
                     trapCanvas.gameObject.SetActive(false);
             }
-=======
->>>>>>> origin/master
         }
     }
 
@@ -49,9 +63,11 @@ public class Traps : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && (((Time.time - explosionStart) > explosionCooldown) || explosionStart==0) && !GameController.instance.isPaused)
         {
             myTrigger.enabled = true;
+			explosionSprite.SetActive(true);
             explosionStart = Time.time;
             trapCanvas.gameObject.SetActive(true);
-            myTrigger.radius = 0;
+            myTrigger.radius = explosionSpeed;
+			explosionSprite.transform.localScale = explosionStartScale;
         }
     }
 
