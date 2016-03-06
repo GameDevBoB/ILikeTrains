@@ -63,7 +63,7 @@ public class Train : MonoBehaviour
                 {
 
                     countWaypoints = 0;
-                    transform.position= waypoints[0].GetChild(0).position;
+                    transform.position = waypoints[0].GetChild(0).position;
 
                 }
                 transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
@@ -131,9 +131,22 @@ public class Train : MonoBehaviour
         }
         else
         {
-
             speed = initialSpeed;
+        }
+    }
 
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (!GUIController.instance.upgradeTrainCanvas.gameObject.activeSelf)
+            {
+                GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(true);
+            }
+            else
+            {
+                GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public int earnValue;
     public int actualLife;
     public float speed;
+    public float runSpeed = 5f;
     public float rotationSpeed;
     public float damage = 5.0f;
     public float maxDistance;
@@ -15,10 +16,10 @@ public class EnemyController : MonoBehaviour
     public Transform spawnPointBullet;
 
 
-    private float speedAdder = 2f;
+
     private float initialSpeed;
-   
-   
+
+
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindWithTag("Train");
         actualLife = life;
         initialSpeed = speed;
-       
+
         //startPosition = transform;
     }
 
@@ -34,9 +35,16 @@ public class EnemyController : MonoBehaviour
     {
         if (!GameController.instance.isPaused)
         {
-            CheckSpeed();
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            transform.LookAt(target.transform.position);
+            if (Vector3.Distance(transform.position, target.transform.position) < maxDistance)
+            {
+                Run(runSpeed);
+            }
+            else
+            {
+                Run(speed);
+            }
+
+            
         }
     }
 
@@ -53,7 +61,7 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Train" )
+        if (col.gameObject.tag == "Train")
         {
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
             Deactivate();
@@ -80,24 +88,16 @@ public class EnemyController : MonoBehaviour
 		transform.position = startPosition.position;
 	}
 	*/
-    public void CheckSpeed()
+    public void Run(float actualSpeed)
     {
-        if (Vector3.Distance(transform.position, target.transform.position) < maxDistance)
-        {
-            //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
-            speed += speedAdder;
-            Shoot(); 
-        }
-        else
-        {
-            speed = initialSpeed;
-        }
+        transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
+        transform.LookAt(target.transform.position);
     }
 
-   void Shoot()
+    void Shoot()
     {
 
     }
 
-    
+
 }

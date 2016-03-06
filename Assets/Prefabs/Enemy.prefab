@@ -134,7 +134,8 @@ MonoBehaviour:
   life: 10
   earnValue: 2
   actualLife: 10
-  speed: 4
+  speed: 2
+  runSpeed: 4
   rotationSpeed: 2
   damage: 5
   maxDistance: 10
@@ -153,7 +154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rotationSpeed
@@ -182,6 +183,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: runSpeed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
