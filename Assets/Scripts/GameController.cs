@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     //public GameObject[] enemies;
     //public GameObject enemyPrefab;
     public GameObject[] trapsPrefabs;
-    public GameObject bullet;
+  
 
     private int bulletCount;
     public int[] trapsCosts;
@@ -30,11 +30,9 @@ public class GameController : MonoBehaviour
     private GameObject previousTerrainHit;
     private RaycastHit hit;
     private LayerMask placeableLayer;
-    [HideInInspector]
-    public GameObject[] bullets;
-    private int maxBullet;
+    
     private LayerMask unplaceableLayer;
-    private int enemyArrayCounter;
+    //private int enemyArrayCounter;
     // Use this for initialization
     void Awake()
     {
@@ -42,14 +40,14 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-        maxBullet = bullets.Length;
+       
         instance = this;
-        enemyArrayCounter = 0;
+        //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");
         unplaceableLayer = 1 << LayerMask.NameToLayer("Unplaceable");
         //SpawnEnemies();
         totalResources = startResources;
-        SpawnProjectiles();
+        
     }
 
     // Update is called once per frame
@@ -182,14 +180,7 @@ public class GameController : MonoBehaviour
         totalResources += earning;
     }
 
-    private void SpawnProjectiles()
-    {
-        for (int i = 0; i < maxBullet; i++)
-        {
-            bullets[i] = Instantiate(bullet, new Vector3(0,0,0), Quaternion.identity) as GameObject;
-            bullet.SetActive(false);
-        }
-    }
+   
 
 
 }

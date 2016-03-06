@@ -26,15 +26,15 @@ GameObject:
   - 33: {fileID: 3366484}
   - 65: {fileID: 6540024}
   - 23: {fileID: 2326654}
-  - 54: {fileID: 5480434}
   - 114: {fileID: 11469834}
+  - 54: {fileID: 5449658}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &438108
 Transform:
   m_ObjectHideFlags: 1
@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.605}
+  m_LocalPosition: {x: 0, y: 0, z: 0.774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 439634}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7639692, y: 0.5, z: -4.6177154}
+  m_LocalPosition: {x: -3.0398839, y: 0.5, z: -4.194124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438108}
@@ -93,7 +93,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182060}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5480434
+--- !u!54 &5449658
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,13 +134,16 @@ MonoBehaviour:
   life: 10
   earnValue: 2
   actualLife: 10
-  speed: 2
+  walkSpeed: 2
   runSpeed: 4
   rotationSpeed: 2
   damage: 5
   maxDistance: 10
   target: {fileID: 0}
-  spawnPointBullet: {fileID: 0}
+  spawnPointBullet: {fileID: 438108}
+  bullets: []
+  bulletPrefab: {fileID: 189962, guid: c95104d832ec58d499a7f0b04fb51ce0, type: 2}
+  myEnemyType: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -148,6 +151,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: bullets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
@@ -187,6 +194,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: runSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 189962, guid: c95104d832ec58d499a7f0b04fb51ce0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: spawnPointBullet
+      value: 
+      objectReference: {fileID: 438108}
+    - target: {fileID: 0}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 189962, guid: c95104d832ec58d499a7f0b04fb51ce0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: walkSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

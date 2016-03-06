@@ -129,7 +129,14 @@ public class Traps : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1) && GameController.instance.trapIsBeingPlaced)
         {
-            upgradeCanvas.gameObject.SetActive(true);
+            if (!upgradeCanvas.gameObject.activeSelf)
+            {
+                upgradeCanvas.gameObject.SetActive(true);
+            }
+            else
+            {
+                upgradeCanvas.gameObject.SetActive(false);
+            }
         }
     }
 

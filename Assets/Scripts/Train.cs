@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Train : MonoBehaviour
 {
@@ -14,18 +15,17 @@ public class Train : MonoBehaviour
     public int[] upgradeCost = new int[5];
     public bool loop = false;
     public float slowDelay;
+    public float actualLife;
+
 
 
 
     private float startTime;
-    private float actualLife;
-    //private bool SetActive (bool value);
     private float journeyLength;
     private int countWaypoints;
     private int healthUpgradeCounter;
     private int sprintUpgradeCounter;
     private int speedUpgradeCounter;
-    private int upgradeCostCounter;
     private float initialSpeed;
     private float slowTimer;
     private bool trainIsSlowed;
@@ -39,6 +39,9 @@ public class Train : MonoBehaviour
         actualLife = life;
         transform.position = waypoints[0].GetChild(0).position;
         countWaypoints = 0;
+        SetSpeedGui();
+        SetSprintGui();
+        SetHealthGui();
         //journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
 
     }
@@ -46,8 +49,10 @@ public class Train : MonoBehaviour
 
     void Update()
     {
+        CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
+            
             /*if(startTime == 0)
                 startTime = Time.time;
             float distCovered = (Time.time - startTime) * speed;
@@ -82,7 +87,7 @@ public class Train : MonoBehaviour
     {
         actualLife -= damage;
         if (actualLife <= 0)
-            this.gameObject.SetActive(false);
+           transform.parent.gameObject.SetActive(false);
     }
 
     public void Upgrade(int myUpgrade)
@@ -95,18 +100,19 @@ public class Train : MonoBehaviour
                 speedUpgradeCounter++;
                 if (speedUpgradeCounter < upgradeSpeedArray.Length)
                 {
-                    GUIController.instance.trainSpeedUpgradeText.text = "Speed " + upgradeSpeedArray[speedUpgradeCounter];
-                    GUIController.instance.trainSpeedUpgradeText.transform.GetChild(0).GetComponent<GUIText>().text = "Costo " + upgradeCost[speedUpgradeCounter];
+                    SetSpeedGui();
                 }
                 break;
             case 1:
-                life = upgradeHealthPointsArray[healthUpgradeCounter];
+                float lifeDifference;
+                lifeDifference = life - actualLife;
+                life = actualLife = upgradeHealthPointsArray[healthUpgradeCounter];
+                actualLife -= lifeDifference;
                 GameController.instance.UpdateResources(-upgradeCost[healthUpgradeCounter]);
                 healthUpgradeCounter++;
                 if (healthUpgradeCounter < upgradeHealthPointsArray.Length)
                 {
-                    GUIController.instance.trainHealthUpgradeText.text = "Health " + upgradeHealthPointsArray[healthUpgradeCounter];
-                    GUIController.instance.trainHealthUpgradeText.transform.GetChild(0).GetComponent<GUIText>().text = "Costo " + upgradeCost[healthUpgradeCounter];
+                    SetHealthGui();
                 }
                 break;
             case 2:
@@ -115,8 +121,7 @@ public class Train : MonoBehaviour
                 sprintUpgradeCounter++;
                 if (sprintUpgradeCounter < upgradeSprintArray.Length)
                 {
-                    GUIController.instance.trainSprintUpgradeText.text = "Sprint " + upgradeSprintArray[sprintUpgradeCounter];
-                    GUIController.instance.trainHealthUpgradeText.transform.GetChild(0).GetComponent<GUIText>().text = "Costo " + upgradeCost[sprintUpgradeCounter];
+                    SetSprintGui();
                 }
                 break;
         }
@@ -146,6 +151,58 @@ public class Train : MonoBehaviour
             else
             {
                 GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(false);
+            }
+        }
+    }
+    private void SetSpeedGui()
+    {
+
+        GUIController.instance.trainSpeedUpgradeText.text = "Speed " + upgradeSpeedArray[speedUpgradeCounter];
+        GUIController.instance.trainSpeedUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[speedUpgradeCounter];
+
+    }
+    private void SetHealthGui()
+    {
+
+        GUIController.instance.trainHealthUpgradeText.text = "Health " + upgradeHealthPointsArray[healthUpgradeCounter];
+        GUIController.instance.trainHealthUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[healthUpgradeCounter];
+
+    }
+    private void SetSprintGui()
+    {
+
+        GUIController.instance.trainSprintUpgradeText.text = "Sprint " + upgradeSprintArray[sprintUpgradeCounter];
+        GUIController.instance.trainSprintUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[sprintUpgradeCounter];
+
+    }
+
+    private void CheckButtonInteractable()
+    {
+        if (GUIController.instance.upgradeTrainCanvas.gameObject.activeSelf)
+        {
+            if (speedUpgradeCounter < upgradeSpeedArray.Length && GameController.instance.totalResources >= upgradeCost[speedUpgradeCounter])
+            {
+               GUIController.instance.trainSpeedUpgradeButton.interactable = true;
+            }
+            else
+            {
+                GUIController.instance.trainSpeedUpgradeButton.interactable = false;
+            }
+            if (healthUpgradeCounter < upgradeHealthPointsArray.Length && GameController.instance.totalResources >= upgradeCost[healthUpgradeCounter])
+            {
+                GUIController.instance.trainHealthUpgradeButton.interactable = true;
+            }
+            else
+            {
+                GUIController.instance.trainHealthUpgradeButton.interactable = false;
+            }
+            if (sprintUpgradeCounter < upgradeSprintArray.Length && GameController.instance.totalResources >= upgradeCost[sprintUpgradeCounter])
+            {
+                GUIController.instance.trainSprintUpgradeButton.interactable = true;
+            }
+            else
+            {
+                GUIController.instance.trainSprintUpgradeButton.interactable = false;
             }
         }
     }

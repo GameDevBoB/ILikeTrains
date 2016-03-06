@@ -7,6 +7,7 @@ public class Coach : MonoBehaviour
     public Transform frontPivot;
     public Transform rearPivot;
     public float maxDistance;
+    public float distance;
     public Transform[] waypoints;
     private int countWaypoints;
     public float speed;
@@ -42,18 +43,25 @@ public class Coach : MonoBehaviour
             }
             if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
             {
+                transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 10);
+            }
+            if (Vector3.Distance(frontPivot.position, rearPivot.position) >= distance)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
             }
-            /*TEST
-            if (Vector3.Distance(frontPivot.position, rearPivot.position) < maxDistance)
+            
+            /*BOB
+            if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
             {
-                transform.position = rearPivot.position;
+                transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed*10);
             }
-            TEST*/
+            BOB*/
+           
+           
         }
     }
     public void GetDamage(int damage)
     {
-       
+        frontPivot.parent.gameObject.SendMessage("GetDamage" , damage);
     }
 }

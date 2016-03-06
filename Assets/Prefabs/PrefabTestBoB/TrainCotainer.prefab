@@ -59,7 +59,7 @@ GameObject:
   - 114: {fileID: 11419692}
   m_Layer: 0
   m_Name: Coach
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - 114: {fileID: 11492100}
   m_Layer: 0
   m_Name: Coach
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,7 +427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontPivot: {fileID: 414758}
   rearPivot: {fileID: 476920}
-  maxDistance: 10
+  maxDistance: 1.5
+  distance: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -437,7 +438,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 20
+  speed: 1
 --- !u!114 &11441752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea547fc7c6a62f40ae02f8ff0f2b75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
-  sprint: 0
+  life: 100
+  sprint: 5
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -460,27 +461,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 2
+  speed: 1
   upgradeHealthPointsArray:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 120
+  - 140
+  - 160
+  - 180
+  - 200
   upgradeSprintArray:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
   upgradeSpeedArray:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  upgradeCost: 0000000000000000000000000000000000000000
-  loop: 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  - 2
+  upgradeCost: 14000000190000001e0000002800000037000000
+  loop: 0
   slowDelay: 0
 --- !u!114 &11492100
 MonoBehaviour:
@@ -495,7 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontPivot: {fileID: 438992}
   rearPivot: {fileID: 471996}
-  maxDistance: 10
+  maxDistance: 1.5
+  distance: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -505,7 +507,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 20
+  speed: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

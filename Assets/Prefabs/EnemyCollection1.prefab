@@ -41,7 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
-  - {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
+  - {fileID: 182060, guid: 88f89614452e85040aa8b9583d555cb4, type: 2}
   - {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -49,7 +49,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 182060, guid: 88f89614452e85040aa8b9583d555cb4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167824}

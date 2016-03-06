@@ -1,32 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
+public enum EnemyType
+{
+    Base,
+    Shooter
 
+};
 [System.Serializable]
 public class EnemyController : MonoBehaviour
 {
     public int life;
     public int earnValue;
     public int actualLife;
-    public float speed;
+    public float walkSpeed;
     public float runSpeed = 5f;
     public float rotationSpeed;
-    public float damage = 5.0f;
+    public float damage;
     public float maxDistance;
     public GameObject target;
     public Transform spawnPointBullet;
+    public GameObject[] bullets;
+    public GameObject bulletPrefab;
+    public EnemyType myEnemyType;
+    public float fireRate;
+
 
 
 
     private float initialSpeed;
+    private int bulletCount;
+    private float startShooting;
+
+    void Awake()
+    {
+        if (myEnemyType == EnemyType.Shooter)
+        {
+            bullets = new GameObject[100];
+            SpawnBullets();
 
 
+        }
+    }
 
     void Start()
     {
         //rb = GetComponent<Rigidbody> ();
         target = GameObject.FindWithTag("Train");
         actualLife = life;
-        initialSpeed = speed;
+        initialSpeed = walkSpeed;
 
         //startPosition = transform;
     }
@@ -37,20 +58,36 @@ public class EnemyController : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, target.transform.position) < maxDistance)
             {
-                Run(runSpeed);
+                switch (myEnemyType)
+                {
+                    case EnemyType.Base:
+                        Run(runSpeed);
+                        break;
+
+                    case EnemyType.Shooter:
+                        Run(walkSpeed / 2 * 3);
+                        Shoot();
+                        break;
+
+                }
+
             }
             else
             {
-                Run(speed);
+                Run(walkSpeed);
             }
 
-            
+
         }
     }
 
 
     void Deactivate()
     {
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            Destroy(bullets[i]);
+        }
         Destroy(this.gameObject);
     }
 
@@ -66,10 +103,7 @@ public class EnemyController : MonoBehaviour
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
             Deactivate();
         }
-        if (col.gameObject.tag == "Coach")
-        {
 
-        }
     }
 
     void GetDamage(int damage)
@@ -96,6 +130,34 @@ public class EnemyController : MonoBehaviour
 
     void Shoot()
     {
+        if ((Time.time - startShooting) > fireRate)
+        {
+            startShooting = Time.time;
+            if (bulletCount < bullets.Length - 1)
+            {
+                bulletCount++;
+
+            }
+            else
+            {
+                bulletCount = 0;
+            }
+            bullets[bulletCount].gameObject.transform.position = spawnPointBullet.transform.position;
+            bullets[bulletCount].gameObject.SetActive(true);
+            bullets[bulletCount].gameObject.SendMessage("ShootBullet", spawnPointBullet.transform.forward);
+        }
+    }
+
+    private void SpawnBullets()
+    {
+
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            bullets[i] = Instantiate(bulletPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            //bullets[i].transform.parent = this.gameObject.transform;
+            bullets[i].SendMessage("GetDamageValue", damage);
+            bullets[i].SetActive(false);
+        }
 
     }
 

@@ -13,6 +13,9 @@ public class GUIController : MonoBehaviour {
     public Text trainSpeedUpgradeText;
     public Text trainHealthUpgradeText;
     public Text trainSprintUpgradeText;
+    public Button trainSpeedUpgradeButton;
+    public Button trainHealthUpgradeButton;
+    public Button trainSprintUpgradeButton;
 
 
     void Awake()

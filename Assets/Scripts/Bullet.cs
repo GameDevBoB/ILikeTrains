@@ -7,15 +7,15 @@ public class Bullet : MonoBehaviour
  
     private float duration = 3;
     public float shootPower = 200;
+
+
+
     private float activationTime;
-    public float bulletDamage = 2f;
     private GameObject target;
-
-   
-
-
     private Rigidbody rb;
- 
+    private float bulletDamage;
+
+
 
     void Awake()
     {
@@ -35,19 +35,14 @@ public class Bullet : MonoBehaviour
     {
         if ((Time.time - activationTime) > duration)
         {
-            HideMe();
+            Deactivate();
         }
-
+       
     }
    
-    public void HideMe()
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        this.gameObject.SetActive(false);
-    }
+   
 
-    void OnTriggerEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Train")
         {
@@ -60,8 +55,20 @@ public class Bullet : MonoBehaviour
 
     private void Deactivate()
     {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
     }
 
+    public void GetDamageValue(float damageValue)
+    {
+        bulletDamage = damageValue;
+    }
    
+    void ShootBullet(Vector3 aimDirection)
+    {
+        activationTime = Time.time;
+        rb.AddForce(aimDirection * shootPower);
+        
+    }
 }

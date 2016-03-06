@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &120030
 GameObject:
   m_ObjectHideFlags: 1
@@ -193,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &161074
 GameObject:
   m_ObjectHideFlags: 1
@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &187400
 GameObject:
   m_ObjectHideFlags: 1
@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &195990
 GameObject:
   m_ObjectHideFlags: 1
@@ -810,12 +810,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: Upgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -839,9 +839,12 @@ MonoBehaviour:
   upgradeTrainButton: {fileID: 11407508}
   phaseText: {fileID: 11428036}
   ResourcesText: {fileID: 11446124}
-  trainSpeedUpgradeText: {fileID: 0}
-  trainHealthUpgradeText: {fileID: 0}
-  trainSprintUpgradeText: {fileID: 0}
+  trainSpeedUpgradeText: {fileID: 11462858}
+  trainHealthUpgradeText: {fileID: 11443998}
+  trainSprintUpgradeText: {fileID: 11401070}
+  trainSpeedUpgradeButton: {fileID: 11461150}
+  trainHealthUpgradeButton: {fileID: 11469816}
+  trainSprintUpgradeButton: {fileID: 11424946}
 --- !u!114 &11427796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1494,8 +1497,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: Upgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1606,12 +1609,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: Upgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
