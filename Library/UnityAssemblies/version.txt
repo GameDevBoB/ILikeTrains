@@ -1,10 +1,6 @@
-5.3.1f1:2.1.0.0
-StandaloneWindows
-F:/Programmi/Unity/Editor/Data/Managed/UnityEngine.dll
-f:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
-f:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-F:/Programmi/Unity/Editor/Data/Managed/UnityEditor.dll
-f:\Programmi\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Xcode.dll
-f:\Programmi\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Common.dll
-F:/Programmi/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll
-F:/Programmi/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll
+5.3.2f1:2.1.0.0
+WebPlayer
+F:/Unity/Editor/Data/Managed/UnityEngine.dll
+F:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+F:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+F:/Unity/Editor/Data/Managed/UnityEditor.dll
