@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnpointBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 23: {fileID: 2326654}
   - 114: {fileID: 11469834}
   - 54: {fileID: 5451220}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyShooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -227,6 +227,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: fireRate
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

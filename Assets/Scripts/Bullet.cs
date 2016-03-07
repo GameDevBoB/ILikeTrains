@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        Physics.IgnoreLayerCollision(10,11);
         if (col.gameObject.tag == "Train")
         {
 
