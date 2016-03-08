@@ -161,11 +161,12 @@ public class Traps : MonoBehaviour
 
                 col.gameObject.SendMessage("GetStun");
             }
+            else
+            {
+                col.gameObject.SendMessage("GetDamage", damage);
+            }
         }
-        else
-        {
-            col.gameObject.SendMessage("GetDamage", damage);
-        }
+
     }
 
 

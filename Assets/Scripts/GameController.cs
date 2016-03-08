@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
     //TRAPS POSITION LAYER NEEDED FOR RAYCASTS AND BEHAVIORS
     private LayerMask placeableLayer;
     private LayerMask unplaceableLayer;
+    private int lastTrap;
+
     //
 
 
@@ -112,7 +114,7 @@ public class GameController : MonoBehaviour
 
     public void SelectTrap(int index)
     {
-
+        lastTrap = index;
         trapIsBeingPlaced = false;
         isPlaceable = false;
         //WE SELECT THE NEXT TRAP ONLY IF WE CAN AFFORD IT
@@ -142,6 +144,7 @@ public class GameController : MonoBehaviour
         selectedTrap = null;
         GUIController.instance.ActivateInstanceButton();
         totalResources -= selectedTrapCost;
+        
     }
 
     public void UpdateResources(int earning)
