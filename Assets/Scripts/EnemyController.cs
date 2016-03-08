@@ -201,9 +201,7 @@ public class EnemyController : MonoBehaviour
     //STUN METHOD 
     public void GetStun(int slowRatio)
     {
-        walkSpeed *= slowRatio;
-        transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime);
-        transform.LookAt(target.transform.position);
+      
     }
 
 
