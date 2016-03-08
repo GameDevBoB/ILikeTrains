@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class SpawnPoint : MonoBehaviour {
+    //ENEMY SPAWN RATIO
     public float cooldown;
+    //
+    //VARIABLE THT ASSIGNS THE RADIUS OF COLLIDER ON INSPECTOR
     public float distanceTrigger;
     public float spawnDelay;
 	public GameObject[] enemyCollectionPrefabs;

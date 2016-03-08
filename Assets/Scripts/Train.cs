@@ -16,6 +16,15 @@ public class Train : MonoBehaviour
     public bool loop = false;
     public float slowDelay;
     public float actualLife;
+    public Transform frontPivot;
+    public Transform rearPivot;
+    public float maxDistance;
+    public float distance;
+    public bool isCoach;
+    public float rotationSpeed;
+    public GameObject trainToCopyFrom;
+    
+
 
 
 
@@ -29,15 +38,36 @@ public class Train : MonoBehaviour
     private float initialSpeed;
     private float slowTimer;
     private bool trainIsSlowed;
+    private Vector3 initPos;
+   
+    //private Transform startPosition;
+    void Awake()
+    {
+
+        if (isCoach)
+        {
+
+            for (int i = 0; i < trainToCopyFrom.GetComponent<Train>().waypoints.Length; i++)
+            {
+                waypoints[i] = trainToCopyFrom.GetComponent<Train>().waypoints[i];
+            }
+            loop = trainToCopyFrom.GetComponent<Train>().loop;
+        }
+
+    }
 
     void Start()
     {
+        initPos = transform.position;
+        transform.position = initPos;
         initialSpeed = speed;
         healthUpgradeCounter = 0;
         sprintUpgradeCounter = 0;
         speedUpgradeCounter = 0;
         actualLife = life;
-        transform.position = waypoints[0].GetChild(0).position;
+        //startPosition.position =  new Vector3(waypoints[0].GetChild(0).position.x, waypoints[0].GetChild(0).position.y+.5f, waypoints[0].GetChild(0).position.z);
+        //transform.position = startPosition.position;
+        //transform.position = waypoints[0].GetChild(0).position;
         countWaypoints = 0;
         SetSpeedGui();
         SetSprintGui();
@@ -47,34 +77,71 @@ public class Train : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
+        loop = GameController.instance.headCoach.loop;
+        speed = GameController.instance.headCoach.speed;
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
-            
+           
             /*if(startTime == 0)
                 startTime = Time.time;
             float distCovered = (Time.time - startTime) * speed;
             float fracJourney = distCovered / journeyLength;
             transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);*/
-            if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
+            if (!isCoach)
             {
-                if ((countWaypoints < (waypoints.Length - 1)))
+                if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
                 {
-                    countWaypoints++;
-                }
-                else if (loop)
-                {
+                    if ((countWaypoints < (waypoints.Length - 1)))
+                    {
+                        countWaypoints++;
+                    }
+                    else if (loop)
+                    {
 
-                    countWaypoints = 0;
-                    transform.position = waypoints[0].GetChild(0).position;
-
+                        countWaypoints = 0;
+                        //transform.position = waypoints[0].GetChild(0).position;
+                        transform.position = initPos;
+                        
+                    }
+                    transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
                 }
-                transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
+                transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
             }
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
+            else
+            {
+
+                
+                if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 2);
+                }
+                if (Vector3.Distance(frontPivot.position, rearPivot.position) >= distance)
+                {
+                    if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
+                    {
+                        if ((countWaypoints < (waypoints.Length - 1)))
+                        {
+                            countWaypoints++;
+                        }
+                        else if (loop)
+                        {
+
+                            countWaypoints = 0;
+                            //transform.position = waypoints[0].GetChild(0).position;
+                            transform.position = initPos;
+
+                        }
+
+                        transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
+                    }
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
+                }
+            }
         }
+
 
     }
 
@@ -87,7 +154,7 @@ public class Train : MonoBehaviour
     {
         actualLife -= damage;
         if (actualLife <= 0)
-           transform.parent.gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
     }
 
     public void Upgrade(int myUpgrade)
@@ -182,7 +249,7 @@ public class Train : MonoBehaviour
         {
             if (speedUpgradeCounter < upgradeSpeedArray.Length && GameController.instance.totalResources >= upgradeCost[speedUpgradeCounter])
             {
-               GUIController.instance.trainSpeedUpgradeButton.interactable = true;
+                GUIController.instance.trainSpeedUpgradeButton.interactable = true;
             }
             else
             {
