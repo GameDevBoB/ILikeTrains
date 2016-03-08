@@ -88,8 +88,7 @@ public class GameController : MonoBehaviour
                     PlaceTrap();
                 else
                 {
-                    Destroy(selectedTrap.gameObject);
-                    GUIController.instance.ActivateInstanceButton();
+                    DeselectTrap();
                 }
             }
 
@@ -110,6 +109,10 @@ public class GameController : MonoBehaviour
 
         //WE MOVE THE TRAP AROUND
         selectedTrap.transform.position = new Vector3(screenPoint.x, hit.transform.position.y, screenPoint.z);
+        if (Input.GetMouseButtonDown(1))
+        {
+            DeselectTrap();
+        }
     }
 
     public void SelectTrap(int index)
@@ -144,6 +147,7 @@ public class GameController : MonoBehaviour
         selectedTrap = null;
         GUIController.instance.ActivateInstanceButton();
         totalResources -= selectedTrapCost;
+        SelectTrap(lastTrap);
         
     }
 
@@ -153,7 +157,11 @@ public class GameController : MonoBehaviour
         totalResources += earning;
     }
 
-
+    void DeselectTrap()
+    {
+        Destroy(selectedTrap.gameObject);
+        GUIController.instance.ActivateInstanceButton();
+    }
 
 
 }
