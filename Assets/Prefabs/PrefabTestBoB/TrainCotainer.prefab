@@ -57,9 +57,10 @@ GameObject:
   - 65: {fileID: 6527464}
   - 23: {fileID: 2361464}
   - 114: {fileID: 11419692}
+  - 114: {fileID: 11452678}
   m_Layer: 0
   m_Name: Coach
-  m_TagString: Coach
+  m_TagString: Train
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,9 +142,10 @@ GameObject:
   - 65: {fileID: 6548362}
   - 23: {fileID: 2346502}
   - 114: {fileID: 11492100}
+  - 114: {fileID: 11444422}
   m_Layer: 0
   m_Name: Coach
-  m_TagString: Coach
+  m_TagString: Train
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,7 +422,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0404d9e21ea9b4943ad9b196394c7f92, type: 3}
   m_Name: 
@@ -483,13 +485,119 @@ MonoBehaviour:
   upgradeCost: 14000000190000001e0000002800000037000000
   loop: 0
   slowDelay: 0
---- !u!114 &11492100
+  actualLife: 0
+  frontPivot: {fileID: 0}
+  rearPivot: {fileID: 0}
+  maxDistance: 0
+  distance: 0
+  isCoach: 0
+--- !u!114 &11444422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198504}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea547fc7c6a62f40ae02f8ff0f2b75b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
+  sprint: 5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 1
+  upgradeHealthPointsArray:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  upgradeSprintArray:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  upgradeSpeedArray:
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  - 2
+  upgradeCost: 0000000000000000000000000000000000000000
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  frontPivot: {fileID: 438992}
+  rearPivot: {fileID: 471996}
+  maxDistance: 1.5
+  distance: 1
+  isCoach: 1
+--- !u!114 &11452678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea547fc7c6a62f40ae02f8ff0f2b75b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
+  sprint: 5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 1
+  upgradeHealthPointsArray:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  upgradeSprintArray:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  upgradeSpeedArray:
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  - 2
+  upgradeCost: 0000000000000000000000000000000000000000
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  frontPivot: {fileID: 414758}
+  rearPivot: {fileID: 476920}
+  maxDistance: 1.5
+  distance: 1
+  isCoach: 1
+--- !u!114 &11492100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198504}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0404d9e21ea9b4943ad9b196394c7f92, type: 3}
   m_Name: 

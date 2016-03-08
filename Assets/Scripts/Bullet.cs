@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
 
     private float activationTime;
-    private GameObject target;
+    //private GameObject target;
     private Rigidbody rb;
     private float bulletDamage;
 
@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        target = GameObject.FindWithTag("Train");
+      //  target = GameObject.FindWithTag("Train");
 
 
     }

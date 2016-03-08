@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     //public GameObject[] enemies;
     //public GameObject enemyPrefab;
     public GameObject[] trapsPrefabs;
+    public Train headCoach;
   
 
     private int bulletCount;
@@ -22,12 +23,12 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public bool trapIsBeingPlaced;
     public bool isPlaceable;
-    private int trapIndex = 0;
+    //private int trapIndex = 0;
     private Vector3 screenPoint;
     private Vector3 offset;
     public GameObject selectedTrap;
     private int selectedTrapCost;
-    private GameObject previousTerrainHit;
+    //private GameObject previousTerrainHit;
     private RaycastHit hit;
     private LayerMask placeableLayer;
     
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour
                 {
                     previousTerrainHit.SendMessage("BackToNormalColor");
                 }*/
-                previousTerrainHit = hit.transform.gameObject;
+                //previousTerrainHit = hit.transform.gameObject;
                 selectedTrap.SendMessage("ChangeColor", (hit.transform.gameObject.layer == LayerMask.NameToLayer("Placeable")) ? Color.green : Color.red);
                 isPlaceable = (hit.transform.gameObject.layer == LayerMask.NameToLayer("Placeable"));
                 MoveTrap();
@@ -158,7 +159,7 @@ public class GameController : MonoBehaviour
         selectedTrap.SendMessage("BackToNormalColor");
         selectedTrap.layer = LayerMask.NameToLayer("Unplaceable");
         selectedTrap = null;
-        previousTerrainHit = null;
+        //previousTerrainHit = null;
         //hit.transform.gameObject.SendMessage("SetUnplaceable");
         GUIController.instance.ActivateInstanceButton();
         totalResources -= selectedTrapCost;

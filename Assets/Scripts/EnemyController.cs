@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
 
 
 
-    private float initialSpeed;
+    //private float initialSpeed;
     private int bulletCount;
     private float startShooting;
 
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         //rb = GetComponent<Rigidbody> ();
         target = GameObject.FindWithTag("Train");
         actualLife = life;
-        initialSpeed = walkSpeed;
+        //initialSpeed = walkSpeed;
 
         //startPosition = transform;
     }
