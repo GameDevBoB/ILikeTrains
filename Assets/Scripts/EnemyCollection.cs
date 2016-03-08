@@ -11,18 +11,19 @@ public class EnemyCollection : MonoBehaviour {
 	private float spawnDelay;
 	private bool imActive = false;
 
-	// Use this for initialization
+
 	void Start () {
 		counter = 0;
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 		if (imActive) {
 			if (counter < enemyPrefabs.Length) {
 				spawnEnemies ();
 			}
 			else
+                //DESTROYS THE INSTANTIATED INSTANCE OF THE GAMEOBJECT ARRAY AFTER COMPLETING SPAWNIG
 				Destroy(this.gameObject);
 		}
 	}
@@ -35,6 +36,8 @@ public class EnemyCollection : MonoBehaviour {
 
 	private void spawnEnemies()
 	{
+
+        //INSTANTIATE THE OBJECT IN THE ARRAY CONSECUTIVELY AT ANY GIVEN SPAWN TIME
 		if (((Time.time - startDelay) > spawnDelay) || startDelay == 0)
 		{
 			GameObject myEnemy;

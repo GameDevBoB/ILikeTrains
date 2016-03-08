@@ -70,7 +70,7 @@ public class Train : MonoBehaviour
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
-
+           
             /*if(startTime == 0)
                 startTime = Time.time;
             float distCovered = (Time.time - startTime) * speed;
@@ -97,6 +97,7 @@ public class Train : MonoBehaviour
             }
             else
             {
+                speed = GameController.instance.headCoach.speed;
                 if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
                 {
                     if ((countWaypoints < (waypoints.Length - 1)))
@@ -115,11 +116,11 @@ public class Train : MonoBehaviour
                 }
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * GameController.instance.headCoach.speed * 10);
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime* speed * 10);
                 }
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= distance)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * GameController.instance.headCoach.speed);
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
                 }
             }
         }

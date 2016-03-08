@@ -5,50 +5,57 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController instance;
-    //[HideInInspector]
-    //public GameObject[] enemies;
-    //public GameObject enemyPrefab;
+    //DATA STRUCTURE FOR TRAPS VARIABLES
+    //ARRAY OF DIFFEREN TRAPS
     public GameObject[] trapsPrefabs;
-    public Train headCoach;
-  
-
-    private int bulletCount;
+    //TRAP GAMEOBJECT CURRENTLY SELECTED
+    public GameObject selectedTrap;
     public int[] trapsCosts;
+    //
+
+    public Train headCoach;
     public int startResources = 10;
     [HideInInspector]
     public int totalResources;
-    public bool isPaused = true;
-    
-
+    //TRAPS RUNTIME STATUS 
     [HideInInspector]
     public bool trapIsBeingPlaced;
     public bool isPlaceable;
-    //private int trapIndex = 0;
+    //
+
+    public bool isPaused = true;
+
+    //MOUSE POSITION VARIABLES
     private Vector3 screenPoint;
+    //
     private Vector3 offset;
-    public GameObject selectedTrap;
     private int selectedTrapCost;
-    //private GameObject previousTerrainHit;
+    private int bulletCount;
     private RaycastHit hit;
+    //TRAPS POSITION LAYER NEEDED FOR RAYCASTS AND BEHAVIORS
     private LayerMask placeableLayer;
-    
     private LayerMask unplaceableLayer;
+    //
+
+
+    //private int trapIndex = 0;
+    //private GameObject previousTerrainHit;
     //private int enemyArrayCounter;
-    // Use this for initialization
+
     void Awake()
     {
         Physics.queriesHitTriggers = false;
     }
     void Start()
     {
-       
+
         instance = this;
         //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");
         unplaceableLayer = 1 << LayerMask.NameToLayer("Unplaceable");
         //SpawnEnemies();
         totalResources = startResources;
-        
+
     }
 
     // Update is called once per frame
@@ -57,58 +64,49 @@ public class GameController : MonoBehaviour
         //trapIsBeingPlaced = true;
         if (!trapIsBeingPlaced && selectedTrap != null)
         {
+
+            //MOUSE POSITION LETTING PLAYER TO PLACE TRAP ON SCENE
             var mousePos = Input.mousePosition;
             screenPoint = Camera.main.ScreenToWorldPoint(mousePos);
 
-            //selectedTrap.SetActive(true);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.SphereCast(ray, 1.5f, out hit, 100.0f, placeableLayer | unplaceableLayer))
             {
-                /*if(previousTerrainHit!=null)
-                {
-                    previousTerrainHit.SendMessage("BackToNormalColor");
-                }*/
-                //previousTerrainHit = hit.transform.gameObject;
+                //WE CHANGE THE COLOR OF THE TRAP DEPENDING ON WICH LAYER IT IS BEING PLACED
                 selectedTrap.SendMessage("ChangeColor", (hit.transform.gameObject.layer == LayerMask.NameToLayer("Placeable")) ? Color.green : Color.red);
                 isPlaceable = (hit.transform.gameObject.layer == LayerMask.NameToLayer("Placeable"));
+                //AFTER SELECTING TRAP WE CAN MOVE IT CALLING THE METHOD
                 MoveTrap();
+                //
             }
             if (Input.GetMouseButtonDown(0))
             {
+                //AT LEFT CLICK WE PLACE THE TRAP ON MOUSE POSITION
                 if (isPlaceable)
                     PlaceTrap();
                 else
                 {
                     Destroy(selectedTrap.gameObject);
-                    /*if(previousTerrainHit != null)
-                    	previousTerrainHit.SendMessage("BackToNormalColor");*/
                     GUIController.instance.ActivateInstanceButton();
                 }
             }
 
 
         }
-        //Debug.Log(Input.mousePosition);
-
     }
-
-    /*void SpawnEnemies()
-    {
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemies[i] = Instantiate(enemyPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            enemyPrefab.SetActive(false);
-        }
-    }*/
 
     private void MoveTrap()
     {
+        //TEST
         //selectedTrap.transform.position = hit.transform.position;
         /*float maxMovementX = hit.transform.position.x + (hit.transform.gameObject.GetComponent<Collider>().bounds.extents.x - selectedTrap.GetComponent<Collider>().bounds.extents.x);
 		float minMovementX = hit.transform.position.x - (hit.transform.gameObject.GetComponent<Collider>().bounds.extents.x - selectedTrap.GetComponent<Collider>().bounds.extents.x);
 		float maxMovementZ = hit.transform.position.z + (hit.transform.gameObject.GetComponent<Collider>().bounds.extents.z - selectedTrap.GetComponent<Collider>().bounds.extents.z);
 		float minMovementZ = hit.transform.position.z - (hit.transform.gameObject.GetComponent<Collider>().bounds.extents.z - selectedTrap.GetComponent<Collider>().bounds.extents.z);
 		if(screenPoint.x > minMovementX && screenPoint.x < maxMovementX && screenPoint.z > minMovementZ && screenPoint.z < maxMovementZ)*/
+        //TEST
+
+        //WE MOVE THE TRAP AROUND
         selectedTrap.transform.position = new Vector3(screenPoint.x, hit.transform.position.y, screenPoint.z);
     }
 
@@ -117,35 +115,17 @@ public class GameController : MonoBehaviour
 
         trapIsBeingPlaced = false;
         isPlaceable = false;
-        //trapIndex = index;
+        //WE SELECT THE NEXT TRAP ONLY IF WE CAN AFFORD IT
         if ((totalResources - trapsCosts[index]) >= 0)
+        //
         {
+            //WE INSTANTIATE THE SELECTED TRAP
             selectedTrap = Instantiate(trapsPrefabs[index], Vector3.zero, trapsPrefabs[index].transform.rotation) as GameObject;
-            //selectedTrap.SetActive(true);
             selectedTrapCost = trapsCosts[index];
             GUIController.instance.DeactivateInstanceButton();
         }
-        //trapsInArray[index].transform.position = new Vector3(Camera.main.ScreenToWorldPoint(mousePos).x,0, Camera.main.ScreenToWorldPoint(mousePos).y);
-
-
     }
 
-    /*public GameObject GetEnemy()
-    {
-        //enemies[enemyArrayCounter].SetActive(true);
-        int actualCounter = enemyArrayCounter;
-        enemyArrayCounter++;
-        if (enemyArrayCounter <= enemies.Length)
-        {
-            enemyArrayCounter++;
-            
-        }
-        else
-        {
-            enemyArrayCounter = 0;
-        }
-        return enemies[actualCounter];
-    }*/
 
     public void StartGame()
     {
@@ -155,33 +135,22 @@ public class GameController : MonoBehaviour
 
     public void PlaceTrap()
     {
+        //PUT THE TRAP AT MOUSEPOINT CHANGING ITS LAYER SO WE DO NOT RISK TO "STACK" THEM ON TOP OF EACH OTHER
         trapIsBeingPlaced = true;
         selectedTrap.SendMessage("BackToNormalColor");
         selectedTrap.layer = LayerMask.NameToLayer("Unplaceable");
         selectedTrap = null;
-        //previousTerrainHit = null;
-        //hit.transform.gameObject.SendMessage("SetUnplaceable");
         GUIController.instance.ActivateInstanceButton();
         totalResources -= selectedTrapCost;
-        /*var mousePos = Input.mousePosition;
-        screenPoint = Camera.main.ScreenToWorldPoint(mousePos);
-
-        selectedTrap.SetActive(true);
-        selectedTrap.transform.position = new Vector3(screenPoint.x, 0, screenPoint.z); */
-
-
-        /*var screenPos = Input.mousePosition;
-        screenPos.z = 20;
-        var worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-        var newInstance = Instantiate(trapsPrefab[index], worldPos, Quaternion.identity);*/
     }
 
     public void UpdateResources(int earning)
     {
+        //EARNNG COULD BE POSITIVE OR NEGATIVE DEPENDING ON WE ARE SPENDING RESOURCES TO BUY STUFF OR WE KILLING ENEMIES
         totalResources += earning;
     }
 
-   
+
 
 
 }
