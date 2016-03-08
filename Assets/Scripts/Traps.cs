@@ -24,6 +24,8 @@ public class Traps : MonoBehaviour
     public GameObject explosionSprite;
     public Text cooldownText;
     public Image cooldownImage;
+	public int SlowRatio;
+
 
     private SphereCollider myTrigger;
     private float explosionStart;
@@ -154,8 +156,15 @@ public class Traps : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemy")
         {
-            col.gameObject.SendMessage("GetDamage", damage);
-        }
+			if(this.gameobject.tag=="StunTrap"){
+				
+				col.gameObject.SendMessage("GetStun");
+			}
+			else
+				{
+					col.gameObject.SendMessage ("GetDamage", damage);
+				}
+			}
     }
 
     public void BackToNormalColor()
