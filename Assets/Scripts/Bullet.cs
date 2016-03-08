@@ -4,28 +4,28 @@ using System.Collections;
 public class Bullet : MonoBehaviour
 {
 
- 
-    private float duration = 3;
+
     public float shootPower = 200;
 
-
-
+    //USED TO SET THE OBJECT PERSISTENCE IN SCENE
+    private float duration = 3;
+    //
     private float activationTime;
-    //private GameObject target;
     private Rigidbody rb;
     private float bulletDamage;
+    //private GameObject target;
 
 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-       
+
     }
     // Use this for initialization
     void Start()
     {
-      //  target = GameObject.FindWithTag("Train");
+        //  target = GameObject.FindWithTag("Train");
 
 
     }
@@ -37,14 +37,14 @@ public class Bullet : MonoBehaviour
         {
             Deactivate();
         }
-       
+
     }
-   
-   
 
     void OnCollisionEnter(Collision col)
     {
-        Physics.IgnoreLayerCollision(10,11);
+        //AVODING COLLISION THROUGH PLAYER/BULLET LAYERS
+        Physics.IgnoreLayerCollision(10, 11);
+        //
         if (col.gameObject.tag == "Train")
         {
 
@@ -56,6 +56,7 @@ public class Bullet : MonoBehaviour
 
     private void Deactivate()
     {
+        //DEACTIVATE BULLET IN SCENE
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
@@ -65,11 +66,12 @@ public class Bullet : MonoBehaviour
     {
         bulletDamage = damageValue;
     }
-   
+
     void ShootBullet(Vector3 aimDirection)
     {
+        //BULLET SHOOT
         activationTime = Time.time;
         rb.AddForce(aimDirection * shootPower);
-        
+
     }
 }

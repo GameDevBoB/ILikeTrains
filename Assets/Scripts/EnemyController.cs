@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 public enum EnemyType
+    //ENEMY TYPE ENUMERATOR
 {
     Base,
     Shooter
@@ -9,20 +10,43 @@ public enum EnemyType
 [System.Serializable]
 public class EnemyController : MonoBehaviour
 {
+    //ENEMY HEALTH VARIABLES
     public int life;
-    public int earnValue;
     public int actualLife;
+    //
+    //REWARD VALUE FOR KILLING THE ENEMY 
+    public int earnValue;
+    //
+
+    //SPEED VARIABLES FOR ENEMY PREFABS
     public float walkSpeed;
     public float runSpeed = 5f;
-    public float rotationSpeed;
+    //
+
+    //DAMAGE VALUE PER ENEMY
     public float damage;
+    //
+    //VARIABLE THAT DETECTS THE DISTANCE BETWEEN THE HQ AND HIMSELF SO THE RELATIVE SPEED CAN BE CHANGED ACCORDINGLY TO THAT DISTANCE
     public float maxDistance;
+    //
+
+    //THE HQ REFERENCE IN SCENE
     public GameObject target;
+    //
+
+    //REFERENCE ON THE PROJECTILES THAT CERTAIN ENEMIES WILL SHOOT REACHING THE HQ RANGE
     public Transform spawnPointBullet;
     public GameObject[] bullets;
     public GameObject bulletPrefab;
+    //
+
     public EnemyType myEnemyType;
+
+    //FIRE RATIO
     public float fireRate;
+    //
+
+    //public float rotationSpeed;
 
 
 
@@ -44,20 +68,21 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody> ();
         target = GameObject.FindWithTag("Train");
         actualLife = life;
         //initialSpeed = walkSpeed;
-
-        //startPosition = transform;
+        //startPosition = transform.position;
     }
 
     void Update()
     {
         if (!GameController.instance.isPaused)
         {
+            //DETECTING THE DISTANCE TO THE TRAIN FROM THIS OBJECT
             if (Vector3.Distance(transform.position, target.transform.position) < maxDistance)
             {
+                //CHECKING WICH TYPE OF ENEMY IS BEING WALKING IN THE HQ RANGE
+                //THEN CHANGE ITS SPEED ACCORDINGLY
                 switch (myEnemyType)
                 {
                     case EnemyType.Base:
@@ -84,6 +109,7 @@ public class EnemyController : MonoBehaviour
 
     void Deactivate()
     {
+        //DESTROY THE INSTANTATED BULLETS PREFABS
         for (int i = 0; i < bullets.Length; i++)
         {
             Destroy(bullets[i]);
@@ -100,36 +126,46 @@ public class EnemyController : MonoBehaviour
     {
         if (col.gameObject.tag == "Train")
         {
+            //DEACTIVATING ENEMY ON HQ COLLISION
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
             Deactivate();
+            //
+
         }
 
     }
 
     void GetDamage(int damage)
     {
+        //ENEMY CAN GET DAMAGE FROM SOURCES
+        //SO WE NEED TO ARRANGE THE VALUE ACCORDINGLY
         actualLife -= damage;
         if (actualLife <= 0)
         {
+            //EVERY TIME AN ENEMY DIES THE TOTAL RESOURCES WILL INCREASE
             GameController.instance.UpdateResources(earnValue);
             Deactivate();
+            //
+
         }
     }
-    /* Utile in futuro forse
+    /* TEST
 	 public void reset()
 	{
 		actualLife = life;
 		transform.position = startPosition.position;
 	}
-	*/
+	TEST */
     public void Run(float actualSpeed)
     {
+        //CHANGE ENEMY SPEED DEPENDING ON THE INPUT VALUE
         transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
         transform.LookAt(target.transform.position);
     }
 
     void Shoot()
     {
+        //SHOOTING ROUTINE
         if ((Time.time - startShooting) > fireRate)
         {
             startShooting = Time.time;
@@ -150,7 +186,7 @@ public class EnemyController : MonoBehaviour
 
     private void SpawnBullets()
     {
-
+        //BULLET INSTANTIATION AND DEACTIVATION, SO WE DONT NEED TO INSTANTIATE IT AT RUNTIME SINCE EVERY ENEMY IS SPAWNED ONE BY ONE
         for (int i = 0; i < bullets.Length; i++)
         {
             bullets[i] = Instantiate(bulletPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -158,7 +194,16 @@ public class EnemyController : MonoBehaviour
             bullets[i].SendMessage("GetDamageValue", damage);
             bullets[i].SetActive(false);
         }
+        //
 
+    }
+
+    //STUN METHOD 
+    public void GetStun(int slowRatio)
+    {
+        walkSpeed *= slowRatio;
+        transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime);
+        transform.LookAt(target.transform.position);
     }
 
 
