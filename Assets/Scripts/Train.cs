@@ -22,6 +22,7 @@ public class Train : MonoBehaviour
     public float distance;
     public bool isCoach;
     public float rotationSpeed;
+	public GameObject trainToCopyFrom;
     
 
 
@@ -41,6 +42,12 @@ public class Train : MonoBehaviour
 
     void Start()
     {
+
+		if (trainToCopyFrom) {
+			for (int i = 0; i < trainToCopyFrom.GetComponent<Train> ().waypoints.Length; i++) {
+				waypoints [i] = trainToCopyFrom.GetComponent<Train> ().waypoints [i];
+			}
+		}
         initialSpeed = speed;
         healthUpgradeCounter = 0;
         sprintUpgradeCounter = 0;
