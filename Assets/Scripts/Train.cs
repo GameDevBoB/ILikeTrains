@@ -38,12 +38,22 @@ public class Train : MonoBehaviour
     private float slowTimer;
     private bool trainIsSlowed;
     //private Transform startPosition;
+    void Awake(){
 
+        if (isCoach)
+        {
+            for (int i = 0; i < trainToCopyFrom.GetComponent<Train>().waypoints.Length; i++)
+            {
+                waypoints[i] = trainToCopyFrom.GetComponent<Train>().waypoints[i];
+            }
+        }
+
+    }
 
     void Start()
     {
 
-		if (trainToCopyFrom) {
+		if (isCoach) {
 			for (int i = 0; i < trainToCopyFrom.GetComponent<Train> ().waypoints.Length; i++) {
 				waypoints [i] = trainToCopyFrom.GetComponent<Train> ().waypoints [i];
 			}
@@ -70,7 +80,7 @@ public class Train : MonoBehaviour
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
-           
+            speed = GameController.instance.headCoach.speed;
             /*if(startTime == 0)
                 startTime = Time.time;
             float distCovered = (Time.time - startTime) * speed;
@@ -97,7 +107,7 @@ public class Train : MonoBehaviour
             }
             else
             {
-                speed = GameController.instance.headCoach.speed;
+                
                 if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
                 {
                     if ((countWaypoints < (waypoints.Length - 1)))
