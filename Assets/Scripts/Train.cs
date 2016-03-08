@@ -38,6 +38,7 @@ public class Train : MonoBehaviour
     private float initialSpeed;
     private float slowTimer;
     private bool trainIsSlowed;
+    private Vector3 initPos;
    
     //private Transform startPosition;
     void Awake()
@@ -50,14 +51,15 @@ public class Train : MonoBehaviour
             {
                 waypoints[i] = trainToCopyFrom.GetComponent<Train>().waypoints[i];
             }
+            loop = trainToCopyFrom.GetComponent<Train>().loop;
         }
 
     }
 
     void Start()
     {
-
-        transform.position = waypoints[0].GetChild(0).position;
+        initPos = transform.position;
+        transform.position = initPos;
         initialSpeed = speed;
         healthUpgradeCounter = 0;
         sprintUpgradeCounter = 0;
@@ -75,8 +77,9 @@ public class Train : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
+        loop = GameController.instance.headCoach.loop;
         speed = GameController.instance.headCoach.speed;
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
@@ -99,7 +102,9 @@ public class Train : MonoBehaviour
                     {
 
                         countWaypoints = 0;
-                        transform.position = waypoints[0].GetChild(0).position;
+                        //transform.position = waypoints[0].GetChild(0).position;
+                        transform.position = initPos;
+                        
                     }
                     transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
                 }
@@ -108,28 +113,30 @@ public class Train : MonoBehaviour
             else
             {
 
-                if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
-                {
-                    if ((countWaypoints < (waypoints.Length - 1)))
-                    {
-                        countWaypoints++;
-                    }
-                    else if (loop)
-                    {
-
-                        countWaypoints = 0;
-                        transform.position = waypoints[0].GetChild(0).position;
-
-                    }
-
-                    transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
-                }
+                
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 10);
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 2);
                 }
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= distance)
                 {
+                    if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
+                    {
+                        if ((countWaypoints < (waypoints.Length - 1)))
+                        {
+                            countWaypoints++;
+                        }
+                        else if (loop)
+                        {
+
+                            countWaypoints = 0;
+                            //transform.position = waypoints[0].GetChild(0).position;
+                            transform.position = initPos;
+
+                        }
+
+                        transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
+                    }
                     transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
                 }
             }
