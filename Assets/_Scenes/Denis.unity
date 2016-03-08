@@ -1811,6 +1811,46 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 151318, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 176882, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 123830, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 174510, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 173050, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 123110, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 136386, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 157110, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 123560, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
+    - target: {fileID: 184390, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: m_TagString
+      value: Coach
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
   m_IsPrefabParent: 0
