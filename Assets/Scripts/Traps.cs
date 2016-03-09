@@ -4,6 +4,15 @@ using UnityEngine.UI;
 
 public class Traps : MonoBehaviour
 {
+
+    public enum trapType
+    {
+        MinaTesla,
+        Dynamite
+    };
+
+    public trapType myType;
+
     //VARIABLES WE NEED TO MAKE THE TRAP BEHAVE ON THE SCENE
     public float colliderRadius = 10;
     public float damage;
@@ -33,13 +42,7 @@ public class Traps : MonoBehaviour
     //
 
     public int SlowRatio;
-    private enum trapType
-    {
-        Damage,
-        Slow,
-        Cooldown,
-        Range
-    }
+
     //SUPPORT VARIABLES
     private SphereCollider myTrigger;
     private float explosionStart;
@@ -180,15 +183,16 @@ public class Traps : MonoBehaviour
         //SENDING MESSAGE TO THE OBJECT ACCORDINGLY ON WICH KIND OF DAMAGE THEY WILL RECEIVE
         if (col.gameObject.tag == "Enemy")
         {
-            if (this.gameObject.tag == "StunTrap")
+            switch (myType)
             {
-                //STUN TRAP
-                col.gameObject.SendMessage("GetStun");
-            }
-            else
-            {
-                //DAMAGE TRAP
-                col.gameObject.SendMessage("GetDamage", damage);
+                case trapType.MinaTesla:
+                    //STUN TRAP
+                    col.gameObject.SendMessage("GetStun",damage);
+                    break;
+                case trapType.Dynamite:
+                    //DAMAGE TRAP
+                    col.gameObject.SendMessage("GetDamage", damage);
+                    break;
             }
         }
 
@@ -230,7 +234,7 @@ public class Traps : MonoBehaviour
                 radiusUpgradeCounter++;
                 if (radiusUpgradeCounter < upgradeRadius.Length)
                 {
-                    radiusUpgradeText.text = trapType.Range.ToString() + " " + upgradeRadius[radiusUpgradeCounter];
+                    radiusUpgradeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
                     radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
                 }
                 break;
@@ -241,7 +245,7 @@ public class Traps : MonoBehaviour
                 cooldownUpgradeCounter++;
                 if (cooldownUpgradeCounter < upgradeCooldown.Length)
                 {
-                    cooldownUpgradeText.text = trapType.Cooldown.ToString() + " " + upgradeCooldown[cooldownUpgradeCounter];
+                    cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
                     cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
                 }
                 break;
@@ -256,26 +260,26 @@ public class Traps : MonoBehaviour
 
     void SetCanvasElements()
     {
-        if (gameObject.tag != "TrapTesla")
+        switch(myType)
         {
-            damageUpgradeText.text = trapType.Damage.ToString() +" "+ upgradeDamage[damageUpgradeCounter];
-           //damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
-        }
-        else
-        {
-            damageUpgradeText.text = trapType.Slow.ToString() + " " + upgradeDamage[damageUpgradeCounter];
-            //damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+            case trapType.Dynamite:
+            damageUpgradeText.text = "Damage "+ upgradeDamage[damageUpgradeCounter];
+                break;
+            case trapType.MinaTesla:
+            damageUpgradeText.text = "Slow " + upgradeDamage[damageUpgradeCounter];
+                break;
+            
         }
         if (beginGame)
         {
-            radiusUpgradeText.text = trapType.Range.ToString() + " " + upgradeRadius[radiusUpgradeCounter];
-            cooldownUpgradeText.text = trapType.Cooldown.ToString() + " " + upgradeCooldown[cooldownUpgradeCounter];
+            radiusUpgradeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
+            cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
             radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
             cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
             beginGame = false;
         }
         damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
-        
+
 
     }
 }

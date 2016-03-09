@@ -132,11 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 10
-  earnValue: 2
   actualLife: 10
+  earnValue: 2
   walkSpeed: 2
   runSpeed: 4
-  rotationSpeed: 2
   damage: 5
   maxDistance: 10
   target: {fileID: 0}
@@ -145,6 +144,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 189962, guid: c95104d832ec58d499a7f0b04fb51ce0, type: 2}
   myEnemyType: 1
   fireRate: 0.7
+  slowTime: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -231,6 +231,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: slowTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

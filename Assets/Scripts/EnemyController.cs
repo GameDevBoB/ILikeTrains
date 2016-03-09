@@ -48,6 +48,8 @@ public class EnemyController : MonoBehaviour
     public float fireRate;
     //
 
+    public float slowTime;
+
     //public float rotationSpeed;
 
 
@@ -56,6 +58,9 @@ public class EnemyController : MonoBehaviour
     //private float initialSpeed;
     private int bulletCount;
     private float startShooting;
+    private float slowRatio;
+    private float startSlow;
+
 
     void Awake()
     {
@@ -153,6 +158,8 @@ public class EnemyController : MonoBehaviour
 	TEST */
     public void Run(float actualSpeed)
     {
+        if (((Time.time - startSlow) < slowTime) && startSlow != 0)
+            actualSpeed /= slowRatio;
         //CHANGE ENEMY SPEED DEPENDING ON THE INPUT VALUE
         transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
         transform.LookAt(target.transform.position);
@@ -194,9 +201,10 @@ public class EnemyController : MonoBehaviour
     }
 
     //STUN METHOD 
-    public void GetStun(int slowRatio)
+    public void GetStun(float input_slowRatio)
     {
-
+        slowRatio = input_slowRatio;
+        startSlow = Time.time;
     }
 
 

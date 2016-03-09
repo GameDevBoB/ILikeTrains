@@ -51,7 +51,7 @@ GameObject:
   - 54: {fileID: 5413016}
   m_Layer: 0
   m_Name: Dynamite
-  m_TagString: TrapDynamite
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +322,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 5.1736755, y: 13.277316, z: -8.499886}
+  m_LocalPosition: {x: 4.387725, y: 0.05, z: -8.286261}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
@@ -754,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813bc746330912141940088fb7f22dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 1
   colliderRadius: 2
   damage: 3
   explosionSpeed: 0.5
