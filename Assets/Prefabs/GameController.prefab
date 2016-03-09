@@ -41,15 +41,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapsPrefabs:
   - {fileID: 125406, guid: 18f1c360e63c34541bb3539461a3efce, type: 2}
-  - {fileID: 138324, guid: 026d345cde0f4fa4f9dc638132758add, type: 2}
-  headCoach: {fileID: 0}
+  - {fileID: 125406, guid: a6f68457a2396294a903edbb324d1fc9, type: 2}
+  selectedTrap: {fileID: 0}
   trapsCosts: 0400000008000000
+  headCoach: {fileID: 0}
   startResources: 200
   totalResources: 0
-  isPaused: 1
   trapIsBeingPlaced: 0
   isPlaceable: 0
-  selectedTrap: {fileID: 0}
+  isPaused: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

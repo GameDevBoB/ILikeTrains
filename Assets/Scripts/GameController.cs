@@ -112,6 +112,7 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             DeselectTrap();
+            trapIsBeingPlaced = true;
         }
     }
 
@@ -125,7 +126,7 @@ public class GameController : MonoBehaviour
         //
         {
             //WE INSTANTIATE THE SELECTED TRAP
-            selectedTrap = Instantiate(trapsPrefabs[index], new Vector3(0,-1,0), trapsPrefabs[index].transform.rotation) as GameObject;
+            selectedTrap = Instantiate(trapsPrefabs[index], new Vector3(0, -1, 0), trapsPrefabs[index].transform.rotation) as GameObject;
             selectedTrapCost = trapsCosts[index];
             GUIController.instance.DeactivateInstanceButton();
         }
@@ -148,7 +149,7 @@ public class GameController : MonoBehaviour
         GUIController.instance.ActivateInstanceButton();
         totalResources -= selectedTrapCost;
         SelectTrap(lastTrap);
-        
+
     }
 
     public void UpdateResources(int earning)
