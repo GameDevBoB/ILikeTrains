@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 public enum EnemyType
-    //ENEMY TYPE ENUMERATOR
+//ENEMY TYPE ENUMERATOR
 {
     Base,
     Shooter
@@ -40,7 +40,9 @@ public class EnemyController : MonoBehaviour
     public GameObject bulletPrefab;
     //
 
+    //THE ENEMY TYPE ENUM DECLARATION
     public EnemyType myEnemyType;
+    //
 
     //FIRE RATIO
     public float fireRate;
@@ -93,16 +95,12 @@ public class EnemyController : MonoBehaviour
                         Run(walkSpeed / 2 * 3);
                         Shoot();
                         break;
-
                 }
-
             }
             else
             {
                 Run(walkSpeed);
             }
-
-
         }
     }
 
@@ -130,9 +128,7 @@ public class EnemyController : MonoBehaviour
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
             Deactivate();
             //
-
         }
-
     }
 
     void GetDamage(int damage)
@@ -146,7 +142,6 @@ public class EnemyController : MonoBehaviour
             GameController.instance.UpdateResources(earnValue);
             Deactivate();
             //
-
         }
     }
     /* TEST
@@ -201,7 +196,7 @@ public class EnemyController : MonoBehaviour
     //STUN METHOD 
     public void GetStun(int slowRatio)
     {
-      
+
     }
 
 
