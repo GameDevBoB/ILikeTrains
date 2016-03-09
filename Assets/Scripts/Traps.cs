@@ -44,6 +44,10 @@ public class Traps : MonoBehaviour
     private int damageUpgradeCounter;
     private int radiusUpgradeCounter;
     private int cooldownUpgradeCounter;
+    private string dynamiteString = "Damage ";
+    private string teslaString = "Slow ";
+    private bool beginGame = true;
+
     //
 
     void Awake()
@@ -65,19 +69,7 @@ public class Traps : MonoBehaviour
         explosionStart = 0;
         explosionStartScale = explosionSprite.transform.localScale;
         adder = explosionStartScale * explosionSpeed * 2;
-        if (gameObject.tag != "TrapTesla")
-        {
-            damageUpgradeText.text = "Damage " + upgradeDamage[damageUpgradeCounter];
-        }
-        else
-        {
-            damageUpgradeText.text = "Slow " + upgradeDamage[damageUpgradeCounter];
-        }
-        radiusUpgrandeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
-        cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
-        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
-        radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
-        cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
+        SetCanvasElements();
     }
 
 
@@ -220,21 +212,11 @@ public class Traps : MonoBehaviour
                 damage = upgradeDamage[damageUpgradeCounter];
                 GameController.instance.UpdateResources(-upgradeCost[damageUpgradeCounter]);
                 damageUpgradeCounter++;
-                if (gameObject.tag != "TrapTesla")
+
+                if (damageUpgradeCounter < upgradeDamage.Length)
                 {
-                    if (damageUpgradeCounter < upgradeDamage.Length)
-                    {
-                        damageUpgradeText.text = "Damage " + upgradeDamage[damageUpgradeCounter];
-                        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
-                    }
-                }
-                else
-                {
-                    if (damageUpgradeCounter < upgradeDamage.Length)
-                    {
-                        damageUpgradeText.text = "Slow " + upgradeDamage[damageUpgradeCounter];
-                        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
-                    }
+                    SetCanvasElements();
+
                 }
                 break;
             case 1:
@@ -268,4 +250,27 @@ public class Traps : MonoBehaviour
         upgradeCanvas.gameObject.SetActive(false);
     }
 
+    void SetCanvasElements()
+    {
+        if (gameObject.tag != "TrapTesla")
+        {
+            damageUpgradeText.text = dynamiteString + upgradeDamage[damageUpgradeCounter];
+            damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+        }
+        else
+        {
+            damageUpgradeText.text = teslaString + upgradeDamage[damageUpgradeCounter];
+            damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+        }
+        if (beginGame)
+        {
+            radiusUpgrandeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
+            cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
+            damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+            radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
+            cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
+            beginGame = false;
+        }
+
+    }
 }
