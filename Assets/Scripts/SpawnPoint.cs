@@ -17,12 +17,12 @@ public class SpawnPoint : MonoBehaviour {
         GetComponent<SphereCollider>().radius = distanceTrigger;
     }
 
-	// Use this for initialization
+
 	void Start () {
 
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
         
 	}
@@ -50,11 +50,16 @@ public class SpawnPoint : MonoBehaviour {
             {
                 if (((Time.time - startCooldown) > cooldown) || startCooldown == 0)
                 {
-					GameObject enemyCollection = Instantiate(enemyCollectionPrefabs[Random.Range(0,enemyCollectionPrefabs.Length)], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-					enemyCollection.SendMessage("Activate", spawnDelay);
-                    startCooldown = Time.time;
+                    SpawnCollection();
                 }
             }
         }
+    }
+    //SPAWN A COLLECTION OF ENEMIES RANDOMLY THROUGH AN ARRAY OF ENEMIES
+    void SpawnCollection()
+    {
+        GameObject enemyCollection = Instantiate(enemyCollectionPrefabs[Random.Range(0, enemyCollectionPrefabs.Length)], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+        enemyCollection.SendMessage("Activate", spawnDelay);
+        startCooldown = Time.time;
     }
 }

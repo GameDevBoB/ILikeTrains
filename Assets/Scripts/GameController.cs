@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
     //TRAPS POSITION LAYER NEEDED FOR RAYCASTS AND BEHAVIORS
     private LayerMask placeableLayer;
     private LayerMask unplaceableLayer;
+    private int lastTrap;
+
     //
 
 
@@ -86,8 +88,7 @@ public class GameController : MonoBehaviour
                     PlaceTrap();
                 else
                 {
-                    Destroy(selectedTrap.gameObject);
-                    GUIController.instance.ActivateInstanceButton();
+                    DeselectTrap();
                 }
             }
 
@@ -108,11 +109,15 @@ public class GameController : MonoBehaviour
 
         //WE MOVE THE TRAP AROUND
         selectedTrap.transform.position = new Vector3(screenPoint.x, hit.transform.position.y, screenPoint.z);
+        if (Input.GetMouseButtonDown(1))
+        {
+            DeselectTrap();
+        }
     }
 
     public void SelectTrap(int index)
     {
-
+        lastTrap = index;
         trapIsBeingPlaced = false;
         isPlaceable = false;
         //WE SELECT THE NEXT TRAP ONLY IF WE CAN AFFORD IT
@@ -120,7 +125,7 @@ public class GameController : MonoBehaviour
         //
         {
             //WE INSTANTIATE THE SELECTED TRAP
-            selectedTrap = Instantiate(trapsPrefabs[index], Vector3.zero, trapsPrefabs[index].transform.rotation) as GameObject;
+            selectedTrap = Instantiate(trapsPrefabs[index], new Vector3(0,-1,0), trapsPrefabs[index].transform.rotation) as GameObject;
             selectedTrapCost = trapsCosts[index];
             GUIController.instance.DeactivateInstanceButton();
         }
@@ -142,6 +147,8 @@ public class GameController : MonoBehaviour
         selectedTrap = null;
         GUIController.instance.ActivateInstanceButton();
         totalResources -= selectedTrapCost;
+        SelectTrap(lastTrap);
+        
     }
 
     public void UpdateResources(int earning)
@@ -150,7 +157,11 @@ public class GameController : MonoBehaviour
         totalResources += earning;
     }
 
-
+    void DeselectTrap()
+    {
+        Destroy(selectedTrap.gameObject);
+        GUIController.instance.ActivateInstanceButton();
+    }
 
 
 }
