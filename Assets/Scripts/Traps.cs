@@ -21,7 +21,7 @@ public class Traps : MonoBehaviour
     //UI ELEMENTS FOR UPGRADES AND VISUAL FEEDBACK EXPLOSIONS
     public Canvas upgradeCanvas;
     public Text damageUpgradeText;
-    public Text radiusUpgrandeText;
+    public Text radiusUpgradeText;
     public Text cooldownUpgradeText;
     public Button damageUpgradeButton;
     public Button radiusUpgradeButton;
@@ -33,7 +33,13 @@ public class Traps : MonoBehaviour
     //
 
     public int SlowRatio;
-
+    private enum trapType
+    {
+        Damage,
+        Slow,
+        Cooldown,
+        Range
+    }
     //SUPPORT VARIABLES
     private SphereCollider myTrigger;
     private float explosionStart;
@@ -44,8 +50,6 @@ public class Traps : MonoBehaviour
     private int damageUpgradeCounter;
     private int radiusUpgradeCounter;
     private int cooldownUpgradeCounter;
-    private string dynamiteString = "Damage ";
-    private string teslaString = "Slow ";
     private bool beginGame = true;
 
     //
@@ -226,7 +230,7 @@ public class Traps : MonoBehaviour
                 radiusUpgradeCounter++;
                 if (radiusUpgradeCounter < upgradeRadius.Length)
                 {
-                    radiusUpgrandeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
+                    radiusUpgradeText.text = trapType.Range.ToString() + " " + upgradeRadius[radiusUpgradeCounter];
                     radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
                 }
                 break;
@@ -237,7 +241,7 @@ public class Traps : MonoBehaviour
                 cooldownUpgradeCounter++;
                 if (cooldownUpgradeCounter < upgradeCooldown.Length)
                 {
-                    cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
+                    cooldownUpgradeText.text = trapType.Cooldown.ToString() + " " + upgradeCooldown[cooldownUpgradeCounter];
                     cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
                 }
                 break;
@@ -254,23 +258,24 @@ public class Traps : MonoBehaviour
     {
         if (gameObject.tag != "TrapTesla")
         {
-            damageUpgradeText.text = dynamiteString + upgradeDamage[damageUpgradeCounter];
-            damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+            damageUpgradeText.text = trapType.Damage.ToString() +" "+ upgradeDamage[damageUpgradeCounter];
+           //damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
         }
         else
         {
-            damageUpgradeText.text = teslaString + upgradeDamage[damageUpgradeCounter];
-            damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+            damageUpgradeText.text = trapType.Slow.ToString() + " " + upgradeDamage[damageUpgradeCounter];
+            //damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
         }
         if (beginGame)
         {
-            radiusUpgrandeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
-            cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
-            damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+            radiusUpgradeText.text = trapType.Range.ToString() + " " + upgradeRadius[radiusUpgradeCounter];
+            cooldownUpgradeText.text = trapType.Cooldown.ToString() + " " + upgradeCooldown[cooldownUpgradeCounter];
             radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
             cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
             beginGame = false;
         }
+        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+        
 
     }
 }

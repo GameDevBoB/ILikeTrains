@@ -322,7 +322,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 6.1710186, y: 13.283175, z: -8.453987}
+  m_LocalPosition: {x: 5.1736755, y: 13.277316, z: -8.499886}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
@@ -779,7 +779,7 @@ MonoBehaviour:
   upgradeCost: 050000000a0000000f0000001900000028000000
   upgradeCanvas: {fileID: 22364860}
   damageUpgradeText: {fileID: 11457052}
-  radiusUpgrandeText: {fileID: 11473734}
+  radiusUpgradeText: {fileID: 11473734}
   cooldownUpgradeText: {fileID: 11408622}
   damageUpgradeButton: {fileID: 11494676}
   radiusUpgradeButton: {fileID: 11470418}
