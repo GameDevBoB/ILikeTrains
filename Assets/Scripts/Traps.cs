@@ -65,7 +65,14 @@ public class Traps : MonoBehaviour
         explosionStart = 0;
         explosionStartScale = explosionSprite.transform.localScale;
         adder = explosionStartScale * explosionSpeed * 2;
-        damageUpgradeText.text = "Damage " + upgradeDamage[damageUpgradeCounter];
+        if (gameObject.tag != "TrapTesla")
+        {
+            damageUpgradeText.text = "Damage " + upgradeDamage[damageUpgradeCounter];
+        }
+        else
+        {
+            damageUpgradeText.text = "Slow " + upgradeDamage[damageUpgradeCounter];
+        }
         radiusUpgrandeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
         cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
         damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
@@ -213,10 +220,21 @@ public class Traps : MonoBehaviour
                 damage = upgradeDamage[damageUpgradeCounter];
                 GameController.instance.UpdateResources(-upgradeCost[damageUpgradeCounter]);
                 damageUpgradeCounter++;
-                if (damageUpgradeCounter < upgradeDamage.Length)
+                if (gameObject.tag != "TrapTesla")
                 {
-                    damageUpgradeText.text = "Damage " + upgradeDamage[damageUpgradeCounter];
-                    damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+                    if (damageUpgradeCounter < upgradeDamage.Length)
+                    {
+                        damageUpgradeText.text = "Damage " + upgradeDamage[damageUpgradeCounter];
+                        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+                    }
+                }
+                else
+                {
+                    if (damageUpgradeCounter < upgradeDamage.Length)
+                    {
+                        damageUpgradeText.text = "Slow " + upgradeDamage[damageUpgradeCounter];
+                        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
+                    }
                 }
                 break;
             case 1:

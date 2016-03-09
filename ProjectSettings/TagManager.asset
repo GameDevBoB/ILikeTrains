@@ -6,9 +6,10 @@ TagManager:
   tags:
   - New Tag
   - Train
-  - Trap
+  - TrapDynamite
   - Enemy
   - Coach
+  - TrapTesla
   layers:
   - Default
   - TransparentFX

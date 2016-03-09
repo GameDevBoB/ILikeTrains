@@ -50,8 +50,8 @@ GameObject:
   - 114: {fileID: 11441876}
   - 54: {fileID: 5413016}
   m_Layer: 0
-  m_Name: Gatling
-  m_TagString: Trap
+  m_Name: Tesla
+  m_TagString: TrapTesla
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +322,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -5.0694666, y: 7.015491e-18, z: -5.6379747}
+  m_LocalPosition: {x: 3.7006412, y: 0.05, z: -9.099733}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
@@ -434,7 +434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Costo '
+  m_Text: Cost
 --- !u!114 &11403598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -568,7 +568,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Potenziamenti
+  m_Text: Upgrades
 --- !u!114 &11417848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -601,7 +601,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Costo '
+  m_Text: Cost
 --- !u!114 &11431288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -721,7 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Costo '
+  m_Text: Cost
 --- !u!114 &11439916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -902,7 +902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Danno +
+  m_Text: Slow +
 --- !u!114 &11467950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1047,7 +1047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gittata +
+  m_Text: Range +
 --- !u!114 &11478828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1695,6 +1695,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1a87a9068e0144b47a7a5a00e6924f47, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: TrapTesla
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125406}
