@@ -37,6 +37,7 @@ public class Train : MonoBehaviour
 
 
     public float rotationSpeed;
+    public float sprintRatio = 0.5f;
     public GameObject trainToCopyFrom;
 
 
@@ -50,6 +51,7 @@ public class Train : MonoBehaviour
     private int speedUpgradeCounter;
     private float initialSpeed;
     private float slowTimer;
+    private float sprintTimer;
     private bool trainIsSlowed;
     //
 
@@ -82,6 +84,7 @@ public class Train : MonoBehaviour
         speedUpgradeCounter = 0;
         actualLife = life;
         countWaypoints = 0;
+        GUIController.instance.healthSlider.value = actualLife;
         SetSpeedGui();
         SetSprintGui();
         SetHealthGui();
@@ -97,10 +100,11 @@ public class Train : MonoBehaviour
         loop = GameController.instance.headCoach.loop;
         speed = GameController.instance.headCoach.speed;
         //
-
+       
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
+            
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
@@ -174,6 +178,7 @@ public class Train : MonoBehaviour
 
         //WE SET THE HP VALUE OF THE HQ EVERY TIME IT GET DAMAGE DEACTIVATING IT IF THE HP IS EQUAL OR BELOW ZERO
         actualLife -= damage;
+        GUIController.instance.healthSlider.value = actualLife;
         if (actualLife <= 0)
             transform.parent.gameObject.SetActive(false);
         //
@@ -226,27 +231,11 @@ public class Train : MonoBehaviour
         }
         //
     }
-    void SetSlow(int speedRate)
-    {
 
-        //SLOWING THE HQ
-        if (((Time.time - slowTimer) > slowDelay) || slowTimer == 0)
-        {
-            speed = speedRate;
-            slowTimer = Time.time;
-
-        }
-        else
-        {
-            speed = initialSpeed;
-        }
-        //
-
-    }
 
     void OnMouseOver()
     {
-
+/*
         //ACTIVATE THE CANVAS RELATIVE TO THE HQ UPGRADE
         if (Input.GetMouseButtonDown(1))
         {
@@ -260,7 +249,7 @@ public class Train : MonoBehaviour
             }
         }
         //
-
+        */
     }
     //SETTING THE GUI AND THE BUTTONS RELATIVE TO THE UPGRADE SELECTED
     private void SetSpeedGui()
@@ -318,6 +307,36 @@ public class Train : MonoBehaviour
                 GUIController.instance.trainSprintUpgradeButton.interactable = false;
             }
         }
+    }
+
+    void SetSlow(int speedRate)
+    {
+
+        //SLOWING THE HQ
+        if (((Time.time - slowTimer) > slowDelay) || slowTimer == 0)
+        {
+            speed = speedRate;
+            slowTimer = Time.time;
+
+        }
+        else
+        {
+            speed = initialSpeed;
+        }
+        //
+
+    }
+
+    public void SetSprint()
+    {
+
+
+        //SPRINTING THE HQ
+
+       
+
+        //
+
     }
     //////////
 

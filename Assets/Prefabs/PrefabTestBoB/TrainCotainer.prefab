@@ -59,11 +59,11 @@ GameObject:
   - 114: {fileID: 11404188}
   m_Layer: 0
   m_Name: Coach (4)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &123560
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - 114: {fileID: 11455856}
   m_Layer: 0
   m_Name: Coach (1)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,11 +97,11 @@ GameObject:
   - 114: {fileID: 11490678}
   m_Layer: 0
   m_Name: Coach (7)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &131270
 GameObject:
   m_ObjectHideFlags: 1
@@ -131,7 +131,7 @@ GameObject:
   - 114: {fileID: 11493344}
   m_Layer: 0
   m_Name: Coach (3)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,11 +225,11 @@ GameObject:
   - 114: {fileID: 11460346}
   m_Layer: 0
   m_Name: Coach (9)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &154486
 GameObject:
   m_ObjectHideFlags: 1
@@ -259,7 +259,7 @@ GameObject:
   - 114: {fileID: 11434044}
   m_Layer: 0
   m_Name: Coach (2)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,11 +353,11 @@ GameObject:
   - 114: {fileID: 11492772}
   m_Layer: 0
   m_Name: Coach (5)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &174510
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,11 +372,11 @@ GameObject:
   - 114: {fileID: 11457552}
   m_Layer: 0
   m_Name: Coach (6)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &176882
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,11 +391,11 @@ GameObject:
   - 114: {fileID: 11487838}
   m_Layer: 0
   m_Name: Coach (8)
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &177930
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ GameObject:
   - 114: {fileID: 11497604}
   m_Layer: 0
   m_Name: Coach
-  m_TagString: Train
+  m_TagString: Coach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -743,8 +743,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177930}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -23.46, y: 0.5, z: 2.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.19, y: 0, z: -15.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442438}
@@ -1491,6 +1491,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1510,7 +1515,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1530,14 +1534,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 455788}
   rearPivot: {fileID: 447090}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11434044
@@ -1553,6 +1553,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1572,7 +1577,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1592,14 +1596,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 466090}
   rearPivot: {fileID: 461490}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11441752
@@ -1615,6 +1615,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 0
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1634,7 +1639,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 120
   - 140
@@ -1642,11 +1646,11 @@ MonoBehaviour:
   - 180
   - 200
   upgradeSprintArray:
+  - 2
+  - 3
+  - 4
+  - 5
   - 6
-  - 7
-  - 8
-  - 9
-  - 10
   upgradeSpeedArray:
   - 1.2
   - 1.4
@@ -1654,14 +1658,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 14000000190000001e0000002800000037000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 0}
   rearPivot: {fileID: 0}
   maxDistance: 0
   distance: 0
-  isCoach: 0
   rotationSpeed: 0
   trainToCopyFrom: {fileID: 0}
 --- !u!114 &11455856
@@ -1677,6 +1677,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1696,7 +1701,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1716,14 +1720,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 400608}
   rearPivot: {fileID: 469118}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11457552
@@ -1739,6 +1739,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1758,7 +1763,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1778,14 +1782,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 494240}
   rearPivot: {fileID: 457632}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11460346
@@ -1801,6 +1801,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1820,7 +1825,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1840,14 +1844,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 496970}
   rearPivot: {fileID: 400476}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11487838
@@ -1863,6 +1863,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1882,7 +1887,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1902,14 +1906,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 406430}
   rearPivot: {fileID: 436212}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11490678
@@ -1925,6 +1925,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1944,7 +1949,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -1964,14 +1968,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 471430}
   rearPivot: {fileID: 483258}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11492772
@@ -1987,6 +1987,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -2006,7 +2011,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -2026,14 +2030,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 426118}
   rearPivot: {fileID: 483412}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11493344
@@ -2049,6 +2049,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -2068,7 +2073,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -2088,14 +2092,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 415742}
   rearPivot: {fileID: 413390}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11497604
@@ -2111,6 +2111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  speed: 1
+  loop: 0
+  slowDelay: 0
+  actualLife: 0
+  isCoach: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -2130,7 +2135,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
   upgradeHealthPointsArray:
   - 0
   - 0
@@ -2150,14 +2154,10 @@ MonoBehaviour:
   - 1.8
   - 2
   upgradeCost: 0000000000000000000000000000000000000000
-  loop: 0
-  slowDelay: 0
-  actualLife: 0
   frontPivot: {fileID: 414758}
   rearPivot: {fileID: 430730}
   maxDistance: 1.5
   distance: 1
-  isCoach: 1
   rotationSpeed: 5
   trainToCopyFrom: {fileID: 196644}
 --- !u!1001 &100100000

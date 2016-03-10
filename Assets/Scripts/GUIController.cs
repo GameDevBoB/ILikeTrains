@@ -18,12 +18,13 @@ public class GUIController : MonoBehaviour
     public Text trainSpeedUpgradeText;
     public Text trainHealthUpgradeText;
     public Text trainSprintUpgradeText;
+    public Slider healthSlider;
     public Button trainSpeedUpgradeButton;
     public Button trainHealthUpgradeButton;
     public Button trainSprintUpgradeButton;
     //
 
-
+    public Button trainSprintButton;
     void Awake()
     {
         instance = this;
@@ -46,8 +47,9 @@ public class GUIController : MonoBehaviour
     {
         //THE FIRST CANVAS ACTIVE AT THE BEGINNING OF THE GAMEss
         phaseText.text = "ACTION PHASE";
-        if (upgradeTrainCanvas.gameObject.activeSelf)
-            upgradeTrainCanvas.gameObject.SetActive(false);
+        //if (upgradeTrainCanvas.gameObject.activeSelf)
+       //     upgradeTrainCanvas.gameObject.SetActive(false);
+       
         planningCanvas.gameObject.SetActive(false);
     }
 
