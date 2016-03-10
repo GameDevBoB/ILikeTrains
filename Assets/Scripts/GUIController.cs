@@ -45,7 +45,7 @@ public class GUIController : MonoBehaviour
 
     public void StartGame()
     {
-        //THE FIRST CANVAS ACTIVE AT THE BEGINNING OF THE GAMEss
+        //THE FIRST CANVAS ACTIVE AT THE BEGINNING OF THE GAME
         phaseText.text = "ACTION PHASE";
         //if (upgradeTrainCanvas.gameObject.activeSelf)
        //     upgradeTrainCanvas.gameObject.SetActive(false);

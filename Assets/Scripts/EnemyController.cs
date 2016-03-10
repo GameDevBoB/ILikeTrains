@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 public enum EnemyType
 //ENEMY TYPE ENUMERATOR
 {
@@ -52,7 +53,7 @@ public class EnemyController : MonoBehaviour
 
     //public float rotationSpeed;
 
-
+    public Slider healthSlider;
 
 
     //private float initialSpeed;
@@ -123,6 +124,7 @@ public class EnemyController : MonoBehaviour
     void Activate()
     {
         actualLife = life;
+        //healthSlider.value = healthSlider.maxValue = actualLife;
     }
 
     void OnCollisionEnter(Collision col)
@@ -141,6 +143,7 @@ public class EnemyController : MonoBehaviour
         //ENEMY CAN GET DAMAGE FROM SOURCES
         //SO WE NEED TO ARRANGE THE VALUE ACCORDINGLY
         actualLife -= damage;
+        healthSlider.value = actualLife;
         if (actualLife <= 0)
         {
             //EVERY TIME AN ENEMY DIES THE TOTAL RESOURCES WILL INCREASE

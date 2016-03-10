@@ -51,11 +51,13 @@ public class Train : MonoBehaviour
     private int speedUpgradeCounter;
     private float initialSpeed;
     private float slowTimer;
-    private float sprintTimer;
+    private float startSprint;
     private bool trainIsSlowed;
+    private bool trainIsSprinted;
     //
 
     private Vector3 initPos;
+    private float sprintSpeed;
 
     void Awake()
     {
@@ -83,8 +85,12 @@ public class Train : MonoBehaviour
         sprintUpgradeCounter = 0;
         speedUpgradeCounter = 0;
         actualLife = life;
+        sprintSpeed = speed + (speed * sprintRatio);
+
         countWaypoints = 0;
         GUIController.instance.healthSlider.value = actualLife;
+        GUIController.instance.healthSlider.maxValue = actualLife;
+
         SetSpeedGui();
         SetSprintGui();
         SetHealthGui();
@@ -99,12 +105,22 @@ public class Train : MonoBehaviour
         //GETTING STATIC VALUES REFERENCES TO THE HQ INSTANCE
         loop = GameController.instance.headCoach.loop;
         speed = GameController.instance.headCoach.speed;
+        sprintSpeed = GameController.instance.headCoach.sprintSpeed;
         //
-       
+
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
-            
+            //BOB
+            if (((Time.time - startSprint) > sprint) && trainIsSprinted)
+            {
+                trainIsSprinted = false;
+                GUIController.instance.trainSprintButton.gameObject.SetActive(true);
+
+                //Debug.Log("DIFF FRA TIME E STARTSPRINT " + (Time.time - startSprint) + " SPRINT: " + sprint);
+            }
+            //BOB
+           
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
@@ -124,7 +140,12 @@ public class Train : MonoBehaviour
                     }
                     transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
                 }
-                transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
+                //BOB
+                if (!trainIsSprinted)
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
+                else
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed);
+                //BOB
             }
             //
             //IF NOT WE MOVE THE COACHES BEHIND IT ON A CONVOY FORMATION
@@ -133,8 +154,12 @@ public class Train : MonoBehaviour
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
                 {
                     //FORCING THE DISTANCE BETWEEN ELEMENTS TO A FIXED DISTANCE EVERY FRAME
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 2);
-                    //
+                    //BOB
+                    if (!trainIsSprinted)
+                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 2);
+                    else
+                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed * 10);
+                    //BOB
 
                 }
 
@@ -158,7 +183,12 @@ public class Train : MonoBehaviour
 
                         transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
                     }
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
+                    //BOB
+                    if (!trainIsSprinted)
+                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
+                    else
+                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed);
+                    //BOB
                 }
 
                 //
@@ -194,6 +224,7 @@ public class Train : MonoBehaviour
             //SPEED UPGRADE
             case 0:
                 speed = upgradeSpeedArray[speedUpgradeCounter];
+                sprintSpeed += (speed * sprintRatio);
                 GameController.instance.UpdateResources(-upgradeCost[speedUpgradeCounter]);
                 speedUpgradeCounter++;
                 if (speedUpgradeCounter < upgradeSpeedArray.Length)
@@ -209,6 +240,13 @@ public class Train : MonoBehaviour
                 lifeDifference = life - actualLife;
                 life = actualLife = upgradeHealthPointsArray[healthUpgradeCounter];
                 actualLife -= lifeDifference;
+                //BOB
+                if (GUIController.instance.planningCanvas.gameObject.activeSelf)
+                    GUIController.instance.healthSlider.value = GUIController.instance.healthSlider.maxValue = actualLife;
+                else
+                    GUIController.instance.healthSlider.value = lifeDifference;
+                GUIController.instance.healthSlider.maxValue = actualLife;
+                //BOB
                 GameController.instance.UpdateResources(-upgradeCost[healthUpgradeCounter]);
                 healthUpgradeCounter++;
                 if (healthUpgradeCounter < upgradeHealthPointsArray.Length)
@@ -235,21 +273,21 @@ public class Train : MonoBehaviour
 
     void OnMouseOver()
     {
-/*
-        //ACTIVATE THE CANVAS RELATIVE TO THE HQ UPGRADE
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (!GUIController.instance.upgradeTrainCanvas.gameObject.activeSelf)
-            {
-                GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(true);
-            }
-            else
-            {
-                GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(false);
-            }
-        }
-        //
-        */
+        /*
+                //ACTIVATE THE CANVAS RELATIVE TO THE HQ UPGRADE
+                if (Input.GetMouseButtonDown(1))
+                {
+                    if (!GUIController.instance.upgradeTrainCanvas.gameObject.activeSelf)
+                    {
+                        GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        GUIController.instance.upgradeTrainCanvas.gameObject.SetActive(false);
+                    }
+                }
+                //
+                */
     }
     //SETTING THE GUI AND THE BUTTONS RELATIVE TO THE UPGRADE SELECTED
     private void SetSpeedGui()
@@ -329,13 +367,13 @@ public class Train : MonoBehaviour
 
     public void SetSprint()
     {
-
-
+        //BOB
         //SPRINTING THE HQ
+        startSprint = Time.time;
+        trainIsSprinted = true;
+        GUIController.instance.trainSprintButton.gameObject.SetActive(false);
 
-       
-
-        //
+        //BOB
 
     }
     //////////
