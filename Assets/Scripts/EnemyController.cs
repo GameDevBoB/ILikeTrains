@@ -11,6 +11,7 @@ public enum EnemyType
 [System.Serializable]
 public class EnemyController : MonoBehaviour
 {
+
     //ENEMY HEALTH VARIABLES
     public int life;
     public int actualLife;
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour
 
     //public float rotationSpeed;
 
-    public Slider healthSlider;
+    public Slider lifeSlider;
 
 
     //private float initialSpeed;
@@ -69,8 +70,6 @@ public class EnemyController : MonoBehaviour
         {
             bullets = new GameObject[100];
             SpawnBullets();
-
-
         }
     }
 
@@ -78,6 +77,7 @@ public class EnemyController : MonoBehaviour
     {
         target = GameObject.FindWithTag("Train");
         actualLife = life;
+        lifeSlider.value = lifeSlider.maxValue = life;
         //initialSpeed = walkSpeed;
         //startPosition = transform.position;
     }
@@ -143,7 +143,7 @@ public class EnemyController : MonoBehaviour
         //ENEMY CAN GET DAMAGE FROM SOURCES
         //SO WE NEED TO ARRANGE THE VALUE ACCORDINGLY
         actualLife -= damage;
-        healthSlider.value = actualLife;
+        lifeSlider.value = actualLife;
         if (actualLife <= 0)
         {
             //EVERY TIME AN ENEMY DIES THE TOTAL RESOURCES WILL INCREASE

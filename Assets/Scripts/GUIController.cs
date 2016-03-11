@@ -7,6 +7,7 @@ public class GUIController : MonoBehaviour
     public static GUIController instance;
     //PLANNINGPHATE CANVAS WITH ELEMENTS
     public Canvas planningCanvas;
+    public Button startButton;
     public Button instantiateButton;
     //
 

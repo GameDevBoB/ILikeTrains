@@ -47,11 +47,10 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         Physics.queriesHitTriggers = false;
+        instance = this;
     }
     void Start()
     {
-
-        instance = this;
         //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");
         unplaceableLayer = 1 << LayerMask.NameToLayer("Unplaceable");
@@ -113,6 +112,7 @@ public class GameController : MonoBehaviour
         {
             DeselectTrap();
             trapIsBeingPlaced = true;
+            GUIController.instance.startButton.interactable = true;
         }
     }
 
@@ -130,11 +130,13 @@ public class GameController : MonoBehaviour
             selectedTrapCost = trapsCosts[index];
             GUIController.instance.DeactivateInstanceButton();
         }
+        GUIController.instance.startButton.interactable = false;
     }
 
 
     public void StartGame()
     {
+        DeselectTrap();
         isPaused = false;
         GUIController.instance.StartGame();
     }

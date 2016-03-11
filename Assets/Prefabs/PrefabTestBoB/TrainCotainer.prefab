@@ -1539,6 +1539,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11434044
 MonoBehaviour:
@@ -1601,6 +1602,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11441752
 MonoBehaviour:
@@ -1663,6 +1665,7 @@ MonoBehaviour:
   maxDistance: 0
   distance: 0
   rotationSpeed: 0
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 0}
 --- !u!114 &11455856
 MonoBehaviour:
@@ -1725,6 +1728,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11457552
 MonoBehaviour:
@@ -1787,6 +1791,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11460346
 MonoBehaviour:
@@ -1849,6 +1854,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11487838
 MonoBehaviour:
@@ -1911,6 +1917,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11490678
 MonoBehaviour:
@@ -1973,6 +1980,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11492772
 MonoBehaviour:
@@ -2035,6 +2043,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11493344
 MonoBehaviour:
@@ -2097,6 +2106,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11497604
 MonoBehaviour:
@@ -2159,6 +2169,7 @@ MonoBehaviour:
   maxDistance: 1.5
   distance: 1
   rotationSpeed: 5
+  sprintRatio: 0.5
   trainToCopyFrom: {fileID: 196644}
 --- !u!1001 &100100000
 Prefab:

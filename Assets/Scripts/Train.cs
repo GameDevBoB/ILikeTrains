@@ -62,16 +62,6 @@ public class Train : MonoBehaviour
     void Awake()
     {
 
-        if (isCoach)
-        {
-            //GETTING THE PATHPOINT OF HQ GIVING THEM TO ALL ELEMENTS ATTACHED TO IT
-            for (int i = 0; i < trainToCopyFrom.GetComponent<Train>().waypoints.Length; i++)
-            {
-                waypoints[i] = trainToCopyFrom.GetComponent<Train>().waypoints[i];
-            }
-            loop = trainToCopyFrom.GetComponent<Train>().loop;
-        }
-
     }
 
     void Start()
@@ -94,6 +84,16 @@ public class Train : MonoBehaviour
         SetSpeedGui();
         SetSprintGui();
         SetHealthGui();
+
+        if (isCoach)
+        {
+            //GETTING THE PATHPOINT OF HQ GIVING THEM TO ALL ELEMENTS ATTACHED TO IT
+            //for (int i = 0; i < trainToCopyFrom.GetComponent<Train>().waypoints.Length; i++)
+            //{
+            waypoints = GameController.instance.headCoach.waypoints;
+            //}
+            loop = trainToCopyFrom.GetComponent<Train>().loop;
+        }
         //
 
     }
@@ -102,11 +102,7 @@ public class Train : MonoBehaviour
     void FixedUpdate()
     {
 
-        //GETTING STATIC VALUES REFERENCES TO THE HQ INSTANCE
-        loop = GameController.instance.headCoach.loop;
-        speed = GameController.instance.headCoach.speed;
-        sprintSpeed = GameController.instance.headCoach.sprintSpeed;
-        //
+        
 
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
@@ -124,41 +120,28 @@ public class Train : MonoBehaviour
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
-                if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
-                {
-                    if ((countWaypoints < (waypoints.Length - 1)))
-                    {
-                        countWaypoints++;
-                    }
-                    else if (loop)
-                    {
-
-                        countWaypoints = 0;
-                        //transform.position = waypoints[0].GetChild(0).position;
-                        transform.position = initPos;
-
-                    }
-                    transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
-                }
+                ChangeWaypoint();
                 //BOB
-                if (!trainIsSprinted)
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
-                else
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed);
+                MoveTrain(1);
                 //BOB
             }
             //
             //IF NOT WE MOVE THE COACHES BEHIND IT ON A CONVOY FORMATION
             else
             {
+                //GETTING STATIC VALUES REFERENCES TO THE HQ INSTANCE
+                loop = GameController.instance.headCoach.loop;
+                speed = GameController.instance.headCoach.speed;
+                sprintSpeed = GameController.instance.headCoach.sprintSpeed;
+                trainIsSprinted = GameController.instance.headCoach.trainIsSprinted;
+                //
+
+                ChangeWaypoint();
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
                 {
                     //FORCING THE DISTANCE BETWEEN ELEMENTS TO A FIXED DISTANCE EVERY FRAME
                     //BOB
-                    if (!trainIsSprinted)
-                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * 2);
-                    else
-                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed * 10);
+                    MoveTrain(10);
                     //BOB
 
                 }
@@ -166,29 +149,7 @@ public class Train : MonoBehaviour
                 //WE MOVE THE NEXT ELEMENT ONLY IF THAT DISTANCE IS EXCEEDED
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= distance)
                 {
-                    if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
-                    {
-                        if ((countWaypoints < (waypoints.Length - 1)))
-                        {
-                            countWaypoints++;
-                        }
-                        else if (loop)
-                        {
-
-                            countWaypoints = 0;
-                            //transform.position = waypoints[0].GetChild(0).position;
-                            transform.position = initPos;
-
-                        }
-
-                        transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
-                    }
-                    //BOB
-                    if (!trainIsSprinted)
-                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed);
-                    else
-                        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed);
-                    //BOB
+                    MoveTrain(1);
                 }
 
                 //
@@ -196,6 +157,37 @@ public class Train : MonoBehaviour
         }
 
 
+    }
+
+    private void MoveTrain(float velocityMultiplier)
+    {
+        //BOB
+        if (!trainIsSprinted)
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * velocityMultiplier);
+        else
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed * velocityMultiplier);
+        //BOB
+    }
+
+    private void ChangeWaypoint()
+    {
+        if (Vector3.Distance(transform.position, waypoints[countWaypoints].GetChild(0).position) <= 0.01)
+        {
+            if ((countWaypoints < (waypoints.Length - 1)))
+            {
+                countWaypoints++;
+            }
+            else if (loop)
+            {
+
+                countWaypoints = 0;
+                //transform.position = waypoints[0].GetChild(0).position;
+                transform.position = initPos;
+
+            }
+
+            transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
+        }
     }
 
     public void Activate()
@@ -224,7 +216,7 @@ public class Train : MonoBehaviour
             //SPEED UPGRADE
             case 0:
                 speed = upgradeSpeedArray[speedUpgradeCounter];
-                sprintSpeed += (speed * sprintRatio);
+                sprintSpeed = speed + (speed * sprintRatio);
                 GameController.instance.UpdateResources(-upgradeCost[speedUpgradeCounter]);
                 speedUpgradeCounter++;
                 if (speedUpgradeCounter < upgradeSpeedArray.Length)
@@ -241,11 +233,11 @@ public class Train : MonoBehaviour
                 life = actualLife = upgradeHealthPointsArray[healthUpgradeCounter];
                 actualLife -= lifeDifference;
                 //BOB
-                if (GUIController.instance.planningCanvas.gameObject.activeSelf)
-                    GUIController.instance.healthSlider.value = GUIController.instance.healthSlider.maxValue = actualLife;
+                if (GameController.instance.isPaused)
+                    GUIController.instance.healthSlider.value = life;
                 else
-                    GUIController.instance.healthSlider.value = lifeDifference;
-                GUIController.instance.healthSlider.maxValue = actualLife;
+                    GUIController.instance.healthSlider.value = actualLife;
+                GUIController.instance.healthSlider.maxValue = life;
                 //BOB
                 GameController.instance.UpdateResources(-upgradeCost[healthUpgradeCounter]);
                 healthUpgradeCounter++;
