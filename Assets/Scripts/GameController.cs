@@ -166,5 +166,9 @@ public class GameController : MonoBehaviour
         GUIController.instance.ActivateInstanceButton();
     }
 
-
+    public void StopGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+    }
 }

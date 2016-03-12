@@ -102,21 +102,28 @@ public class Train : MonoBehaviour
     void FixedUpdate()
     {
 
-        
+
 
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
             //BOB
-            if (((Time.time - startSprint) > sprint) && trainIsSprinted)
-            {
-                trainIsSprinted = false;
-                GUIController.instance.trainSprintButton.gameObject.SetActive(true);
 
-                //Debug.Log("DIFF FRA TIME E STARTSPRINT " + (Time.time - startSprint) + " SPRINT: " + sprint);
+            //Debug.Log("startSPRINT " + startSprint);
+            if (((Time.time - startSprint) > sprint))
+
+            {
+
+                //Debug.Log("DIFFERENZA " + (Time.time - startSprint) + " sprint " + sprint +" STARTSPRINT "+startSprint);
+                trainIsSprinted = false;
+                Debug.Log("SONO DENTRO L'IF" + "è sprintato?? " + trainIsSprinted);
+
+                GUIController.instance.trainSprintButton.interactable = true; 
+
             }
+
             //BOB
-           
+
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
@@ -359,11 +366,13 @@ public class Train : MonoBehaviour
 
     public void SetSprint()
     {
+
         //BOB
         //SPRINTING THE HQ
         startSprint = Time.time;
         trainIsSprinted = true;
-        GUIController.instance.trainSprintButton.gameObject.SetActive(false);
+        GUIController.instance.trainSprintButton.interactable=false;
+        //Debug.Log("ENTRO IN SPRINT " + startSprint);
 
         //BOB
 
