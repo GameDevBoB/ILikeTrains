@@ -12,7 +12,8 @@ public class GameController : MonoBehaviour
     public GameObject selectedTrap;
     public int[] trapsCosts;
     //
-
+    [HideInInspector]
+    public int enemyCount;
     public Train headCoach;
     public int startResources = 10;
     [HideInInspector]
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
+        enemyCount = 0;
         //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");
         unplaceableLayer = 1 << LayerMask.NameToLayer("Unplaceable");
@@ -170,5 +172,10 @@ public class GameController : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
+    }
+
+    public void TotalEnemyKilled()
+    {
+        enemyCount++;
     }
 }
