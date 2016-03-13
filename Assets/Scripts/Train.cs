@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Train : MonoBehaviour
 {
+	public static Train instance;
     //HQ VARIABLES
     public float life;
     public float sprint;
@@ -61,7 +62,7 @@ public class Train : MonoBehaviour
 
     void Awake()
     {
-
+		instance = this;
     }
 
     void Start()
@@ -202,6 +203,7 @@ public class Train : MonoBehaviour
         actualLife -= damage;
         GUIController.instance.healthSlider.value = actualLife;
         if (actualLife <= 0)
+			GUIController.instance.GameOverView();
             transform.parent.gameObject.SetActive(false);
         //
 

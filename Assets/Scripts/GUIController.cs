@@ -23,6 +23,20 @@ public class GUIController : MonoBehaviour
     public Button trainSpeedUpgradeButton;
     public Button trainHealthUpgradeButton;
     public Button trainSprintUpgradeButton;
+	//
+
+	//CANVAS ENDLEVEL
+	public Canvas gameOverView;
+	public Button goMenu;
+	public Button goRestart;
+	public Canvas completeLevelView;
+	public Button menuWin;
+	public Button resetWin;
+	public Button nextLevel;
+	public Image stars;
+	public Text finalLifeText;
+	public Text finalEnemyText;
+	public Text finalResourceText;
     //
 
     public Button trainSprintButton;
@@ -35,6 +49,7 @@ public class GUIController : MonoBehaviour
     void Start()
     {
         phaseText.text = "PLANNING PHASE";
+		ViewOnStart();
 
     }
 
@@ -42,6 +57,10 @@ public class GUIController : MonoBehaviour
     void Update()
     {
         ResourcesText.text = "Resources: " + GameController.instance.totalResources.ToString();
+		finalResourceText.text = "Risorse" + GameController.instance.totalResources.ToString();
+		finalLifeText.text = "Vita" + Train.instance.actualLife.ToString();
+		finalEnemyText.text = "Nemici Uccisi" +  GameController.instance.enemyCount.ToString();
+
     }
 
     public void StartGame()
@@ -77,4 +96,37 @@ public class GUIController : MonoBehaviour
         upgradeTrainCanvas.gameObject.SetActive(false);
         upgradeTrainButton.interactable = true;
     }
+	//CANVAS ENDLEVEL
+	void ViewOnStart()
+	{
+		gameOverView.gameObject.SetActive(false);
+		completeLevelView.gameObject.SetActive(false);
+	}
+
+	public void GameOverView()
+	{
+		gameOverView.gameObject.SetActive(true);
+		GameController.instance.isPaused=true;
+	}
+
+	public void CompleteLevel()
+	{
+		completeLevelView.gameObject.SetActive(true);
+		GameController.instance.isPaused=true;
+	}
+
+	//BUTTON ENDLEVEL
+	// prima di utilizzarli bisogna definirli bene i numeri sono casuali 
+	public void RestartLevel ()
+	{
+		Application.LoadLevel (1);
+	}
+	public void GoToMenu()
+	{
+		Application.LoadLevel (0);  // il menu è una scena?
+	}
+	public void NextLevel()
+	{
+		Application.LoadLevel (2);
+	}
 }
