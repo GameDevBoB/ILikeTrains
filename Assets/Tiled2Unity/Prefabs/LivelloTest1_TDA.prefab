@@ -294,8 +294,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -318,8 +320,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -342,8 +346,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -366,8 +372,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -390,8 +398,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -414,8 +424,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -426,42 +438,42 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163008}
-  m_Mesh: {fileID: 4300000, guid: ac41d9bd757274a00b0800a20c4e4850, type: 3}
+  m_Mesh: {fileID: 4300000, guid: b9f6362e26a142349aecace1434fa696, type: 3}
 --- !u!33 &3344476
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110738}
-  m_Mesh: {fileID: 4300002, guid: ac41d9bd757274a00b0800a20c4e4850, type: 3}
+  m_Mesh: {fileID: 4300002, guid: b9f6362e26a142349aecace1434fa696, type: 3}
 --- !u!33 &3350726
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157540}
-  m_Mesh: {fileID: 4300006, guid: ac41d9bd757274a00b0800a20c4e4850, type: 3}
+  m_Mesh: {fileID: 4300006, guid: b9f6362e26a142349aecace1434fa696, type: 3}
 --- !u!33 &3353578
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102348}
-  m_Mesh: {fileID: 4300004, guid: ac41d9bd757274a00b0800a20c4e4850, type: 3}
+  m_Mesh: {fileID: 4300004, guid: b9f6362e26a142349aecace1434fa696, type: 3}
 --- !u!33 &3357288
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135406}
-  m_Mesh: {fileID: 4300010, guid: ac41d9bd757274a00b0800a20c4e4850, type: 3}
+  m_Mesh: {fileID: 4300010, guid: b9f6362e26a142349aecace1434fa696, type: 3}
 --- !u!33 &3368202
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107118}
-  m_Mesh: {fileID: 4300008, guid: ac41d9bd757274a00b0800a20c4e4850, type: 3}
+  m_Mesh: {fileID: 4300008, guid: b9f6362e26a142349aecace1434fa696, type: 3}
 --- !u!114 &11401132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,7 +615,7 @@ MonoBehaviour:
   NumTilesHigh: 18
   TileWidth: 32
   TileHeight: 32
-  ExportScale: .00400000019
+  ExportScale: 0.004
   MapWidthInPixels: 1024
   MapHeightInPixels: 576
 --- !u!114 &11497378
