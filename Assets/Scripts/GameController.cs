@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     //
 
     public bool isPaused = true;
+    public int enemyCount;
 
     //MOUSE POSITION VARIABLES
     private Vector3 screenPoint;
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
+        enemyCount = 0;
         //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");
         unplaceableLayer = 1 << LayerMask.NameToLayer("Unplaceable");
@@ -170,5 +172,10 @@ public class GameController : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
+    }
+
+    public void TotalEnemyKilled()
+    {
+        enemyCount++;
     }
 }
