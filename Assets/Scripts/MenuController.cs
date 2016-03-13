@@ -4,7 +4,7 @@ using System.Collections;
 public class MenuController : MonoBehaviour {
 
 	public void LoadSelectionLevelMenu(){
-		Application.LoadLevel ("LevelSelection");
+		Application.LoadLevel ("Denis");
 	}
 	public void ExitGame(){
 		Application.Quit ();
