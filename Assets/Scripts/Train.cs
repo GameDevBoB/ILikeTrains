@@ -6,7 +6,7 @@ public class Train : MonoBehaviour
 {
     //HQ VARIABLES
     public float life;
-    public float sprint;
+    public float sprintDuration;
     public float speed = 1.0F;
     public bool loop = false;
     public float slowDelay;
@@ -80,6 +80,14 @@ public class Train : MonoBehaviour
         countWaypoints = 0;
         GUIController.instance.healthSlider.value = actualLife;
         GUIController.instance.healthSlider.maxValue = actualLife;
+        if (isCoach)
+        {
+            loop = GameController.instance.headCoach.loop;
+            speed = GameController.instance.headCoach.speed;
+            sprintDuration = GameController.instance.headCoach.sprintDuration;
+            sprintSpeed = GameController.instance.headCoach.sprintSpeed;
+            trainIsSprinted = GameController.instance.headCoach.trainIsSprinted;
+        }
 
         SetSpeedGui();
         SetSprintGui();
@@ -102,31 +110,24 @@ public class Train : MonoBehaviour
     void FixedUpdate()
     {
 
-
+        //Debug.Log("Sono sprintato? " + trainIsSprinted + " E il mio sprint duration è " + sprintDuration);
 
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
             //BOB
 
-            //Debug.Log("startSPRINT " + startSprint);
-            if (((Time.time - startSprint) > sprint))
-
-            {
-
-                //Debug.Log("DIFFERENZA " + (Time.time - startSprint) + " sprint " + sprint +" STARTSPRINT "+startSprint);
-                trainIsSprinted = false;
-                Debug.Log("SONO DENTRO L'IF" + "è sprintato?? " + trainIsSprinted);
-
-                GUIController.instance.trainSprintButton.interactable = true; 
-
-            }
-
             //BOB
 
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
+                if (((Time.time - startSprint) > sprintDuration) && trainIsSprinted)
+                {
+                    trainIsSprinted = false;
+                    GUIController.instance.trainSprintButton.interactable = true;
+
+                }
                 ChangeWaypoint();
                 //BOB
                 MoveTrain(1);
@@ -139,6 +140,7 @@ public class Train : MonoBehaviour
                 //GETTING STATIC VALUES REFERENCES TO THE HQ INSTANCE
                 loop = GameController.instance.headCoach.loop;
                 speed = GameController.instance.headCoach.speed;
+                sprintDuration = GameController.instance.headCoach.sprintDuration;
                 sprintSpeed = GameController.instance.headCoach.sprintSpeed;
                 trainIsSprinted = GameController.instance.headCoach.trainIsSprinted;
                 //
@@ -257,7 +259,7 @@ public class Train : MonoBehaviour
 
             //SPRINT UPGRADEs
             case 2:
-                sprint = upgradeSprintArray[sprintUpgradeCounter];
+                sprintDuration = upgradeSprintArray[sprintUpgradeCounter];
                 GameController.instance.UpdateResources(-upgradeCost[sprintUpgradeCounter]);
                 sprintUpgradeCounter++;
                 if (sprintUpgradeCounter < upgradeSprintArray.Length)
@@ -372,7 +374,6 @@ public class Train : MonoBehaviour
         startSprint = Time.time;
         trainIsSprinted = true;
         GUIController.instance.trainSprintButton.interactable=false;
-        //Debug.Log("ENTRO IN SPRINT " + startSprint);
 
         //BOB
 

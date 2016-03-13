@@ -626,7 +626,7 @@ Prefab:
       objectReference: {fileID: 709321104}
     - target: {fileID: 22409758, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 50
-  sprint: 0
+  sprintDuration: 0
   speed: 2
   loop: 0
   slowDelay: 2
@@ -1792,7 +1792,11 @@ Prefab:
       objectReference: {fileID: 1461828206}
     - target: {fileID: 11441752, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
       propertyPath: actualLife
-      value: 100000
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441752, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: sprintDuration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
