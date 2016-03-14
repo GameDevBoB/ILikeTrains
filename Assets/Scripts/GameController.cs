@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour
             //WE INSTANTIATE THE SELECTED TRAP
             selectedTrap = Instantiate(trapsPrefabs[index], new Vector3(0, -1, 0), trapsPrefabs[index].transform.rotation) as GameObject;
             selectedTrapCost = trapsCosts[index];
-            GUIController.instance.DeactivateInstanceButton();
+            GUIController.instance.DeactivateTrapsButton();
         }
         GUIController.instance.startButton.interactable = false;
     }
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
         selectedTrap.SendMessage("BackToNormalColor");
         selectedTrap.layer = LayerMask.NameToLayer("Unplaceable");
         selectedTrap = null;
-        GUIController.instance.ActivateInstanceButton();
+        GUIController.instance.ActivateTrapsButton();
         totalResources -= selectedTrapCost;
         SelectTrap(lastTrap);
 
@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour
     void DeselectTrap()
     {
         Destroy(selectedTrap.gameObject);
-        GUIController.instance.ActivateInstanceButton();
+        GUIController.instance.ActivateTrapsButton();
     }
 
     public void StopGame()

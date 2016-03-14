@@ -987,7 +987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planningCanvas: {fileID: 22301708}
   startButton: {fileID: 11473646}
-  instantiateButton: {fileID: 11498102}
+  instantiateDynamiteButton: {fileID: 11498102}
+  instantiateTeslaButton: {fileID: 11436606}
   upgradeTrainCanvas: {fileID: 22309676}
   upgradeTrainButton: {fileID: 11407508}
   phaseText: {fileID: 11428036}

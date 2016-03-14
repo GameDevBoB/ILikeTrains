@@ -8,7 +8,8 @@ public class GUIController : MonoBehaviour
     //PLANNINGPHATE CANVAS WITH ELEMENTS
     public Canvas planningCanvas;
     public Button startButton;
-    public Button instantiateButton;
+    public Button instantiateDynamiteButton;
+    public Button instantiateTeslaButton;
     //
 
     //HQ UPGRADE CANVAS WITH ELEMENTS
@@ -55,15 +56,19 @@ public class GUIController : MonoBehaviour
     }
 
     //ACTIVATON OF BUTTON THAT CAN BE PRESSED
-    public void ActivateInstanceButton()
+    public void ActivateTrapsButton()
     {
 
-        instantiateButton.interactable = true;
+        instantiateDynamiteButton.interactable = true;
+        instantiateTeslaButton.interactable = true;
     }
 
-    public void DeactivateInstanceButton()
+    public void DeactivateTrapsButton()
     {
-        instantiateButton.interactable = false;
+        instantiateDynamiteButton.interactable = false;
+        instantiateTeslaButton.interactable = false;
+
+
     }
     //CANVAS HQ UPGRADE ACTIVATION/DEACTIVATION
     public void ActivateTrainUpgradeCanvas()
