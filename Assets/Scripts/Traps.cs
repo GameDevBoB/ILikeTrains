@@ -2,14 +2,15 @@
 using System.Collections;
 using UnityEngine.UI;
 
+public enum trapType
+{
+    MinaTesla,
+    Dynamite
+};
 public class Traps : MonoBehaviour
 {
 
-    public enum trapType
-    {
-        MinaTesla,
-        Dynamite
-    };
+
 
     public trapType myType;
 
@@ -27,14 +28,7 @@ public class Traps : MonoBehaviour
     public int[] upgradeCost = new int[5];
     //
 
-    //UI ELEMENTS FOR UPGRADES AND VISUAL FEEDBACK EXPLOSIONS
-    public Canvas upgradeCanvas;
-    public Text damageUpgradeText;
-    public Text radiusUpgradeText;
-    public Text cooldownUpgradeText;
-    public Button damageUpgradeButton;
-    public Button radiusUpgradeButton;
-    public Button cooldownUpgradeButton;
+
     public Canvas trapCanvas;
     public GameObject explosionSprite;
     public Text cooldownText;
@@ -54,6 +48,12 @@ public class Traps : MonoBehaviour
     private int radiusUpgradeCounter;
     private int cooldownUpgradeCounter;
     private bool beginGame = true;
+    [HideInInspector]
+    private bool damageArrayIsEnded = false;
+    [HideInInspector]
+    private bool rangeArrayIsEnded = false;
+    [HideInInspector]
+    private bool cooldownArrayIsEnded = false;
 
     //
 
@@ -76,7 +76,9 @@ public class Traps : MonoBehaviour
         explosionStart = 0;
         explosionStartScale = explosionSprite.transform.localScale;
         adder = explosionStartScale * explosionSpeed * 2;
-        SetCanvasElements();
+        GUIController.instance.SetCanvasElements(myType, upgradeDamage[damageUpgradeCounter], upgradeRadius[radiusUpgradeCounter], upgradeCooldown[cooldownUpgradeCounter],
+             upgradeCost[damageUpgradeCounter], upgradeCost[radiusUpgradeCounter], upgradeCost[cooldownUpgradeCounter]);
+
     }
 
 
@@ -107,31 +109,31 @@ public class Traps : MonoBehaviour
         //
 
         //ACTIVATING UI ON UPGRADING TRAPS INTERACTIONS
-        if (upgradeCanvas.gameObject.activeSelf)
+        if (GUIController.instance.upgradeCanvas.gameObject.activeSelf && GUIController.instance.canvasOpener==this.gameObject)
         {
-            if (damageUpgradeCounter < upgradeDamage.Length && GameController.instance.totalResources >= upgradeCost[damageUpgradeCounter])
+            if (!damageArrayIsEnded && GameController.instance.totalResources >= upgradeCost[damageUpgradeCounter])
             {
-                damageUpgradeButton.interactable = true;
+                GUIController.instance.damageUpgradeButton.interactable = true;
             }
             else
             {
-                damageUpgradeButton.interactable = false;
+                GUIController.instance.damageUpgradeButton.interactable = false;
             }
-            if (radiusUpgradeCounter < upgradeRadius.Length && GameController.instance.totalResources >= upgradeCost[radiusUpgradeCounter])
+            if (!rangeArrayIsEnded && GameController.instance.totalResources >= upgradeCost[radiusUpgradeCounter])
             {
-                radiusUpgradeButton.interactable = true;
-            }
-            else
-            {
-                radiusUpgradeButton.interactable = false;
-            }
-            if (cooldownUpgradeCounter < upgradeCooldown.Length && GameController.instance.totalResources >= upgradeCost[cooldownUpgradeCounter])
-            {
-                cooldownUpgradeButton.interactable = true;
+                GUIController.instance.radiusUpgradeButton.interactable = true;
             }
             else
             {
-                cooldownUpgradeButton.interactable = false;
+                GUIController.instance.radiusUpgradeButton.interactable = false;
+            }
+            if (!cooldownArrayIsEnded && GameController.instance.totalResources >= upgradeCost[cooldownUpgradeCounter])
+            {
+                GUIController.instance.cooldownUpgradeButton.interactable = true;
+            }
+            else
+            {
+                GUIController.instance.cooldownUpgradeButton.interactable = false;
             }
         }
         //
@@ -154,14 +156,17 @@ public class Traps : MonoBehaviour
         //UI VISUALIZATION OF THE TRAP UPGRADES
         else if (Input.GetMouseButtonDown(1) && GameController.instance.trapIsBeingPlaced)
         {
-            if (!upgradeCanvas.gameObject.activeSelf)
-            {
-                upgradeCanvas.gameObject.SetActive(true);
-            }
-            else
-            {
-                upgradeCanvas.gameObject.SetActive(false);
-            }
+            GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
+            GUIController.instance.canvasOpener = this.gameObject;
+            GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up;
+            GUIController.instance.damageUpgradeButton.onClick.RemoveAllListeners();
+            GUIController.instance.radiusUpgradeButton.onClick.RemoveAllListeners();
+            GUIController.instance.cooldownUpgradeButton.onClick.RemoveAllListeners();
+            GUIController.instance.damageUpgradeButton.onClick.AddListener(delegate { Upgrade(0); });
+            GUIController.instance.radiusUpgradeButton.onClick.AddListener(delegate { Upgrade(1); });
+            GUIController.instance.cooldownUpgradeButton.onClick.AddListener(delegate { Upgrade(2); });
+            GUIController.instance.SetCanvasElements(myType, upgradeDamage[damageUpgradeCounter], upgradeRadius[radiusUpgradeCounter], upgradeCooldown[cooldownUpgradeCounter],
+             upgradeCost[damageUpgradeCounter], upgradeCost[radiusUpgradeCounter], upgradeCost[cooldownUpgradeCounter]);
         }
         //
     }
@@ -187,7 +192,7 @@ public class Traps : MonoBehaviour
             {
                 case trapType.MinaTesla:
                     //STUN TRAP
-                    col.gameObject.SendMessage("GetStun",damage);
+                    col.gameObject.SendMessage("GetStun", damage);
                     break;
                 case trapType.Dynamite:
                     //DAMAGE TRAP
@@ -219,67 +224,49 @@ public class Traps : MonoBehaviour
                 //DAMAGE UPGRADE
                 damage = upgradeDamage[damageUpgradeCounter];
                 GameController.instance.UpdateResources(-upgradeCost[damageUpgradeCounter]);
-                damageUpgradeCounter++;
-
-                if (damageUpgradeCounter < upgradeDamage.Length)
+                if (damageUpgradeCounter < upgradeDamage.Length - 1)
                 {
-                    SetCanvasElements();
+                    damageUpgradeCounter++;
 
+                }
+                else
+                {
+                    damageArrayIsEnded = true;
                 }
                 break;
             case 1:
                 //RANGE UPGRADE
                 colliderRadius = upgradeRadius[radiusUpgradeCounter];
                 GameController.instance.UpdateResources(-upgradeCost[radiusUpgradeCounter]);
-                radiusUpgradeCounter++;
-                if (radiusUpgradeCounter < upgradeRadius.Length)
+                if (radiusUpgradeCounter < upgradeRadius.Length - 1)
                 {
-                    radiusUpgradeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
-                    radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
+                    radiusUpgradeCounter++;
+                }
+                else
+                {
+                    rangeArrayIsEnded = true;
                 }
                 break;
             case 2:
                 //COOLDOWN REDUCTION UPGRADE
                 explosionCooldown = upgradeCooldown[cooldownUpgradeCounter];
                 GameController.instance.UpdateResources(-upgradeCost[cooldownUpgradeCounter]);
-                cooldownUpgradeCounter++;
-                if (cooldownUpgradeCounter < upgradeCooldown.Length)
+                if (cooldownUpgradeCounter < upgradeCooldown.Length - 1)
                 {
-                    cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
-                    cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
+                    cooldownUpgradeCounter++;
+                }
+                else
+                {
+                    cooldownArrayIsEnded = true;
                 }
                 break;
         }
+        GUIController.instance.SetCanvasElements(myType, upgradeDamage[damageUpgradeCounter], upgradeRadius[radiusUpgradeCounter], upgradeCooldown[cooldownUpgradeCounter],
+             upgradeCost[damageUpgradeCounter], upgradeCost[radiusUpgradeCounter], upgradeCost[cooldownUpgradeCounter]);
     }
 
     //CLOSING UI UPGRADE CANVAS
-    public void CloseUpgrade()
-    {
-        upgradeCanvas.gameObject.SetActive(false);
-    }
-
-    void SetCanvasElements()
-    {
-        switch(myType)
-        {
-            case trapType.Dynamite:
-            damageUpgradeText.text = "Damage "+ upgradeDamage[damageUpgradeCounter];
-                break;
-            case trapType.MinaTesla:
-            damageUpgradeText.text = "Slow " + upgradeDamage[damageUpgradeCounter];
-                break;
-            
-        }
-        if (beginGame)
-        {
-            radiusUpgradeText.text = "Range " + upgradeRadius[radiusUpgradeCounter];
-            cooldownUpgradeText.text = "Cooldown " + upgradeCooldown[cooldownUpgradeCounter];
-            radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[radiusUpgradeCounter];
-            cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[cooldownUpgradeCounter];
-            beginGame = false;
-        }
-        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[damageUpgradeCounter];
 
 
-    }
+
 }

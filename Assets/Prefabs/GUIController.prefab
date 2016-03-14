@@ -1000,6 +1000,13 @@ MonoBehaviour:
   trainSpeedUpgradeButton: {fileID: 11461150}
   trainHealthUpgradeButton: {fileID: 11469816}
   trainSprintUpgradeButton: {fileID: 11424946}
+  upgradeCanvas: {fileID: 0}
+  damageUpgradeText: {fileID: 0}
+  radiusUpgradeText: {fileID: 0}
+  cooldownUpgradeText: {fileID: 0}
+  damageUpgradeButton: {fileID: 0}
+  radiusUpgradeButton: {fileID: 0}
+  cooldownUpgradeButton: {fileID: 0}
   trainSprintButton: {fileID: 11460418}
 --- !u!114 &11427796
 MonoBehaviour:

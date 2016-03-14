@@ -26,6 +26,19 @@ public class GUIController : MonoBehaviour
     public Button trainSprintUpgradeButton;
     //
 
+    //UI ELEMENTS FOR UPGRADES
+
+    public Canvas upgradeCanvas;
+    public Text damageUpgradeText;
+    public Text radiusUpgradeText;
+    public Text cooldownUpgradeText;
+    public Button damageUpgradeButton;
+    public Button radiusUpgradeButton;
+    public Button cooldownUpgradeButton;
+    public GameObject canvasOpener;
+
+    //
+
     public Button trainSprintButton;
     void Awake()
     {
@@ -82,4 +95,31 @@ public class GUIController : MonoBehaviour
         upgradeTrainCanvas.gameObject.SetActive(false);
         upgradeTrainButton.interactable = true;
     }
+
+    public void CloseUpgrade()
+    {
+        upgradeCanvas.gameObject.SetActive(false);
+    }
+
+    public void SetCanvasElements(trapType inputMyType, float inputDamage, float inputRange, float inputCooldown,
+        float inputCostDamage, float inputCostRange, float inputCostCooldown)
+    {
+        switch (inputMyType)
+        {
+            case trapType.Dynamite:
+                damageUpgradeText.text = "Damage " + inputDamage;
+                break;
+            case trapType.MinaTesla:
+                damageUpgradeText.text = "Slow " + inputDamage;
+                break;
+        }
+        radiusUpgradeText.text = "Range " + inputRange;
+        cooldownUpgradeText.text = "Cooldown " + inputCooldown;
+        radiusUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + inputCostRange;
+        cooldownUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + inputCostCooldown;
+        damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + inputCostDamage;
+
+
+    }
+   
 }
