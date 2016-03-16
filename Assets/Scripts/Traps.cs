@@ -31,7 +31,6 @@ public class Traps : MonoBehaviour
 
     public Canvas trapCanvas;
     public GameObject explosionSprite;
-    public GameObject rangePreviewSprite;
     public Text cooldownText;
     public Image cooldownImage;
     //
@@ -42,9 +41,7 @@ public class Traps : MonoBehaviour
     private SphereCollider myTrigger;
     private float explosionStart;
     private Vector3 explosionStartScale;
-    private Vector3 rangeSpriteStartScale;
-    private Vector3 explosionSpriteAdder;
-    private Vector3 rangeSpriteAdder;
+    private Vector3 adder;
     private Renderer myRenderer;
     private Color startColor;
     private int damageUpgradeCounter;
@@ -78,9 +75,7 @@ public class Traps : MonoBehaviour
         cooldownUpgradeCounter = 0;
         explosionStart = 0;
         explosionStartScale = explosionSprite.transform.localScale;
-        rangeSpriteStartScale = rangePreviewSprite.transform.localScale;
-        explosionSpriteAdder = explosionStartScale * explosionSpeed * 2;
-        //rangeSpriteAdder = rangeSpriteStartScale * 2;
+        adder = explosionStartScale * explosionSpeed * 2;
         GUIController.instance.SetCanvasElements(myType, upgradeDamage[damageUpgradeCounter], upgradeRadius[radiusUpgradeCounter], upgradeCooldown[cooldownUpgradeCounter],
              upgradeCost[damageUpgradeCounter], upgradeCost[radiusUpgradeCounter], upgradeCost[cooldownUpgradeCounter]);
 
@@ -95,7 +90,7 @@ public class Traps : MonoBehaviour
             if (myTrigger.radius < colliderRadius)
             {
                 myTrigger.radius += explosionSpeed;
-                explosionSprite.transform.localScale = new Vector3(explosionSprite.transform.localScale.x + explosionSpriteAdder.x, explosionSprite.transform.localScale.y + explosionSpriteAdder.y, explosionSprite.transform.localScale.z + explosionSpriteAdder.z);
+                explosionSprite.transform.localScale = new Vector3(explosionSprite.transform.localScale.x + adder.x, explosionSprite.transform.localScale.y + adder.y, explosionSprite.transform.localScale.z + adder.z);
             }
             else
             {
@@ -162,7 +157,7 @@ public class Traps : MonoBehaviour
         else if (Input.GetMouseButtonDown(1) && GameController.instance.trapIsBeingPlaced)
         {
             GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
-            GUIController.instance.SetCanvasOpener(this.gameObject);
+            GUIController.instance.canvasOpener = this.gameObject;
             GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up;
             GUIController.instance.damageUpgradeButton.onClick.RemoveAllListeners();
             GUIController.instance.radiusUpgradeButton.onClick.RemoveAllListeners();
@@ -174,17 +169,6 @@ public class Traps : MonoBehaviour
              upgradeCost[damageUpgradeCounter], upgradeCost[radiusUpgradeCounter], upgradeCost[cooldownUpgradeCounter]);
         }
         //
-    }
-
-    void OnMouseEnter()
-    {
-        rangePreviewSprite.SetActive(true);
-        rangePreviewSprite.transform.localScale = rangeSpriteStartScale * colliderRadius * 2;
-    }
-
-    void OnMouseExit()
-    {
-        rangePreviewSprite.SetActive(false);
     }
 
     void OnCollisionStay(Collision col)
@@ -283,14 +267,6 @@ public class Traps : MonoBehaviour
 
     //CLOSING UI UPGRADE CANVAS
 
-    public void ShowPreviewRange()
-    {
-        rangePreviewSprite.SetActive(true);
-        rangePreviewSprite.transform.localScale = rangeSpriteStartScale * upgradeRadius[radiusUpgradeCounter] * 2;
-    }
 
-    public void HidePreviewRange()
-    {
-        rangePreviewSprite.transform.localScale = rangeSpriteStartScale * colliderRadius * 2;
-    }
+
 }

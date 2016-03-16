@@ -436,7 +436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22418108, guid: c30aa13dd1363b6408cdf3e7c8f85dc9, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22418108, guid: c30aa13dd1363b6408cdf3e7c8f85dc9, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -778,22 +778,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22473250, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 49.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 22473250, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 259.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11446124, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
-      propertyPath: m_FontData.m_HorizontalOverflow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11446124, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
-      propertyPath: m_FontData.m_VerticalOverflow
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ede486f8a3e1eb34d835d8cc02423853, type: 2}
   m_IsPrefabParent: 0
@@ -886,35 +870,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1458994974}
   m_RootOrder: 0
---- !u!1 &934556296 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 107206, guid: c30aa13dd1363b6408cdf3e7c8f85dc9, type: 2}
-  m_PrefabInternal: {fileID: 288075145}
---- !u!114 &934556300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934556296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &952943501
 GameObject:
   m_ObjectHideFlags: 0
