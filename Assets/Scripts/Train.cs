@@ -234,13 +234,8 @@ public class Train : MonoBehaviour
                 lifeDifference = life - actualLife;
                 life = actualLife = upgradeHealthPointsArray[healthUpgradeCounter];
                 actualLife -= lifeDifference;
-                
-                if (GameController.instance.isPaused)
-                    GUIController.instance.healthSlider.value = life;
-                else
-                    GUIController.instance.healthSlider.value = actualLife;
                 GUIController.instance.healthSlider.maxValue = life;
-                
+                GUIController.instance.healthSlider.value = actualLife;             
                 GameController.instance.UpdateResources(-upgradeCost[healthUpgradeCounter]);
                 healthUpgradeCounter++;
                 if (healthUpgradeCounter < upgradeHealthPointsArray.Length)
