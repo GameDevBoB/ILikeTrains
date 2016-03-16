@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TerrainScript : MonoBehaviour
 {
-    public bool isPlaceable;
+    private static 
 
     void Awake()
     {

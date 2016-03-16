@@ -38,6 +38,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &145418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 421790}
+  - 212: {fileID: 21250388}
+  m_Layer: 0
+  m_Name: SpriteExplosionPreview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &167018
 GameObject:
   m_ObjectHideFlags: 1
@@ -96,13 +112,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 253.88449, y: 144.08199, z: -3.7800663}
+  m_LocalPosition: {x: -4.0559297, y: -6.4543116e-17, z: -8.956618}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
   - {fileID: 468922}
+  - {fileID: 421790}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &421790
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145418}
+  m_LocalRotation: {x: 0.7071068, y: -0.00000005960465, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 0, y: 0.10000001, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 5}
+  m_Children: []
+  m_Father: {fileID: 416054}
+  m_RootOrder: 2
 --- !u!4 &468922
 Transform:
   m_ObjectHideFlags: 1
@@ -226,15 +255,9 @@ MonoBehaviour:
   - 6
   - 5
   upgradeCost: 050000000a0000000f0000001900000028000000
-  upgradeCanvas: {fileID: 0}
-  damageUpgradeText: {fileID: 0}
-  radiusUpgradeText: {fileID: 0}
-  cooldownUpgradeText: {fileID: 0}
-  damageUpgradeButton: {fileID: 0}
-  radiusUpgradeButton: {fileID: 0}
-  cooldownUpgradeButton: {fileID: 0}
   trapCanvas: {fileID: 22393298}
   explosionSprite: {fileID: 177452}
+  rangePreviewSprite: {fileID: 145418}
   cooldownText: {fileID: 11467950}
   cooldownImage: {fileID: 11486988}
   SlowRatio: 0
@@ -359,6 +382,36 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0.6413793, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!212 &21250388
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145418}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e4a99c303707cf144bc1942f2e39cec9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!222 &22228262

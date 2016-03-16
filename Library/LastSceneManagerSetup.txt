@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Denis.unity
+- path: Assets/_Scenes/LevelSelection.unity
   isLoaded: 1
   isActive: 1
