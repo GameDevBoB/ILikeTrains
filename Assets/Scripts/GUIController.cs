@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GUIController : MonoBehaviour
 {
@@ -99,6 +100,7 @@ public class GUIController : MonoBehaviour
     public void CloseUpgrade()
     {
         upgradeCanvas.gameObject.SetActive(false);
+
     }
 
     public void SetCanvasElements(trapType inputMyType, float inputDamage, float inputRange, float inputCooldown,
@@ -120,6 +122,26 @@ public class GUIController : MonoBehaviour
         damageUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + inputCostDamage;
 
 
+    }
+
+    public void SetCanvasOpener(GameObject myOpener)
+    {
+        canvasOpener = myOpener;
+        EventTrigger trigger = radiusUpgradeButton.GetComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        EventTrigger.Entry click = new EventTrigger.Entry();
+        EventTrigger.Entry exit = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerEnter;
+        click.eventID = EventTriggerType.PointerClick;
+        exit.eventID = EventTriggerType.PointerExit;
+        entry.callback.AddListener((eventData) => { myOpener.GetComponent<Traps>().ShowPreviewRange(); });
+        click.callback.AddListener((eventData) => { myOpener.GetComponent<Traps>().ShowPreviewRange(); });
+        exit.callback.AddListener((eventData) => { myOpener.GetComponent<Traps>().HidePreviewRange(); });
+        trigger.triggers.Clear();
+        trigger.triggers.Add(entry);
+        trigger.triggers.Add(click);
+        trigger.triggers.Add(exit);
+        // .delegates.Add(entry);
     }
    
 }
