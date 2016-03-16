@@ -1352,7 +1352,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!4 &1025685597 stripped
 Transform:
   m_PrefabParentObject: {fileID: 455718, guid: 5560f77870b34b6489b04f45b1b936a3, type: 2}
@@ -1664,7 +1664,7 @@ Transform:
   m_Children:
   - {fileID: 878237040}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!4 &1461828206 stripped
 Transform:
   m_PrefabParentObject: {fileID: 435178, guid: 9f3e666fbb11ed64d908176cc5f6142d, type: 2}
