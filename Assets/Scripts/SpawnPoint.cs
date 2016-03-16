@@ -58,8 +58,8 @@ public class SpawnPoint : MonoBehaviour {
     //SPAWN A COLLECTION OF ENEMIES RANDOMLY THROUGH AN ARRAY OF ENEMIES
     void SpawnCollection()
     {
-        GameObject enemyCollection = Instantiate(enemyCollectionPrefabs[Random.Range(0, enemyCollectionPrefabs.Length)], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-        enemyCollection.SendMessage("Activate", spawnDelay);
-        startCooldown = Time.time;
+            GameObject enemyCollection = Instantiate(enemyCollectionPrefabs[Random.Range(0, enemyCollectionPrefabs.Length)], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+            enemyCollection.SendMessage("Activate", spawnDelay);
+            startCooldown = Time.time;
     }
 }

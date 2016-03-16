@@ -36,6 +36,7 @@ public class GUIController : MonoBehaviour
     public Button damageUpgradeButton;
     public Button radiusUpgradeButton;
     public Button cooldownUpgradeButton;
+    [HideInInspector]
     public GameObject canvasOpener;
 
     //
@@ -63,6 +64,7 @@ public class GUIController : MonoBehaviour
     {
         //THE FIRST CANVAS ACTIVE AT THE BEGINNING OF THE GAME
         phaseText.text = "ACTION PHASE";
+        trainSprintButton.gameObject.SetActive(true);
         //if (upgradeTrainCanvas.gameObject.activeSelf)
        //     upgradeTrainCanvas.gameObject.SetActive(false);
        

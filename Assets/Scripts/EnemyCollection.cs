@@ -18,7 +18,7 @@ public class EnemyCollection : MonoBehaviour {
 	
 
 	void Update () {
-		if (imActive) {
+		if (imActive && !GameController.instance.isPaused) {
 			if (counter < enemyPrefabs.Length) {
 				spawnEnemies ();
 			}

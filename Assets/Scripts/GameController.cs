@@ -179,4 +179,27 @@ public class GameController : MonoBehaviour
     {
         enemyCount++;
     }
+
+    public void WinGame()
+    {
+        isPaused = true;
+        float lifePercentage = headCoach.actualLife / headCoach.life * 100;
+        if (lifePercentage >= 25f)
+        {
+            // attiva prima stellina
+        }
+        if (lifePercentage >= 50f)
+        {
+            // attiva seconda stellina
+        }
+        if (lifePercentage >= 75f)
+        {
+            // attiva terza stellina
+        }
+    }
+
+    public void LoseGame()
+    {
+        isPaused = true;
+    }
 }

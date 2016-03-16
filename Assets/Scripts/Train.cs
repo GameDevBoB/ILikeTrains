@@ -38,7 +38,6 @@ public class Train : MonoBehaviour
 
     public float rotationSpeed;
     public float sprintRatio = 0.5f;
-    public GameObject trainToCopyFrom;
 
 
     private float startTime;
@@ -92,7 +91,7 @@ public class Train : MonoBehaviour
             //{
             waypoints = GameController.instance.headCoach.waypoints;
             //}
-            loop = trainToCopyFrom.GetComponent<Train>().loop;
+            loop = GameController.instance.headCoach.loop;
         }
         //
 
@@ -112,18 +111,21 @@ public class Train : MonoBehaviour
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
-                //BOB
+                
                 if (((Time.time - startSprint) > sprint))
                 {
                     trainIsSprinted = false;
                     GUIController.instance.trainSprintButton.interactable = true;
 
                 }
-                //BOB
+
+                if (Vector3.Distance(transform.position, waypoints[waypoints.Length - 1].GetChild(0).position) <= 0.01)
+                    GameController.instance.WinGame();
+
                 ChangeWaypoint();
-                //BOB
+                
                 MoveTrain(1);
-                //BOB
+                
             }
             //
             //IF NOT WE MOVE THE COACHES BEHIND IT ON A CONVOY FORMATION
@@ -140,9 +142,9 @@ public class Train : MonoBehaviour
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
                 {
                     //FORCING THE DISTANCE BETWEEN ELEMENTS TO A FIXED DISTANCE EVERY FRAME
-                    //BOB
+                    
                     MoveTrain(10);
-                    //BOB
+                    
 
                 }
 
@@ -161,12 +163,12 @@ public class Train : MonoBehaviour
 
     private void MoveTrain(float velocityMultiplier)
     {
-        //BOB
+        
         if (!trainIsSprinted)
             transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * velocityMultiplier);
         else
             transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed * velocityMultiplier);
-        //BOB
+        
     }
 
     private void ChangeWaypoint()
@@ -202,7 +204,7 @@ public class Train : MonoBehaviour
         actualLife -= damage;
         GUIController.instance.healthSlider.value = actualLife;
         if (actualLife <= 0)
-            transform.parent.gameObject.SetActive(false);
+            GameController.instance.LoseGame();
         //
 
     }
@@ -232,13 +234,13 @@ public class Train : MonoBehaviour
                 lifeDifference = life - actualLife;
                 life = actualLife = upgradeHealthPointsArray[healthUpgradeCounter];
                 actualLife -= lifeDifference;
-                //BOB
+                
                 if (GameController.instance.isPaused)
                     GUIController.instance.healthSlider.value = life;
                 else
                     GUIController.instance.healthSlider.value = actualLife;
                 GUIController.instance.healthSlider.maxValue = life;
-                //BOB
+                
                 GameController.instance.UpdateResources(-upgradeCost[healthUpgradeCounter]);
                 healthUpgradeCounter++;
                 if (healthUpgradeCounter < upgradeHealthPointsArray.Length)
@@ -360,14 +362,14 @@ public class Train : MonoBehaviour
     public void SetSprint()
     {
 
-        //BOB
+        
         //SPRINTING THE HQ
         startSprint = Time.time;
         trainIsSprinted = true;
         GUIController.instance.trainSprintButton.interactable = false;
         //Debug.Log("ENTRO IN SPRINT " + startSprint);
 
-        //BOB
+        
 
     }
     //////////
