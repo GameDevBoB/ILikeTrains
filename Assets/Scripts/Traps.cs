@@ -28,6 +28,14 @@ public class Traps : MonoBehaviour
     public int[] upgradeCost = new int[5];
     //
 
+    //TRAPS AUDIO
+    public AudioClip[] dynamiteAudioClips = new AudioClip[2];
+    public AudioClip[] moonshineAudioClips = new AudioClip[2];
+    //INDEX OF SOUND REFERENCES
+    private int cooldownSoundIndex = 0;
+    private int damageSoundIndex = 1;
+    //
+
 
     public Canvas trapCanvas;
     public GameObject explosionSprite;
@@ -51,6 +59,8 @@ public class Traps : MonoBehaviour
     private int radiusUpgradeCounter;
     private int cooldownUpgradeCounter;
     private bool beginGame = true;
+    private AudioSource sourceAudio;
+    
     [HideInInspector]
     private bool damageArrayIsEnded = false;
     [HideInInspector]
@@ -68,6 +78,7 @@ public class Traps : MonoBehaviour
         Physics.queriesHitTriggers = false;
         myRenderer = GetComponent<Renderer>();
         startColor = myRenderer.material.color;
+        sourceAudio = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -105,6 +116,7 @@ public class Traps : MonoBehaviour
 
             if (trapCanvas.gameObject.activeSelf)
             {
+
                 cooldownText.text = (explosionCooldown - (Time.time - explosionStart)).ToString("00.00");
                 cooldownImage.fillAmount = (explosionCooldown - (Time.time - explosionStart)) / explosionCooldown;
                 if ((Time.time - explosionStart) > explosionCooldown)
@@ -114,7 +126,7 @@ public class Traps : MonoBehaviour
         //
 
         //ACTIVATING UI ON UPGRADING TRAPS INTERACTIONS
-        if (GUIController.instance.upgradeCanvas.gameObject.activeSelf && GUIController.instance.canvasOpener==this.gameObject)
+        if (GUIController.instance.upgradeCanvas.gameObject.activeSelf && GUIController.instance.canvasOpener == this.gameObject)
         {
             if (!damageArrayIsEnded && GameController.instance.totalResources >= upgradeCost[damageUpgradeCounter])
             {
@@ -156,6 +168,15 @@ public class Traps : MonoBehaviour
             trapCanvas.gameObject.SetActive(true);
             myTrigger.radius = explosionSpeed;
             explosionSprite.transform.localScale = explosionStartScale;
+            //AUDIO MANAGEMENT
+            SoundType(damageSoundIndex);
+            //
+        }
+        //AUDIO MANAGEMENT
+        else if (Input.GetMouseButtonDown(0) && !((Time.time - explosionStart) > explosionCooldown) && !GameController.instance.isPaused)
+        {
+            SoundType(cooldownSoundIndex);
+
         }
         //
         //UI VISUALIZATION OF THE TRAP UPGRADES
@@ -185,7 +206,7 @@ public class Traps : MonoBehaviour
     void OnMouseExit()
     {
         rangePreviewSprite.SetActive(false);
-        
+
     }
 
     void OnCollisionStay(Collision col)
@@ -294,5 +315,25 @@ public class Traps : MonoBehaviour
     {
         rangePreviewSprite.transform.localScale = rangeSpriteStartScale * colliderRadius * 2;
         rangePreviewSprite.SetActive(false);
+    }
+
+    public void PlaySound(AudioClip myclip)
+    {
+        sourceAudio.PlayOneShot(myclip);
+    }
+
+    public void SoundType(int mySoundArrayPosition)
+    {
+        switch (myType)
+        {
+            case trapType.MinaTesla:
+                //STUN TRAP ACTIVATION SOUND
+                PlaySound(moonshineAudioClips[mySoundArrayPosition]);
+                break;
+            case trapType.Dynamite:
+                //DAMAGE TRAP ACTIVATION SOUND
+                PlaySound(dynamiteAudioClips[mySoundArrayPosition]);
+                break;
+        }
     }
 }

@@ -8,10 +8,7 @@ public class SoundController : MonoBehaviour
     //ENVIRONMENT AUDIO
     public AudioClip[] environmentAudioClips = new AudioClip[2];
 
-    //TRAPS AUDIO
-    public AudioClip[] dynamiteAudioClips = new AudioClip[3];
-    public AudioClip[] moonshineAudioClips = new AudioClip[3];
-
+    
     //TRAIN AUDIO
     public AudioClip[] HQAudioClips = new AudioClip[3];
 
