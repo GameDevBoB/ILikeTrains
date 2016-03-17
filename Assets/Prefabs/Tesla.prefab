@@ -336,7 +336,7 @@ MonoBehaviour:
   - {fileID: 0}
   moonshineAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
-  - {fileID: 8300000, guid: 277f14ea84e917e45b8fb0fe57092553, type: 3}
+  - {fileID: 8300000, guid: 56818b0aeacf0cb4b8068b187897da49, type: 3}
   - {fileID: 0}
   trapCanvas: {fileID: 22393298}
   explosionSprite: {fileID: 177452}
@@ -683,6 +683,10 @@ Prefab:
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moonshineAudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 56818b0aeacf0cb4b8068b187897da49, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125406}

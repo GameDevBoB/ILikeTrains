@@ -26,6 +26,13 @@ public class GameController : MonoBehaviour
     public bool isPaused = true;
     public int enemyCount;
 
+    //ENVIRONMENT AUDIO
+    public AudioClip[] environmentAudioClips = new AudioClip[2];
+    //INDEX OF SOUND REFERENCES
+    private int planningSoundClip=0;
+    private int actionSoundClip = 1;
+    private AudioSource sourceAudio;
+
     //MOUSE POSITION VARIABLES
     private Vector3 screenPoint;
     //
@@ -37,6 +44,7 @@ public class GameController : MonoBehaviour
     private LayerMask placeableLayer;
     private LayerMask unplaceableLayer;
     private int lastTrap;
+    
 
     //
 
@@ -49,9 +57,11 @@ public class GameController : MonoBehaviour
     {
         Physics.queriesHitTriggers = false;
         instance = this;
+        sourceAudio = GetComponent<AudioSource>();
     }
     void Start()
     {
+        PlaySound(environmentAudioClips[planningSoundClip]);
         enemyCount = 0;
         //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");
@@ -138,9 +148,12 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        sourceAudio.Stop();
         DeselectTrap();
         isPaused = false;
         GUIController.instance.StartGame();
+        PlaySound(environmentAudioClips[actionSoundClip]);
+
     }
 
     public void PlaceTrap()
@@ -196,6 +209,11 @@ public class GameController : MonoBehaviour
         {
             // attiva terza stellina
         }
+    }
+
+    public void PlaySound(AudioClip myclip)
+    {
+        sourceAudio.PlayOneShot(myclip);
     }
 
     public void LoseGame()

@@ -34,6 +34,7 @@ public class Traps : MonoBehaviour
     //INDEX OF SOUND REFERENCES
     private int cooldownSoundIndex = 0;
     private int damageSoundIndex = 1;
+    private AudioSource sourceAudio;
     //
 
 
@@ -59,7 +60,7 @@ public class Traps : MonoBehaviour
     private int radiusUpgradeCounter;
     private int cooldownUpgradeCounter;
     private bool beginGame = true;
-    private AudioSource sourceAudio;
+    
     
     [HideInInspector]
     private bool damageArrayIsEnded = false;

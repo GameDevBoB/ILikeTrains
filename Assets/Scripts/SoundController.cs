@@ -5,8 +5,7 @@ public class SoundController : MonoBehaviour
 {
 
     public static SoundController instance;
-    //ENVIRONMENT AUDIO
-    public AudioClip[] environmentAudioClips = new AudioClip[2];
+    
 
     
     //TRAIN AUDIO
