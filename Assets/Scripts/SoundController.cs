@@ -5,9 +5,9 @@ public class SoundController : MonoBehaviour
 {
 
     public static SoundController instance;
-    
 
-    
+
+
     //TRAIN AUDIO
     public AudioClip[] HQAudioClips = new AudioClip[3];
 
@@ -18,16 +18,6 @@ public class SoundController : MonoBehaviour
     public AudioClip[] rifleBanditAudioClips = new AudioClip[2];
     public AudioClip[] indianLancerAudioClips = new AudioClip[2];
     public AudioClip[] berserkAudioClips = new AudioClip[3];
-
-
-
-
-
-
-
-
-
-
 
 
     void Awake()

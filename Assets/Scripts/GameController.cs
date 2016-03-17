@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
     //ENVIRONMENT AUDIO
     public AudioClip[] environmentAudioClips = new AudioClip[2];
     //INDEX OF SOUND REFERENCES
-    private int planningSoundClip=0;
+    private int planningSoundClip = 0;
     private int actionSoundClip = 1;
     private AudioSource sourceAudio;
 
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     private LayerMask placeableLayer;
     private LayerMask unplaceableLayer;
     private int lastTrap;
-    
+
 
     //
 

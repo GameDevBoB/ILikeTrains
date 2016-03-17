@@ -60,8 +60,8 @@ public class Traps : MonoBehaviour
     private int radiusUpgradeCounter;
     private int cooldownUpgradeCounter;
     private bool beginGame = true;
-    
-    
+
+
     [HideInInspector]
     private bool damageArrayIsEnded = false;
     [HideInInspector]
