@@ -50,12 +50,20 @@ public class EnemyController : MonoBehaviour
     public float fireRate;
     //
 
+    //ENEMY AUDIO
+    public AudioClip kamikazeAudioClip;
+    public AudioClip[] horseIndianAudioClips = new AudioClip[3];
+    public AudioClip[] armoredBanditAudioClips = new AudioClip[2];
+    public AudioClip[] rifleBanditAudioClips = new AudioClip[2];
+    public AudioClip[] indianLancerAudioClips = new AudioClip[2];
+    public AudioClip[] berserkAudioClips = new AudioClip[3];
+    public int deathSoundIndex = 0;
+    public int damageSoundIndex = 1;
+    public int extraSoundIndex = 2;
+    private AudioSource sourceAudio;
+    //
     public float slowTime;
-
-    //public float rotationSpeed;
-
     public Slider lifeSlider;
-
     public GameObject upSprite;
     public GameObject leftSprite;
     public GameObject rightSprite;
@@ -66,9 +74,6 @@ public class EnemyController : MonoBehaviour
     private Animator rightAnim;
     private Animator downAnim;
     private bool isRunning;
-
-
-    //private float initialSpeed;
     private int bulletCount;
     private float startShooting;
     private float slowRatio;
@@ -76,6 +81,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 distance;
     private float updateMovementTime = 0.5f;
     private float startMovement;
+    private BoxCollider myBoxCollider;
 
 
     void Awake()
@@ -85,7 +91,8 @@ public class EnemyController : MonoBehaviour
             bullets = new GameObject[100];
             SpawnBullets();
         }
-
+        myBoxCollider = GetComponent<BoxCollider>();
+        sourceAudio = GetComponent<AudioSource>();
         upAnim = upSprite.GetComponent<Animator>();
         leftAnim = leftSprite.GetComponent<Animator>();
         rightAnim = rightSprite.GetComponent<Animator>();
@@ -133,15 +140,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void Deactivate()
-    {
-        //DESTROY THE INSTANTATED BULLETS PREFABS
-        for (int i = 0; i < bullets.Length; i++)
-        {
-            Destroy(bullets[i]);
-        }
-        Destroy(this.gameObject);
-    }
+    
 
     void Activate()
     {
@@ -154,6 +153,17 @@ public class EnemyController : MonoBehaviour
         if (col.gameObject.tag == "Train")
         {
             //DEACTIVATING ENEMY ON HQ COLLISION
+            col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
+            Deactivate();
+            //
+        }
+
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Coach")
+        {
+            //DEACTIVATING ENEMY ON HQ TRIGGER
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
             Deactivate();
             //
@@ -280,5 +290,41 @@ public class EnemyController : MonoBehaviour
         startSlow = Time.time;
     }
 
+    void Deactivate()
+    {
+        //DESTROY THE INSTANTATED BULLETS PREFABS
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            Destroy(bullets[i]);
+        }
+        /*TEST
+        for (int i = 0; i < transform.childCount; i++)
+        {
 
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        myBoxCollider.gameObject.SetActive(false);
+        TEST*/
+        SoundType(deathSoundIndex);
+        Destroy(this.gameObject);
+    }
+    public void PlaySound(AudioClip myclip)
+    {
+        
+        AudioSource.PlayClipAtPoint(myclip, Vector2.zero);
+       
+    }
+
+    public void SoundType(int mySoundArrayPosition)
+    {
+        switch (myEnemyType)
+        {
+            case EnemyType.Base:
+                PlaySound(kamikazeAudioClip);
+                break;
+
+
+
+        }
+    }
 }

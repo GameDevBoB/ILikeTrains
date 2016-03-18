@@ -199,11 +199,11 @@ public class Train : MonoBehaviour
 
     public void GetDamage(int damage)
     {
-
+        
         //WE SET THE HP VALUE OF THE HQ EVERY TIME IT GET DAMAGE DEACTIVATING IT IF THE HP IS EQUAL OR BELOW ZERO
-        actualLife -= damage;
-        GUIController.instance.healthSlider.value = actualLife;
-        if (actualLife <= 0)
+        GameController.instance.headCoach.actualLife -= damage;
+        GUIController.instance.healthSlider.value = GameController.instance.headCoach.actualLife;
+        if (GameController.instance.headCoach.actualLife <= 0)
             GameController.instance.LoseGame();
         //
 
