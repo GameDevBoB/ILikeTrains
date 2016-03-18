@@ -56,12 +56,26 @@ public class EnemyController : MonoBehaviour
 
     public Slider lifeSlider;
 
+    public GameObject upSprite;
+    public GameObject leftSprite;
+    public GameObject rightSprite;
+    public GameObject downSprite;
+
+    private Animator upAnim;
+    private Animator leftAnim;
+    private Animator rightAnim;
+    private Animator downAnim;
+    private bool isRunning;
+
 
     //private float initialSpeed;
     private int bulletCount;
     private float startShooting;
     private float slowRatio;
     private float startSlow;
+    private Vector3 distance;
+    private float updateMovementTime = 0.5f;
+    private float startMovement;
 
 
     void Awake()
@@ -71,6 +85,11 @@ public class EnemyController : MonoBehaviour
             bullets = new GameObject[100];
             SpawnBullets();
         }
+
+        upAnim = upSprite.GetComponent<Animator>();
+        leftAnim = leftSprite.GetComponent<Animator>();
+        rightAnim = rightSprite.GetComponent<Animator>();
+        downAnim = downSprite.GetComponent<Animator>();
     }
 
     void Start()
@@ -78,6 +97,7 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindWithTag("Train");
         actualLife = life;
         lifeSlider.value = lifeSlider.maxValue = life;
+        isRunning = false;
         //initialSpeed = walkSpeed;
         //startPosition = transform.position;
     }
@@ -94,6 +114,7 @@ public class EnemyController : MonoBehaviour
                 switch (myEnemyType)
                 {
                     case EnemyType.Base:
+                        isRunning = true;
                         Run(runSpeed);
                         break;
 
@@ -106,6 +127,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 Run(walkSpeed);
+                isRunning = false;
             }
         }
     }
@@ -164,8 +186,56 @@ public class EnemyController : MonoBehaviour
         if (((Time.time - startSlow) < slowTime) && startSlow != 0)
             actualSpeed /= slowRatio;
         //CHANGE ENEMY SPEED DEPENDING ON THE INPUT VALUE
-        transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
-        transform.LookAt(target.transform.position);
+        if ((Time.time - startMovement) > updateMovementTime || startMovement == 0)
+        {
+            distance = target.transform.position - transform.position;
+            startMovement = Time.time;
+        }
+        if (Mathf.Abs(distance.x) < Mathf.Abs(distance.z))
+        {
+            if (distance.z >= 0)
+            {
+                upSprite.SetActive(true);
+                upAnim.SetBool("Run", isRunning);
+                leftSprite.SetActive(false);
+                rightSprite.SetActive(false);
+                downSprite.SetActive(false);
+                transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
+            }
+            else
+            {
+                upSprite.SetActive(false);
+                leftSprite.SetActive(false);
+                rightSprite.SetActive(false);
+                downSprite.SetActive(true);
+                downAnim.SetBool("Run", isRunning);
+                transform.Translate(-Vector3.forward * actualSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+
+            if (distance.x >= 0)
+            {
+                upSprite.SetActive(false);
+                leftSprite.SetActive(false);
+                rightSprite.SetActive(true);
+                rightAnim.SetBool("Run", isRunning);
+                downSprite.SetActive(false);
+                transform.Translate(Vector3.right * actualSpeed * Time.deltaTime);
+            }
+            else
+            {
+                upSprite.SetActive(false);
+                leftSprite.SetActive(true);
+                leftAnim.SetBool("Run", isRunning);
+                rightSprite.SetActive(false);
+                downSprite.SetActive(false);
+                transform.Translate(-Vector3.right * actualSpeed * Time.deltaTime);
+            }
+        }
+        //transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
+        //transform.LookAt(target.transform.position);
     }
 
     void Shoot()

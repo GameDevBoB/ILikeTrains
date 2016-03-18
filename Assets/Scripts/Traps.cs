@@ -10,8 +10,6 @@ public enum trapType
 public class Traps : MonoBehaviour
 {
 
-
-
     public trapType myType;
 
     //VARIABLES WE NEED TO MAKE THE TRAP BEHAVE ON THE SCENE
@@ -29,11 +27,10 @@ public class Traps : MonoBehaviour
     //
 
     //TRAPS AUDIO
-    public AudioClip[] dynamiteAudioClips = new AudioClip[2];
-    public AudioClip[] moonshineAudioClips = new AudioClip[2];
+    public AudioClip[] trapAudioClips = new AudioClip[2];
     //INDEX OF SOUND REFERENCES
-    private int cooldownSoundIndex = 0;
-    private int damageSoundIndex = 1;
+    public int cooldownSoundIndex = 0;
+    public int damageSoundIndex = 1;
     private AudioSource sourceAudio;
     //
 
@@ -325,16 +322,6 @@ public class Traps : MonoBehaviour
 
     public void SoundType(int mySoundArrayPosition)
     {
-        switch (myType)
-        {
-            case trapType.MinaTesla:
-                //STUN TRAP ACTIVATION SOUND
-                PlaySound(moonshineAudioClips[mySoundArrayPosition]);
-                break;
-            case trapType.Dynamite:
-                //DAMAGE TRAP ACTIVATION SOUND
-                PlaySound(dynamiteAudioClips[mySoundArrayPosition]);
-                break;
-        }
+        PlaySound(trapAudioClips[mySoundArrayPosition]);
     }
 }

@@ -113,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 11.6089525, y: 2.4173985, z: -7.3654194}
+  m_LocalPosition: {x: 1.5040848, y: 5.577382e-17, z: -2.3347237}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
@@ -216,7 +216,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -330,14 +330,11 @@ MonoBehaviour:
   - 6
   - 5
   upgradeCost: 050000000a0000000f0000001900000028000000
-  dynamiteAudioClips:
+  trapAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
   - {fileID: 8300000, guid: 970a8e6bae4a07445bb661b1c21a1675, type: 3}
-  - {fileID: 0}
-  moonshineAudioClips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  cooldownSoundIndex: 0
+  damageSoundIndex: 1
   trapCanvas: {fileID: 22393298}
   explosionSprite: {fileID: 118368}
   rangePreviewSprite: {fileID: 177452}
@@ -673,7 +670,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
