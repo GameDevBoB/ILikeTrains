@@ -213,7 +213,8 @@ public class GameController : MonoBehaviour
 
     public void PlaySound(AudioClip myclip)
     {
-        sourceAudio.PlayOneShot(myclip);
+        sourceAudio.clip = myclip;
+        sourceAudio.Play();
     }
 
     public void LoseGame()

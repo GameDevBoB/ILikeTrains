@@ -311,7 +311,7 @@ public class EnemyController : MonoBehaviour
     public void PlaySound(AudioClip myclip)
     {
         
-        AudioSource.PlayClipAtPoint(myclip, Vector2.zero);
+        AudioSource.PlayClipAtPoint(myclip, new Vector3(0,13,0));
        
     }
 

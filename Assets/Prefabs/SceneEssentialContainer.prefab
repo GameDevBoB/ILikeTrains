@@ -1009,7 +1009,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145894}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -3.6702342, y: 13.204532, z: -4.113765}
+  m_LocalPosition: {x: 0, y: 13.204532, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410410}
@@ -1102,7 +1102,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1153,7 +1153,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   isPaused: 1
   enemyCount: 0
   environmentAudioClips:
-  - {fileID: 8300000, guid: 9f270137481cda94fb943e001859815f, type: 3}
+  - {fileID: 8300000, guid: e9fd92203153264479809bb0c00d9bc8, type: 3}
   - {fileID: 8300000, guid: a46a8d7d890d8df439a059df3fe6930c, type: 3}
 --- !u!114 &11415602
 MonoBehaviour:
