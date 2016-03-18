@@ -168,6 +168,7 @@ public class Traps : MonoBehaviour
             explosionSprite.transform.localScale = explosionStartScale;
             //AUDIO MANAGEMENT
             SoundType(damageSoundIndex);
+            CameraShake.isShaking = true;
             //
         }
         //AUDIO MANAGEMENT

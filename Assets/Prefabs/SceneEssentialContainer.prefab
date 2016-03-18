@@ -463,6 +463,7 @@ GameObject:
   - 92: {fileID: 9201514}
   - 124: {fileID: 12467692}
   - 81: {fileID: 8187824}
+  - 114: {fileID: 11432100}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2150,6 +2151,21 @@ MonoBehaviour:
   m_Text: 'Buy Stun Turret
 
 '
+--- !u!114 &11432100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68992b4b3cdb3d449512cca0a5ce4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeTimer: 1
+  shakeAmount: 3
+  shakePowerInput: 0.01
+  shakeDurationInput: 0.2
 --- !u!114 &11434904
 MonoBehaviour:
   m_ObjectHideFlags: 1
