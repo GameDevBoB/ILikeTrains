@@ -76,6 +76,7 @@ GameObject:
   - 65: {fileID: 6515906}
   - 23: {fileID: 2373034}
   - 114: {fileID: 11455856}
+  - 54: {fileID: 5471702}
   m_Layer: 0
   m_Name: Coach (1)
   m_TagString: Coach
@@ -129,6 +130,7 @@ GameObject:
   - 65: {fileID: 6516748}
   - 23: {fileID: 2397146}
   - 114: {fileID: 11493344}
+  - 54: {fileID: 5462778}
   m_Layer: 0
   m_Name: Coach (3)
   m_TagString: Coach
@@ -257,6 +259,7 @@ GameObject:
   - 65: {fileID: 6529630}
   - 23: {fileID: 2330760}
   - 114: {fileID: 11434044}
+  - 54: {fileID: 5492818}
   m_Layer: 0
   m_Name: Coach (2)
   m_TagString: Coach
@@ -468,6 +471,7 @@ GameObject:
   - 65: {fileID: 6538774}
   - 23: {fileID: 2340066}
   - 114: {fileID: 11497604}
+  - 54: {fileID: 5467390}
   m_Layer: 0
   m_Name: Coach
   m_TagString: Coach
@@ -1346,6 +1350,66 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!54 &5462778
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136386}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &5467390
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184390}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &5471702
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123560}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &5492818
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157110}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &6513658
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1491,6 +1555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1540,7 +1605,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11434044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1554,6 +1618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1603,7 +1668,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11441752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1616,23 +1680,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  sprint: 5
+  sprint: 0.5
+  sprintCooldown: 5
   speed: 1
   loop: 0
   slowDelay: 0
-  actualLife: 0
+  actualLife: 100000
   isCoach: 0
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1648,11 +1703,11 @@ MonoBehaviour:
   - 180
   - 200
   upgradeSprintArray:
+  - 1
+  - 1.5
   - 2
+  - 2.5
   - 3
-  - 4
-  - 5
-  - 6
   upgradeSpeedArray:
   - 1.2
   - 1.4
@@ -1666,7 +1721,6 @@ MonoBehaviour:
   distance: 0
   rotationSpeed: 0
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 0}
 --- !u!114 &11455856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1680,6 +1734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1729,7 +1784,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11457552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1743,6 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1792,7 +1847,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11460346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1806,6 +1860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1855,7 +1910,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11487838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1869,6 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1918,7 +1973,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11490678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1932,6 +1986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -1981,7 +2036,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11492772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1995,6 +2049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -2044,7 +2099,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11493344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2058,6 +2112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -2107,7 +2162,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!114 &11497604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2121,6 +2175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   sprint: 5
+  sprintCooldown: 0
   speed: 1
   loop: 0
   slowDelay: 0
@@ -2170,7 +2225,6 @@ MonoBehaviour:
   distance: 1
   rotationSpeed: 5
   sprintRatio: 0.5
-  trainToCopyFrom: {fileID: 196644}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

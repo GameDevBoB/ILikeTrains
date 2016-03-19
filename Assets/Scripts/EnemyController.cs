@@ -82,6 +82,7 @@ public class EnemyController : MonoBehaviour
     private float updateMovementTime = 0.5f;
     private float startMovement;
     private BoxCollider myBoxCollider;
+    private bool isDead;
 
 
     void Awake()
@@ -101,6 +102,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        isDead = false;
         target = GameObject.FindWithTag("Train");
         actualLife = life;
         lifeSlider.value = lifeSlider.maxValue = life;
@@ -111,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (!GameController.instance.isPaused)
+        if (!GameController.instance.isPaused && !isDead)
         {
             //DETECTING THE DISTANCE TO THE TRAIN FROM THIS OBJECT
             if (Vector3.Distance(transform.position, target.transform.position) < maxDistance)
@@ -137,6 +139,8 @@ public class EnemyController : MonoBehaviour
                 isRunning = false;
             }
         }
+        if(isDead && !sourceAudio.isPlaying)
+            Destroy(gameObject);
     }
 
 
@@ -150,7 +154,7 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Train")
+        if (col.gameObject.tag == "Train" || col.gameObject.tag == "Coach")
         {
             //DEACTIVATING ENEMY ON HQ COLLISION
             col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
@@ -159,7 +163,7 @@ public class EnemyController : MonoBehaviour
         }
 
     }
-    void OnTriggerEnter(Collider col)
+    /*void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Coach")
         {
@@ -168,7 +172,7 @@ public class EnemyController : MonoBehaviour
             Deactivate();
             //
         }
-    }
+    }*/
 
     void GetDamage(int damage)
     {
@@ -263,6 +267,8 @@ public class EnemyController : MonoBehaviour
             {
                 bulletCount = 0;
             }
+            SoundType(damageSoundIndex);
+            spawnPointBullet.transform.LookAt(target.transform.position);
             bullets[bulletCount].gameObject.transform.position = spawnPointBullet.transform.position;
             bullets[bulletCount].gameObject.SetActive(true);
             bullets[bulletCount].gameObject.SendMessage("ShootBullet", spawnPointBullet.transform.forward);
@@ -297,21 +303,22 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(bullets[i]);
         }
-        /*TEST
+        
         for (int i = 0; i < transform.childCount; i++)
         {
-
             transform.GetChild(i).gameObject.SetActive(false);
         }
-        myBoxCollider.gameObject.SetActive(false);
-        TEST*/
+        myBoxCollider.enabled = false;
+        isDead = true;
+        
         SoundType(deathSoundIndex);
-        Destroy(this.gameObject);
     }
+
+    
     public void PlaySound(AudioClip myclip)
     {
-        
-        AudioSource.PlayClipAtPoint(myclip, new Vector3(0,13,0));
+        sourceAudio.PlayOneShot(myclip);
+        //AudioSource.PlayClipAtPoint(myclip, new Vector3(0,13,0));
        
     }
 
@@ -322,7 +329,9 @@ public class EnemyController : MonoBehaviour
             case EnemyType.Base:
                 PlaySound(kamikazeAudioClip);
                 break;
-
+            case EnemyType.Shooter:
+                PlaySound(rifleBanditAudioClips[mySoundArrayPosition]);
+                break;
 
 
         }

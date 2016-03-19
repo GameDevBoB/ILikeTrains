@@ -7,6 +7,7 @@ public class Train : MonoBehaviour
     //HQ VARIABLES
     public float life;
     public float sprint;
+    public float sprintCooldown;
     public float speed = 1.0F;
     public bool loop = false;
     public float slowDelay;
@@ -115,10 +116,11 @@ public class Train : MonoBehaviour
                 if (((Time.time - startSprint) > sprint))
                 {
                     trainIsSprinted = false;
-                    GUIController.instance.trainSprintButton.interactable = true;
-
                 }
-
+                if ((Time.time - startSprint) > sprintCooldown)
+                {
+                    GUIController.instance.trainSprintButton.interactable = true;
+                }
                 if (Vector3.Distance(transform.position, waypoints[waypoints.Length - 1].GetChild(0).position) <= 0.01)
                     GameController.instance.WinGame();
 
