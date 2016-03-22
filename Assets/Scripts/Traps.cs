@@ -35,7 +35,7 @@ public class Traps : MonoBehaviour
     //
 
 
-    public Canvas trapCanvas;
+    public UIRoot trapCanvas;
     public GameObject explosionSprite;
     public GameObject rangePreviewSprite;
     public Text cooldownText;
