@@ -183,7 +183,6 @@ public class Train : MonoBehaviour
             newspeed += (speed * sprintRatio);
         if (trainIsSlowed)
             newspeed -= (speed * slowRatio);
-        Debug.Log(newspeed);
         transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * newspeed * velocityMultiplier);
 
 
@@ -364,7 +363,6 @@ public class Train : MonoBehaviour
         trainIsSlowed = true;
         slowTimer = Time.time;
         slowRatio = input_slowRatio;
-        Debug.Log("Sono slowato e lo slowratio è " + slowRatio);
         //
 
     }

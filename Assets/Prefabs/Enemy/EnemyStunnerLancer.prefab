@@ -765,7 +765,7 @@ MonoBehaviour:
   fireRate: 10
   enemiesAudioClips:
   - {fileID: 8300000, guid: 6bdc0b3996e9a1a45a2d5ecd30505483, type: 3}
-  - {fileID: 8300000, guid: d7806184691bd8f4cab08dd808b0a0a5, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   deathSoundIndex: 0
   damageSoundIndex: 1
@@ -1236,6 +1236,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemiesAudioClips.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

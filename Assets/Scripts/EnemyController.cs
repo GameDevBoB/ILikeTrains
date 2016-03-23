@@ -129,10 +129,12 @@ public class EnemyController : MonoBehaviour
                         break;
 
                     case EnemyType.Shooter:
+                        isRunning = true;
                         Run(walkSpeed / 2 * 3);
                         Shoot();
                         break;
                     case EnemyType.Stunner:
+                        isRunning = true;
                         Run(runSpeed);
                         break;
                 }

@@ -1,4 +1,4 @@
-Base path: F:/Programmi/Unity/Editor/Data
+Base path: F:/Unity/Editor/Data
 Cmd: getPlatforms
 Cmd: preprocess
   insize=238 outsize=238 ok=1
@@ -64,3 +64,7 @@ Cmd: preprocess
   insize=2206 outsize=524 ok=1
 Cmd: preprocess
   insize=1774 outsize=995 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1705 outsize=629 kw=SOFTPARTICLES_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_TEXTURE_ALPHASPLIT_ALLOWED ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1705 outsize=449 kw=SOFTPARTICLES_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_TEXTURE_ALPHASPLIT_ALLOWED ok=1
