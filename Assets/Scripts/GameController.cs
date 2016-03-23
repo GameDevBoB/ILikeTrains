@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour
 {
 
+
     public static GameController instance;
     //DATA STRUCTURE FOR TRAPS VARIABLES
     //ARRAY OF DIFFEREN TRAPS
@@ -11,6 +12,11 @@ public class GameController : MonoBehaviour
     //TRAP GAMEOBJECT CURRENTLY SELECTED
     public GameObject selectedTrap;
     public int[] trapsCosts;
+    //
+
+    //CURSOR TEXTURE
+    public Texture2D cursorTexture;
+    private Vector2 hotSpot = Vector2.zero;
     //
 
     public Train headCoach;
@@ -62,6 +68,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         PlaySound(environmentAudioClips[planningSoundClip]);
+        Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.Auto);
         enemyCount = 0;
         //enemyArrayCounter = 0;
         placeableLayer = 1 << LayerMask.NameToLayer("Placeable");

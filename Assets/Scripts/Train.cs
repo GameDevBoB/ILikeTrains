@@ -36,6 +36,8 @@ public class Train : MonoBehaviour
     public float distance;
     //
 
+    //public TrailRenderer myTrail;
+
 
     public float rotationSpeed;
     public float sprintRatio = 0.5f;
@@ -66,7 +68,8 @@ public class Train : MonoBehaviour
 
     void Start()
     {
-
+        //myTrail = transform.GetChild(1).GetComponent<TrailRenderer>();
+        //myTrail.enabled = false;
         //SETTING INITIAL PARAMETERS
         initPos = transform.position;
         transform.position = initPos;
@@ -103,11 +106,10 @@ public class Train : MonoBehaviour
     {
 
 
-
+        
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
-
 
             //CHECKING IF ITS HQ 
             if (!isCoach)
@@ -116,10 +118,12 @@ public class Train : MonoBehaviour
                 if (((Time.time - startSprint) > sprint))
                 {
                     trainIsSprinted = false;
+                    //ActivateTrail();
                 }
-                if ((Time.time - startSprint) > sprintCooldown)
+                if ((Time.time - startSprint) > sprintCooldown + sprint)
                 {
                     GUIController.instance.trainSprintButton.interactable = true;
+                    
                 }
                 if (Vector3.Distance(transform.position, waypoints[waypoints.Length - 1].GetChild(0).position) <= 0.01)
                     GameController.instance.WinGame();
@@ -138,6 +142,7 @@ public class Train : MonoBehaviour
                 speed = GameController.instance.headCoach.speed;
                 sprintSpeed = GameController.instance.headCoach.sprintSpeed;
                 trainIsSprinted = GameController.instance.headCoach.trainIsSprinted;
+                
                 //
 
                 ChangeWaypoint();
@@ -155,9 +160,13 @@ public class Train : MonoBehaviour
                 {
                     MoveTrain(1);
                 }
-
+               
                 //
             }
+
+           
+           
+
         }
 
 
@@ -364,12 +373,18 @@ public class Train : MonoBehaviour
         startSprint = Time.time;
         trainIsSprinted = true;
         GUIController.instance.trainSprintButton.interactable = false;
+        //ActivateTrail();
+
         //Debug.Log("ENTRO IN SPRINT " + startSprint);
 
-        
+
 
     }
     //////////
-
+    void ActivateTrail()
+    {
+       
+            myTrail.enabled = trainIsSprinted;
+    }
 
 }

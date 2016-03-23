@@ -1681,6 +1681,7 @@ MonoBehaviour:
   - {fileID: 125406, guid: a6f68457a2396294a903edbb324d1fc9, type: 2}
   selectedTrap: {fileID: 0}
   trapsCosts: 0400000008000000
+  cursorTexture: {fileID: 2800000, guid: e5b1eddb3c5f3cd46b56cd587b43007f, type: 3}
   headCoach: {fileID: 0}
   startResources: 20000
   totalResources: 0
