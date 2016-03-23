@@ -1008,6 +1008,10 @@ MonoBehaviour:
   radiusUpgradeButton: {fileID: 0}
   cooldownUpgradeButton: {fileID: 0}
   canvasOpener: {fileID: 0}
+  errorImage: {fileID: 0}
+  flashSpeed: 1
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  isDamaged: 0
   trainSprintButton: {fileID: 11460418}
 --- !u!114 &11427796
 MonoBehaviour:

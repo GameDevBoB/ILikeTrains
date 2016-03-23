@@ -5,7 +5,8 @@ public enum EnemyType
 //ENEMY TYPE ENUMERATOR
 {
     Base,
-    Shooter
+    Shooter,
+    Stunner
 
 };
 [System.Serializable]
@@ -51,12 +52,12 @@ public class EnemyController : MonoBehaviour
     //
 
     //ENEMY AUDIO
-    public AudioClip kamikazeAudioClip;
-    public AudioClip[] horseIndianAudioClips = new AudioClip[3];
-    public AudioClip[] armoredBanditAudioClips = new AudioClip[2];
-    public AudioClip[] rifleBanditAudioClips = new AudioClip[2];
-    public AudioClip[] indianLancerAudioClips = new AudioClip[2];
-    public AudioClip[] berserkAudioClips = new AudioClip[3];
+    //public AudioClip kamikazeAudioClip;
+    //public AudioClip[] horseIndianAudioClips = new AudioClip[3];
+    //public AudioClip[] armoredBanditAudioClips = new AudioClip[2];
+    //public AudioClip[] rifleBanditAudioClips = new AudioClip[2];
+    //public AudioClip[] indianLancerAudioClips = new AudioClip[2];
+    public AudioClip[] enemiesAudioClips = new AudioClip[3];
     public int deathSoundIndex = 0;
     public int damageSoundIndex = 1;
     public int extraSoundIndex = 2;
@@ -131,6 +132,9 @@ public class EnemyController : MonoBehaviour
                         Run(walkSpeed / 2 * 3);
                         Shoot();
                         break;
+                    case EnemyType.Stunner:
+                        Run(runSpeed);
+                        break;
                 }
             }
             else
@@ -139,12 +143,12 @@ public class EnemyController : MonoBehaviour
                 isRunning = false;
             }
         }
-        if(isDead && !sourceAudio.isPlaying)
+        if (isDead && !sourceAudio.isPlaying)
             Destroy(gameObject);
     }
 
 
-    
+
 
     void Activate()
     {
@@ -157,7 +161,15 @@ public class EnemyController : MonoBehaviour
         if (col.gameObject.tag == "Train" || col.gameObject.tag == "Coach")
         {
             //DEACTIVATING ENEMY ON HQ COLLISION
-            col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
+            switch (myEnemyType)
+            {
+                case EnemyType.Stunner:
+                    col.gameObject.SendMessage("SetSlow", damage);
+                    break;
+                default:
+                    col.gameObject.SendMessage("GetDamage", damage); //questo GetDamage viene gestito dal treno non è lo stesso di questa classe
+                    break;
+            }
             Deactivate();
             //
         }
@@ -210,7 +222,8 @@ public class EnemyController : MonoBehaviour
             if (distance.z >= 0)
             {
                 upSprite.SetActive(true);
-                upAnim.SetBool("Run", isRunning);
+                if (myEnemyType == EnemyType.Shooter)
+                    upAnim.SetBool("Run", isRunning);
                 leftSprite.SetActive(false);
                 rightSprite.SetActive(false);
                 downSprite.SetActive(false);
@@ -222,7 +235,8 @@ public class EnemyController : MonoBehaviour
                 leftSprite.SetActive(false);
                 rightSprite.SetActive(false);
                 downSprite.SetActive(true);
-                downAnim.SetBool("Run", isRunning);
+                if (myEnemyType == EnemyType.Shooter)
+                    downAnim.SetBool("Run", isRunning);
                 transform.Translate(-Vector3.forward * actualSpeed * Time.deltaTime);
             }
         }
@@ -234,7 +248,8 @@ public class EnemyController : MonoBehaviour
                 upSprite.SetActive(false);
                 leftSprite.SetActive(false);
                 rightSprite.SetActive(true);
-                rightAnim.SetBool("Run", isRunning);
+                if (myEnemyType == EnemyType.Shooter)
+                    rightAnim.SetBool("Run", isRunning);
                 downSprite.SetActive(false);
                 transform.Translate(Vector3.right * actualSpeed * Time.deltaTime);
             }
@@ -242,7 +257,8 @@ public class EnemyController : MonoBehaviour
             {
                 upSprite.SetActive(false);
                 leftSprite.SetActive(true);
-                leftAnim.SetBool("Run", isRunning);
+                if (myEnemyType == EnemyType.Shooter)
+                    leftAnim.SetBool("Run", isRunning);
                 rightSprite.SetActive(false);
                 downSprite.SetActive(false);
                 transform.Translate(-Vector3.right * actualSpeed * Time.deltaTime);
@@ -303,23 +319,23 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(bullets[i]);
         }
-        
+
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
         myBoxCollider.enabled = false;
         isDead = true;
-        
+
         SoundType(deathSoundIndex);
     }
 
-    
+
     public void PlaySound(AudioClip myclip)
     {
         sourceAudio.PlayOneShot(myclip);
         //AudioSource.PlayClipAtPoint(myclip, new Vector3(0,13,0));
-       
+
     }
 
     public void SoundType(int mySoundArrayPosition)
@@ -327,10 +343,10 @@ public class EnemyController : MonoBehaviour
         switch (myEnemyType)
         {
             case EnemyType.Base:
-                PlaySound(kamikazeAudioClip);
+                PlaySound(enemiesAudioClips[mySoundArrayPosition]);
                 break;
             case EnemyType.Shooter:
-                PlaySound(rifleBanditAudioClips[mySoundArrayPosition]);
+                PlaySound(enemiesAudioClips[mySoundArrayPosition]);
                 break;
 
 

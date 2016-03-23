@@ -41,10 +41,11 @@ public class Train : MonoBehaviour
 
     public float rotationSpeed;
     public float sprintRatio = 0.5f;
+    public float slowRatio = 0.5f;
 
 
     private float startTime;
-    private float journeyLength;
+
 
     //SUPPORT VARIABLES 
     private int countWaypoints;
@@ -59,7 +60,7 @@ public class Train : MonoBehaviour
     //
 
     private Vector3 initPos;
-    private float sprintSpeed;
+
 
     void Awake()
     {
@@ -78,7 +79,7 @@ public class Train : MonoBehaviour
         sprintUpgradeCounter = 0;
         speedUpgradeCounter = 0;
         actualLife = life;
-        sprintSpeed = speed + (speed * sprintRatio);
+
 
         countWaypoints = 0;
         GUIController.instance.healthSlider.value = actualLife;
@@ -106,7 +107,7 @@ public class Train : MonoBehaviour
     {
 
 
-        
+
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)
         {
@@ -114,7 +115,10 @@ public class Train : MonoBehaviour
             //CHECKING IF ITS HQ 
             if (!isCoach)
             {
-                
+                if (((Time.time - slowTimer) > slowDelay) || slowTimer == 0)
+                {
+                    trainIsSlowed = false;
+                }
                 if (((Time.time - startSprint) > sprint))
                 {
                     trainIsSprinted = false;
@@ -123,15 +127,15 @@ public class Train : MonoBehaviour
                 if ((Time.time - startSprint) > sprintCooldown + sprint)
                 {
                     GUIController.instance.trainSprintButton.interactable = true;
-                    
+
                 }
                 if (Vector3.Distance(transform.position, waypoints[waypoints.Length - 1].GetChild(0).position) <= 0.01)
                     GameController.instance.WinGame();
 
                 ChangeWaypoint();
-                
+
                 MoveTrain(1);
-                
+
             }
             //
             //IF NOT WE MOVE THE COACHES BEHIND IT ON A CONVOY FORMATION
@@ -140,18 +144,18 @@ public class Train : MonoBehaviour
                 //GETTING STATIC VALUES REFERENCES TO THE HQ INSTANCE
                 loop = GameController.instance.headCoach.loop;
                 speed = GameController.instance.headCoach.speed;
-                sprintSpeed = GameController.instance.headCoach.sprintSpeed;
                 trainIsSprinted = GameController.instance.headCoach.trainIsSprinted;
-                
+                trainIsSlowed = GameController.instance.headCoach.trainIsSlowed;
+
                 //
 
                 ChangeWaypoint();
                 if (Vector3.Distance(frontPivot.position, rearPivot.position) >= maxDistance)
                 {
                     //FORCING THE DISTANCE BETWEEN ELEMENTS TO A FIXED DISTANCE EVERY FRAME
-                    
+
                     MoveTrain(10);
-                    
+
 
                 }
 
@@ -160,12 +164,12 @@ public class Train : MonoBehaviour
                 {
                     MoveTrain(1);
                 }
-               
+
                 //
             }
 
-           
-           
+
+
 
         }
 
@@ -174,12 +178,15 @@ public class Train : MonoBehaviour
 
     private void MoveTrain(float velocityMultiplier)
     {
-        
-        if (!trainIsSprinted)
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * speed * velocityMultiplier);
-        else
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * sprintSpeed * velocityMultiplier);
-        
+        float newspeed = speed;
+        if (trainIsSprinted)
+            newspeed += (speed * sprintRatio);
+        if (trainIsSlowed)
+            newspeed -= (speed * slowRatio);
+        Debug.Log(newspeed);
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[countWaypoints].GetChild(0).position, Time.deltaTime * newspeed * velocityMultiplier);
+
+
     }
 
     private void ChangeWaypoint()
@@ -210,7 +217,7 @@ public class Train : MonoBehaviour
 
     public void GetDamage(int damage)
     {
-        
+
         //WE SET THE HP VALUE OF THE HQ EVERY TIME IT GET DAMAGE DEACTIVATING IT IF THE HP IS EQUAL OR BELOW ZERO
         GameController.instance.headCoach.actualLife -= damage;
         GUIController.instance.healthSlider.value = GameController.instance.headCoach.actualLife;
@@ -232,7 +239,6 @@ public class Train : MonoBehaviour
             //SPEED UPGRADE
             case 0:
                 speed = upgradeSpeedArray[speedUpgradeCounter];
-                sprintSpeed = speed + (speed * sprintRatio);
                 GameController.instance.UpdateResources(-upgradeCost[speedUpgradeCounter]);
                 speedUpgradeCounter++;
                 if (speedUpgradeCounter < upgradeSpeedArray.Length)
@@ -249,7 +255,7 @@ public class Train : MonoBehaviour
                 life = actualLife = upgradeHealthPointsArray[healthUpgradeCounter];
                 actualLife -= lifeDifference;
                 GUIController.instance.healthSlider.maxValue = life;
-                GUIController.instance.healthSlider.value = actualLife;             
+                GUIController.instance.healthSlider.value = actualLife;
                 GameController.instance.UpdateResources(-upgradeCost[healthUpgradeCounter]);
                 healthUpgradeCounter++;
                 if (healthUpgradeCounter < upgradeHealthPointsArray.Length)
@@ -350,20 +356,15 @@ public class Train : MonoBehaviour
         }
     }
 
-    void SetSlow(int speedRate)
+    void SetSlow(float input_slowRatio)
     {
 
         //SLOWING THE HQ
-        if (((Time.time - slowTimer) > slowDelay) || slowTimer == 0)
-        {
-            speed = speedRate;
-            slowTimer = Time.time;
 
-        }
-        else
-        {
-            speed = initialSpeed;
-        }
+        trainIsSlowed = true;
+        slowTimer = Time.time;
+        slowRatio = input_slowRatio;
+        Debug.Log("Sono slowato e lo slowratio è " + slowRatio);
         //
 
     }
@@ -371,7 +372,7 @@ public class Train : MonoBehaviour
     public void SetSprint()
     {
 
-        
+
         //SPRINTING THE HQ
         startSprint = Time.time;
         trainIsSprinted = true;
@@ -386,8 +387,8 @@ public class Train : MonoBehaviour
     //////////
     void ActivateTrail()
     {
-       
-           // myTrail.enabled = trainIsSprinted;
+
+        // myTrail.enabled = trainIsSprinted;
     }
 
 }
