@@ -218,6 +218,9 @@ public class Train : MonoBehaviour
             GameController.instance.LoseGame();
         //
 
+        GUIController.instance.isDamaged = true;
+        GUIController.instance.FlashWhenTrainIsDamaged();
+
     }
 
     public void Upgrade(int myUpgrade)
@@ -384,7 +387,7 @@ public class Train : MonoBehaviour
     void ActivateTrail()
     {
        
-            myTrail.enabled = trainIsSprinted;
+           // myTrail.enabled = trainIsSprinted;
     }
 
 }

@@ -39,9 +39,18 @@ public class GUIController : MonoBehaviour
     [HideInInspector]
     public GameObject canvasOpener;
 
+    //FLASHSCREEN VARIABLES
+    public Image errorImage;
+    public float flashSpeed = 1f;
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+    [HideInInspector]
+    public bool isDamaged;
+
     //
 
     public Button trainSprintButton;
+
+
     void Awake()
     {
         instance = this;
@@ -58,6 +67,7 @@ public class GUIController : MonoBehaviour
     void Update()
     {
         ResourcesText.text = "Resources: " + GameController.instance.totalResources.ToString();
+        FlashWhenTrainIsDamaged();
     }
 
     public void StartGame()
@@ -66,8 +76,8 @@ public class GUIController : MonoBehaviour
         phaseText.text = "ACTION PHASE";
         trainSprintButton.gameObject.SetActive(true);
         //if (upgradeTrainCanvas.gameObject.activeSelf)
-       //     upgradeTrainCanvas.gameObject.SetActive(false);
-       
+        //     upgradeTrainCanvas.gameObject.SetActive(false);
+
         planningCanvas.gameObject.SetActive(false);
     }
 
@@ -145,5 +155,19 @@ public class GUIController : MonoBehaviour
         trigger.triggers.Add(exit);
         // .delegates.Add(entry);
     }
-   
+
+    public void FlashWhenTrainIsDamaged()
+    {
+        if (isDamaged)
+        {
+            errorImage.color = flashColour;
+
+        }
+        else
+        {
+            errorImage.color = Color.Lerp(errorImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        isDamaged = false;
+    }
+
 }
