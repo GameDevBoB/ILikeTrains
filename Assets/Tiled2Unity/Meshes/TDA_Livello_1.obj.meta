@@ -1,9 +1,9 @@
 fileFormatVersion: 2
 guid: 3961deda395782b44be231c825432560
-timeCreated: 1458150948
+timeCreated: 1458838279
 licenseType: Free
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: mesh_0001
     100002: mesh_0002
@@ -26,12 +26,12 @@ ModelImporter:
     100036: mesh_0019
     100038: mesh_0020
     100040: mesh_0021
-    100042: //RootNode
-    100044: mesh_0022
-    100046: mesh_0023
-    100048: mesh_0024
-    100050: mesh_0025
-    100052: mesh_0026
+    100042: mesh_0022
+    100044: mesh_0023
+    100046: mesh_0024
+    100048: mesh_0025
+    100050: mesh_0026
+    100052: //RootNode
     400000: mesh_0001
     400002: mesh_0002
     400004: mesh_0003
@@ -53,12 +53,12 @@ ModelImporter:
     400036: mesh_0019
     400038: mesh_0020
     400040: mesh_0021
-    400042: //RootNode
-    400044: mesh_0022
-    400046: mesh_0023
-    400048: mesh_0024
-    400050: mesh_0025
-    400052: mesh_0026
+    400042: mesh_0022
+    400044: mesh_0023
+    400046: mesh_0024
+    400048: mesh_0025
+    400050: mesh_0026
+    400052: //RootNode
     2300000: mesh_0001
     2300002: mesh_0002
     2300004: mesh_0003
@@ -170,6 +170,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 0
     bakeSimulation: 0
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -177,9 +178,9 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
@@ -203,7 +204,6 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 2
   importAnimation: 1
@@ -211,12 +211,12 @@ ModelImporter:
   humanDescription:
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
