@@ -395,7 +395,7 @@ Transform:
   - {fileID: 74687770}
   - {fileID: 696547717}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!1001 &373799562
 Prefab:
   m_ObjectHideFlags: 0
@@ -1260,7 +1260,7 @@ Transform:
   - {fileID: 1025685597}
   - {fileID: 1614585119}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &1614585119 stripped
 Transform:
   m_PrefabParentObject: {fileID: 419496, guid: 9501f7dd5b065c04e84e144335ce0a6c, type: 2}
