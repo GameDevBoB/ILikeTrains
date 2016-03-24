@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 1
   colliderRadius: 2
-  damage: 3
+  damage: 10
   explosionSpeed: 0.5
   explosionCooldown: 10
   upgradeDamage:
@@ -521,6 +521,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
