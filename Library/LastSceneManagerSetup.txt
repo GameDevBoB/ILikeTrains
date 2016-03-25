@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/_Scenes/Denis.unity
+=======
+- path: Assets/_Scenes/Level4.unity
+>>>>>>> origin/master
   isLoaded: 1
   isActive: 1
