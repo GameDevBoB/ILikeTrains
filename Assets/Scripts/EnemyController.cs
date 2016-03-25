@@ -69,6 +69,7 @@ public class EnemyController : MonoBehaviour
     public GameObject leftSprite;
     public GameObject rightSprite;
     public GameObject downSprite;
+    public GameObject deathSprite;
 
     private Animator upAnim;
     private Animator leftAnim;
@@ -84,10 +85,12 @@ public class EnemyController : MonoBehaviour
     private float startMovement;
     private BoxCollider myBoxCollider;
     private bool isDead;
+    private float deathTimer;
 
 
     void Awake()
     {
+        deathTimer = 3f;
         if (myEnemyType == EnemyType.Shooter)
         {
             bullets = new GameObject[100];
@@ -145,8 +148,6 @@ public class EnemyController : MonoBehaviour
                 isRunning = false;
             }
         }
-        if (isDead && !sourceAudio.isPlaying)
-            Destroy(gameObject);
     }
 
 
@@ -322,14 +323,15 @@ public class EnemyController : MonoBehaviour
             Destroy(bullets[i]);
         }
 
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount-1; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
         myBoxCollider.enabled = false;
         isDead = true;
-
         SoundType(deathSoundIndex);
+        deathSprite.SetActive(true);
+        Destroy(gameObject, deathTimer);
     }
 
 

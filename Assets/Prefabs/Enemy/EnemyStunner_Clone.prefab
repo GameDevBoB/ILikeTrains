@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 182060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.0001736, y: -1.05551714e-16, z: -8.033186}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 490584}
   - {fileID: 22490424}
@@ -776,6 +776,7 @@ MonoBehaviour:
   leftSprite: {fileID: 186520}
   rightSprite: {fileID: 128292}
   downSprite: {fileID: 194158}
+  deathSprite: {fileID: 0}
 --- !u!114 &11477650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -962,7 +963,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1241,6 +1241,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemiesAudioClips.Array.data[1]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

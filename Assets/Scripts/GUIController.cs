@@ -6,11 +6,12 @@ using UnityEngine.EventSystems;
 public class GUIController : MonoBehaviour
 {
     public static GUIController instance;
-    //PLANNINGPHATE CANVAS WITH ELEMENTS
+    //PLANNINGPHASE CANVAS WITH ELEMENTS
     public Canvas planningCanvas;
     public Button startButton;
     public Button instantiateDynamiteButton;
     public Button instantiateTeslaButton;
+    
     //
 	/*LEVEL TRANSITION VARIABLES
 	public string currentLevelString;
@@ -62,7 +63,9 @@ public class GUIController : MonoBehaviour
 	public Image star2;
 	public Image star3;
 
+    //ACTIONPHASE BUTTONS
     public Button trainSprintButton;
+    public Button pauseButton;
 
 
     void Awake()
@@ -88,6 +91,7 @@ public class GUIController : MonoBehaviour
     public void StartGame()
     {
         //THE FIRST CANVAS ACTIVE AT THE BEGINNING OF THE GAME
+        pauseButton.gameObject.SetActive(true);
         phaseText.text = "ACTION PHASE";
         trainSprintButton.gameObject.SetActive(true);
         //if (upgradeTrainCanvas.gameObject.activeSelf)

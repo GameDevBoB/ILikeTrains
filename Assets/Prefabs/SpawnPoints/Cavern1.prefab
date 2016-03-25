@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158318}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 3.72, y: 0, z: -5.8771653}
+  m_LocalPosition: {x: -6.72, y: -0, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,12 +42,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 10
-  distanceTrigger: 20
-  spawnDelay: 2
+  distanceTrigger: 9
+  spawnDelay: 1
   enemyCollectionPrefabs:
-  - {fileID: 167824, guid: 326bb19306b0ec34994269877cd135ba, type: 2}
-  - {fileID: 176578, guid: 2847c80423185ce48b63e51ed13e131d, type: 2}
-  - {fileID: 160210, guid: 922ed3f2fb706b048857ded6b869b47e, type: 2}
+  - {fileID: 160210, guid: e9a469dbc79f5456fa58fc4397f9ff12, type: 2}
 --- !u!135 &13569386
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -58,7 +56,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 9
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!212 &21251968
 SpriteRenderer:
@@ -85,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1b0da004910fb2948a574abe4965147d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
