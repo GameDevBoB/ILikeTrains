@@ -242,7 +242,7 @@ GameObject:
   - 54: {fileID: 5449658}
   - 82: {fileID: 8214068}
   m_Layer: 10
-  m_Name: Enemykamikaze_Clone
+  m_Name: EnemyFastIndian_Clone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 797.2868, y: 157.56856, z: -2062.9421}
+  m_LocalPosition: {x: 806.2094, y: 166.61263, z: -2095.1213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469570}
@@ -466,7 +466,7 @@ Animator:
   m_GameObject: {fileID: 128678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f05af38fcddb7d4aac1f9379e326142, type: 2}
+  m_Controller: {fileID: 9100000, guid: c9ab76303a7ec2e4ebea957c796917f6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -483,7 +483,7 @@ Animator:
   m_GameObject: {fileID: 197628}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99405dfd03480e84da4f1df076af0ea4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2bf4df5e305ae894094b8599a52b9cbc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -500,7 +500,7 @@ Animator:
   m_GameObject: {fileID: 165360}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 050758636c133b642a7e22090f93111b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9feb32a0e11d0f841b16ac18e1103512, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -517,7 +517,7 @@ Animator:
   m_GameObject: {fileID: 120942}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16037c69c9f7a174daabe9e2b159a9fa, type: 2}
+  m_Controller: {fileID: 9100000, guid: acce7830f12adf146b53ae6169b84596, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -742,11 +742,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 10
   actualLife: 10
-  earnValue: 1
-  walkSpeed: 1.2
-  runSpeed: 1.5
-  damage: 25
-  maxDistance: 4
+  earnValue: 2
+  walkSpeed: 1.5
+  runSpeed: 1.7
+  damage: 20
+  maxDistance: 10
   target: {fileID: 0}
   spawnPointBullet: {fileID: 438108}
   bullets: []
@@ -829,7 +829,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300006, guid: 9b528a037fa07ae4f88283a4ce10891a, type: 3}
+  m_Sprite: {fileID: 21300006, guid: d667e9188b07aba4f8a61e1b8a399ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -859,7 +859,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300012, guid: 9b528a037fa07ae4f88283a4ce10891a, type: 3}
+  m_Sprite: {fileID: 21300012, guid: d667e9188b07aba4f8a61e1b8a399ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -889,7 +889,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300018, guid: 9b528a037fa07ae4f88283a4ce10891a, type: 3}
+  m_Sprite: {fileID: 21300018, guid: d667e9188b07aba4f8a61e1b8a399ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -919,7 +919,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 9b528a037fa07ae4f88283a4ce10891a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d667e9188b07aba4f8a61e1b8a399ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1242,15 +1242,6 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 99405dfd03480e84da4f1df076af0ea4, type: 2}
-    - target: {fileID: 0}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300018, guid: 9b528a037fa07ae4f88283a4ce10891a,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182060}
