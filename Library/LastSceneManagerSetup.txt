@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-- path: Assets/_Scenes/Denis.unity
-=======
-- path: Assets/_Scenes/Level4.unity
->>>>>>> origin/master
-=======
-- path: Assets/_Scenes/Level11.unity
->>>>>>> Stashed changes
+- path: Assets/_Scenes/MainMenu.unity
   isLoaded: 1
   isActive: 1
