@@ -290,6 +290,10 @@ Prefab:
       propertyPath: enemyCollectionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 160210, guid: d2769263f099e48b1afbc31ffa3d1f37, type: 2}
+    - target: {fileID: 21237636, guid: 1c0548069bf48ea4498f732e1378eca1, type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c0548069bf48ea4498f732e1378eca1, type: 2}
   m_IsPrefabParent: 0
@@ -338,7 +342,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 456530, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456530, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -865,7 +869,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: selectedTrap
