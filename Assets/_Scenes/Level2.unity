@@ -1408,26 +1408,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7af54964a64f3144a0589da73d0ba31, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1016743843 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 186486, guid: f7af54964a64f3144a0589da73d0ba31, type: 2}
-  m_PrefabInternal: {fileID: 1016743842}
 --- !u!1 &1016743844 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 160608, guid: f7af54964a64f3144a0589da73d0ba31, type: 2}
   m_PrefabInternal: {fileID: 1016743842}
---- !u!64 &1016743845
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1016743843}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300024, guid: 3961deda395782b44be231c825432560, type: 3}
 --- !u!64 &1016743846
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1765,6 +1749,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11441752, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: waypoints.Array.size
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 457636, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
       propertyPath: m_LocalPosition.x
       value: -18.2299995
@@ -2069,7 +2057,7 @@ Prefab:
       objectReference: {fileID: 1638891798}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}
