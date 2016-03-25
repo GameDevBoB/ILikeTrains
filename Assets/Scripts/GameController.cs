@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
+
         Physics.queriesHitTriggers = false;
         instance = this;
         sourceAudio = GetComponent<AudioSource>();
@@ -81,6 +82,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			StopGame();
+		}
         //trapIsBeingPlaced = true;
         if (!trapIsBeingPlaced && selectedTrap != null)
         {
@@ -191,7 +195,7 @@ public class GameController : MonoBehaviour
 
     public void StopGame()
     {
-        isPaused = true;
+		isPaused = true;
         Time.timeScale = 0;
     }
 
@@ -202,20 +206,7 @@ public class GameController : MonoBehaviour
 
     public void WinGame()
     {
-        isPaused = true;
-        float lifePercentage = headCoach.actualLife / headCoach.life * 100;
-        if (lifePercentage >= 25f)
-        {
-            // attiva prima stellina
-        }
-        if (lifePercentage >= 50f)
-        {
-            // attiva seconda stellina
-        }
-        if (lifePercentage >= 75f)
-        {
-            // attiva terza stellina
-        }
+		GUIController.instance.CompleteLevel();
     }
 
     public void PlaySound(AudioClip myclip)

@@ -12,6 +12,10 @@ public class GUIController : MonoBehaviour
     public Button instantiateDynamiteButton;
     public Button instantiateTeslaButton;
     //
+	/*LEVEL TRANSITION VARIABLES
+	public string currentLevelString;
+	public string nextLevelString;
+	*/
 
     //HQ UPGRADE CANVAS WITH ELEMENTS
     public Canvas upgradeTrainCanvas;
@@ -46,7 +50,17 @@ public class GUIController : MonoBehaviour
     [HideInInspector]
     public bool isDamaged;
 
-    //
+	//CANVAS ENDLEVEL
+	public Image gameOverView;
+	public Button goMenu;
+	public Button goRestart;
+	public Image completeLevelView;
+	public Button menuWin;
+	public Button resetWin;
+	public Button nextLevel;
+	public Image star1;
+	public Image star2;
+	public Image star3;
 
     public Button trainSprintButton;
 
@@ -59,6 +73,7 @@ public class GUIController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		
         phaseText.text = "PLANNING PHASE";
 
     }
@@ -169,5 +184,58 @@ public class GUIController : MonoBehaviour
         }
         isDamaged = false;
     }
+	//CANVAS ENDLEVEL
+	void ViewOnStart()
+	{
+		gameOverView.gameObject.SetActive(false);
+		completeLevelView.gameObject.SetActive(false);
+	}
 
+	public void GameOverView()
+	{
+		gameOverView.gameObject.SetActive(true);
+		GameController.instance.isPaused = true;
+	}
+
+	public void CompleteLevel()
+	{
+		completeLevelView.gameObject.SetActive(true);
+		GameController.instance.isPaused = true;
+
+		float lifePercentage = Train.instance.actualLife / Train.instance.life * 100;
+		if (lifePercentage >= 25f)
+		{
+			// attiva prima stellina
+			star1.gameObject.SetActive(true);
+		}
+		if (lifePercentage >= 50f)
+		{
+			// attiva seconda stellina
+			star1.gameObject.SetActive(true);
+			star2.gameObject.SetActive(true);
+		}
+		if (lifePercentage >= 75f)
+		{
+			// attiva terza stellina
+			star1.gameObject.SetActive(true);
+			star2.gameObject.SetActive(true);
+			star3.gameObject.SetActive(true);
+		}
+
+	}
+	//BUTTON ENDLEVEL
+	// prima di utilizzarli bisogna definirli bene i numeri sono casuali 
+	public void RestartLevel()
+	{
+		Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel 
+
+	}
+	public void GoToMenu()
+	{
+		Application.LoadLevel(0); 
+	}
+	public void NextLevel()
+	{
+		Application.LoadLevel(Application.loadedLevel+1);
+	}
 }

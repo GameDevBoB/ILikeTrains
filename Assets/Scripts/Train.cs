@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Train : MonoBehaviour
 {
+	public static Train instance;
+
     //HQ VARIABLES
     public float life;
     public float sprint;
@@ -14,6 +16,20 @@ public class Train : MonoBehaviour
     public float actualLife;
     public bool isCoach;
     //
+
+	//HQS and COACHES SPRITES
+	public Sprite up;
+	public Sprite upRight;
+	public Sprite right;
+	public Sprite downRight;
+	public Sprite down;
+	public Sprite downLeft;
+	public Sprite left;
+	public Sprite upLeft;
+	private SpriteRenderer mySpriteRenderer;
+	
+
+	//
 
     //HQ PATHPOINTS
     public Transform[] waypoints;
@@ -36,7 +52,7 @@ public class Train : MonoBehaviour
     public float distance;
     //
 
-    //public TrailRenderer myTrail;
+  
 
 
     public float rotationSpeed;
@@ -64,13 +80,18 @@ public class Train : MonoBehaviour
 
     void Awake()
     {
+		instance = this;
+
+		if(!isCoach)
+		mySpriteRenderer = transform.GetChild(2).GetComponent<SpriteRenderer> ();
+		else
+		mySpriteRenderer = transform.GetChild(3).GetComponent<SpriteRenderer> ();
 
     }
 
     void Start()
     {
-        //myTrail = transform.GetChild(1).GetComponent<TrailRenderer>();
-        //myTrail.enabled = false;
+      
         //SETTING INITIAL PARAMETERS
         initPos = transform.position;
         transform.position = initPos;
@@ -122,7 +143,7 @@ public class Train : MonoBehaviour
                 if (((Time.time - startSprint) > sprint))
                 {
                     trainIsSprinted = false;
-                    //ActivateTrail();
+                  
                 }
                 if ((Time.time - startSprint) > sprintCooldown + sprint)
                 {
@@ -206,6 +227,9 @@ public class Train : MonoBehaviour
             }
 
             transform.LookAt(waypoints[countWaypoints].GetChild(0).position);
+			SpriteSwapper();
+
+
         }
     }
 
@@ -221,7 +245,8 @@ public class Train : MonoBehaviour
         GameController.instance.headCoach.actualLife -= damage;
         GUIController.instance.healthSlider.value = GameController.instance.headCoach.actualLife;
         if (GameController.instance.headCoach.actualLife <= 0)
-            GameController.instance.LoseGame();
+            //GameController.instance.LoseGame();
+			GUIController.instance.GameOverView ();
         //
 
         GUIController.instance.isDamaged = true;
@@ -375,7 +400,7 @@ public class Train : MonoBehaviour
         startSprint = Time.time;
         trainIsSprinted = true;
         GUIController.instance.trainSprintButton.interactable = false;
-        //ActivateTrail();
+
 
         //Debug.Log("ENTRO IN SPRINT " + startSprint);
 
@@ -383,10 +408,44 @@ public class Train : MonoBehaviour
 
     }
     //////////
-    void ActivateTrail()
-    {
+   
 
-        // myTrail.enabled = trainIsSprinted;
-    }
+	void SpriteSwapper()
+	{
+
+	if(transform.localRotation.eulerAngles.y > 355f || transform.localRotation.eulerAngles.y < 5f )
+	{
+			mySpriteRenderer.sprite=up;
+	}
+		if(transform.localRotation.eulerAngles.y > 5f && transform.localRotation.eulerAngles.y < 85f )
+	{
+			mySpriteRenderer.sprite=upRight;
+	}
+		if(transform.localRotation.eulerAngles.y > 85f && transform.localRotation.eulerAngles.y < 95f )
+	{
+			mySpriteRenderer.sprite=right;
+	}
+		if(transform.localRotation.eulerAngles.y > 95f && transform.localRotation.eulerAngles.y < 175f )
+	{
+			mySpriteRenderer.sprite=downRight;
+	}
+		if(transform.localRotation.eulerAngles.y > 175f && transform.localRotation.eulerAngles.y < 185f )
+	{
+			mySpriteRenderer.sprite=down;
+	}
+		if(transform.localRotation.eulerAngles.y > 185f && transform.localRotation.eulerAngles.y < 265f )
+	{
+			mySpriteRenderer.sprite=downLeft;
+	}
+		if(transform.localRotation.eulerAngles.y > 265f && transform.localRotation.eulerAngles.y < 275f )
+	{
+			mySpriteRenderer.sprite=left;
+	}
+		if(transform.localRotation.eulerAngles.y > 275f && transform.localRotation.eulerAngles.y < 355f )
+	{
+			mySpriteRenderer.sprite=upLeft;
+	}
+	
+	}
 
 }

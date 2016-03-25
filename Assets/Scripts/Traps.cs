@@ -40,6 +40,7 @@ public class Traps : MonoBehaviour
     public GameObject rangePreviewSprite;
     public Text cooldownText;
     public Image cooldownImage;
+	public GameObject sprite;
     //
 
     public int SlowRatio;
@@ -51,7 +52,7 @@ public class Traps : MonoBehaviour
     private Vector3 rangeSpriteStartScale;
     private Vector3 explosionSpriteAdder;
     private Vector3 rangeSpriteAdder;
-    private Renderer myRenderer;
+    private SpriteRenderer myRenderer;
     private Color startColor;
     private int damageUpgradeCounter;
     private int radiusUpgradeCounter;
@@ -74,7 +75,7 @@ public class Traps : MonoBehaviour
         myTrigger.radius = colliderRadius;
         //this.GetComponent<SphereCollider>().enabled = true;
         Physics.queriesHitTriggers = false;
-        myRenderer = GetComponent<Renderer>();
+        myRenderer = sprite.gameObject.GetComponent<SpriteRenderer>();
         startColor = myRenderer.material.color;
         sourceAudio = GetComponent<AudioSource>();
     }
@@ -243,12 +244,12 @@ public class Traps : MonoBehaviour
     //COLOR CHANGER ON TRAP GIVING IMMEDIATE FEEDBACK TO THE PLAYER IF ITS PLACEABLE OR NOT
     public void BackToNormalColor()
     {
-        myRenderer.material.color = startColor;
+        myRenderer.color = startColor;
     }
 
     public void ChangeColor(Color newColor)
     {
-        myRenderer.material.color = newColor;
+        myRenderer.color = newColor;
     }
     //
 

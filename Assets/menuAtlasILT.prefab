@@ -1,0 +1,408 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &148692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 481110}
+  - 114: {fileID: 11431318}
+  m_Layer: 5
+  m_Name: menuAtlasILT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &481110
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11431318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: edf9e1e5cb070b64f8047ab60166f0bb, type: 2}
+  mSprites:
+  - name: Binari_lunghi
+    x: 501
+    y: 1208
+    width: 128
+    height: 60
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 34
+    paddingBottom: 34
+  - name: Icona_indietro
+    x: 753
+    y: 169
+    width: 347
+    height: 257
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 18
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 9
+  - name: "Icona_men\xF9"
+    x: 410
+    y: 303
+    width: 342
+    height: 431
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 94
+    paddingRight: 76
+    paddingTop: 45
+    paddingBottom: 36
+  - name: Icona_riprova
+    x: 753
+    y: 427
+    width: 311
+    height: 307
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 100
+    paddingRight: 101
+    paddingTop: 102
+    paddingBottom: 103
+  - name: Icona_selezione_lvl
+    x: 0
+    y: 234
+    width: 409
+    height: 500
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 48
+    paddingRight: 55
+    paddingTop: 7
+    paddingBottom: 5
+  - name: Locomotiva_caricamento
+    x: 3142
+    y: 3896
+    width: 500
+    height: 200
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 9
+    paddingRight: 11
+    paddingTop: 189
+    paddingBottom: 153
+  - name: Lvl_1
+    x: 1075
+    y: 1565
+    width: 74
+    height: 142
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 212
+    paddingRight: 226
+    paddingTop: 187
+    paddingBottom: 183
+  - name: Lvl_10
+    x: 1002
+    y: 2055
+    width: 137
+    height: 161
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 172
+    paddingRight: 203
+    paddingTop: 182
+    paddingBottom: 169
+  - name: Lvl_2
+    x: 1102
+    y: 1905
+    width: 95
+    height: 149
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 200
+    paddingRight: 217
+    paddingTop: 190
+    paddingBottom: 173
+  - name: Lvl_3
+    x: 1090
+    y: 1766
+    width: 86
+    height: 137
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 202
+    paddingRight: 224
+    paddingTop: 189
+    paddingBottom: 186
+  - name: Lvl_4
+    x: 996
+    y: 1428
+    width: 77
+    height: 136
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 217
+    paddingRight: 218
+    paddingTop: 186
+    paddingBottom: 190
+  - name: Lvl_5
+    x: 1002
+    y: 1904
+    width: 99
+    height: 150
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 194
+    paddingRight: 219
+    paddingTop: 171
+    paddingBottom: 191
+  - name: Lvl_6
+    x: 996
+    y: 1565
+    width: 78
+    height: 142
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 214
+    paddingRight: 220
+    paddingTop: 180
+    paddingBottom: 190
+  - name: Lvl_7
+    x: 1140
+    y: 2061
+    width: 76
+    height: 155
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 206
+    paddingRight: 230
+    paddingTop: 177
+    paddingBottom: 180
+  - name: Lvl_8
+    x: 1002
+    y: 1767
+    width: 87
+    height: 136
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 208
+    paddingRight: 217
+    paddingTop: 190
+    paddingBottom: 186
+  - name: Lvl_9
+    x: 1074
+    y: 1430
+    width: 78
+    height: 134
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 205
+    paddingRight: 229
+    paddingTop: 193
+    paddingBottom: 185
+  - name: "Men\xF9_iniziale"
+    x: 0
+    y: 2217
+    width: 1220
+    height: 1879
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 279
+    paddingRight: 249
+    paddingTop: 62
+    paddingBottom: 107
+  - name: Sfondo_1
+    x: 1221
+    y: 1935
+    width: 1920
+    height: 1080
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: sfondo2
+    x: 1221
+    y: 3016
+    width: 1920
+    height: 1080
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: steamtrainlarge-500x500
+    x: 501
+    y: 1269
+    width: 494
+    height: 438
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 2
+    paddingTop: 31
+    paddingBottom: 31
+  - name: Tasto
+    x: 0
+    y: 967
+    width: 932
+    height: 231
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 9
+    paddingTop: 9
+    paddingBottom: 13
+  - name: Tasto_2
+    x: 0
+    y: 735
+    width: 932
+    height: 231
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 46
+    paddingRight: 46
+    paddingTop: 397
+    paddingBottom: 396
+  - name: Tasto_chiudi
+    x: 0
+    y: 1708
+    width: 500
+    height: 508
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 6
+    paddingTop: 2
+    paddingBottom: 2
+  - name: Tasto_icona
+    x: 501
+    y: 1708
+    width: 500
+    height: 508
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 6
+    paddingTop: 2
+    paddingBottom: 2
+  - name: Tasto_icona_2
+    x: 0
+    y: 1199
+    width: 500
+    height: 508
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 6
+    paddingTop: 2
+    paddingBottom: 2
+  - name: train-silhouette
+    x: 933
+    y: 1052
+    width: 261
+    height: 146
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 1
+    paddingTop: 58
+    paddingBottom: 58
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
+  mCoordinates: 0
+  sprites: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mSprites.Array.data[5].height
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mSprites.Array.data[5].width
+      value: 500
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 148692}
+  m_IsPrefabParent: 1
