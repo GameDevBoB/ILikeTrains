@@ -2213,7 +2213,7 @@ MonoBehaviour:
   isPaused: 1
   enemyCount: 0
   environmentAudioClips:
-  - {fileID: 8300000, guid: a42b10e4d94d1824b993b40b538b0cc8, type: 3}
+  - {fileID: 8300000, guid: e9fd92203153264479809bb0c00d9bc8, type: 3}
   - {fileID: 8300000, guid: a46a8d7d890d8df439a059df3fe6930c, type: 3}
 --- !u!114 &11413514
 MonoBehaviour:
