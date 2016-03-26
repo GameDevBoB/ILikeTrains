@@ -15,6 +15,7 @@ public class CameraShake : MonoBehaviour
     {
         isShaking = false;
         startCameraPos = transform.position;
+        shakeTimer = 0;
     }
 
 
@@ -24,7 +25,7 @@ public class CameraShake : MonoBehaviour
         {
             ShakeCamera(shakePowerInput, shakeDurationInput);
         }
-        if (shakeTimer >= 0)
+        if (shakeTimer > 0)
         {
             Vector2 ShakePos = Random.insideUnitCircle * shakeAmount;
             transform.position = new Vector3(transform.position.x + ShakePos.x, transform.position.y + ShakePos.y, transform.position.z);

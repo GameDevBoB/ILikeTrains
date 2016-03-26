@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-
+        Time.timeScale = 1;
         Physics.queriesHitTriggers = false;
         instance = this;
         sourceAudio = GetComponent<AudioSource>();

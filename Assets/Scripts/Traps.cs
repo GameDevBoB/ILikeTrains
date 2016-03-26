@@ -184,7 +184,7 @@ public class Traps : MonoBehaviour
         {
             GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
             GUIController.instance.SetCanvasOpener(this.gameObject);
-            GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up;
+            GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up + Vector3.forward*3 + Vector3.right*3;
             GUIController.instance.damageUpgradeButton.onClick.RemoveAllListeners();
             GUIController.instance.radiusUpgradeButton.onClick.RemoveAllListeners();
             GUIController.instance.cooldownUpgradeButton.onClick.RemoveAllListeners();
