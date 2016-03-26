@@ -82,9 +82,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			StopGame();
-		}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopGame();
+        }
         //trapIsBeingPlaced = true;
         if (!trapIsBeingPlaced && selectedTrap != null)
         {
@@ -188,14 +189,15 @@ public class GameController : MonoBehaviour
 
     void DeselectTrap()
     {
-        Destroy(selectedTrap.gameObject);
+        if (selectedTrap != null)
+            Destroy(selectedTrap.gameObject);
         GUIController.instance.startButton.interactable = true;
         GUIController.instance.ActivateTrapsButton();
     }
 
     public void StopGame()
     {
-		isPaused = true;
+        isPaused = true;
         Time.timeScale = 0;
     }
 
@@ -206,7 +208,7 @@ public class GameController : MonoBehaviour
 
     public void WinGame()
     {
-		GUIController.instance.CompleteLevel();
+        GUIController.instance.CompleteLevel();
     }
 
     public void PlaySound(AudioClip myclip)
