@@ -188,8 +188,7 @@ public class GameController : MonoBehaviour
 
     void DeselectTrap()
     {
-        if(selectedTrap!=null)
-            Destroy(selectedTrap.gameObject);
+        Destroy(selectedTrap.gameObject);
         GUIController.instance.startButton.interactable = true;
         GUIController.instance.ActivateTrapsButton();
     }
