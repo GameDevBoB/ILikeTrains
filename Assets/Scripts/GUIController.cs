@@ -51,7 +51,11 @@ public class GUIController : MonoBehaviour
     [HideInInspector]
     public bool isDamaged;
 
-	//CANVAS ENDLEVEL
+	//CANVAS WinPauseEndLEVEL
+	public Image pauseView;
+	public Button pausePlay;
+	public Button pauseReset;
+	public Button pauseMenu;
 	public Image gameOverView;
 	public Button goMenu;
 	public Button goRestart;
@@ -193,6 +197,22 @@ public class GUIController : MonoBehaviour
 	{
 		gameOverView.gameObject.SetActive(false);
 		completeLevelView.gameObject.SetActive(false);
+	}
+
+	public void PauseView()
+	{
+		//Debug.Log("stronzo");
+		pauseView.gameObject.SetActive(true);
+		Time.timeScale=0;
+
+
+	}
+	public void UnPaused()
+	{
+			//Debug.Log("stronzo++");
+			pauseView.gameObject.SetActive(false);
+			Time.timeScale=1;
+		
 	}
 
 	public void GameOverView()
