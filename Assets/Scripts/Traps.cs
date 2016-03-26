@@ -40,7 +40,7 @@ public class Traps : MonoBehaviour
     public GameObject rangePreviewSprite;
     public Text cooldownText;
     public Image cooldownImage;
-	public GameObject sprite;
+    public GameObject sprite;
     //
 
     public int SlowRatio;
@@ -184,7 +184,7 @@ public class Traps : MonoBehaviour
         {
             GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
             GUIController.instance.SetCanvasOpener(this.gameObject);
-            GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up + Vector3.forward*3 + Vector3.right*3;
+            GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up + Vector3.right * 4;
             GUIController.instance.damageUpgradeButton.onClick.RemoveAllListeners();
             GUIController.instance.radiusUpgradeButton.onClick.RemoveAllListeners();
             GUIController.instance.cooldownUpgradeButton.onClick.RemoveAllListeners();

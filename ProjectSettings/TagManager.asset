@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Coach
   - TrapTesla
+  - BoundExit
   layers:
   - Default
   - TransparentFX
