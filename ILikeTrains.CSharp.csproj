@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -215,6 +209,7 @@
     <Compile Include="Assets\Scripts\NoMoreNeeded\TerrainScript.cs" />
     <Compile Include="Assets\Scripts\SoundController.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\StartMenuController.cs" />
     <Compile Include="Assets\Scripts\Train.cs" />
     <Compile Include="Assets\Scripts\Traps.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
