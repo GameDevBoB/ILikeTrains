@@ -2466,7 +2466,7 @@ MonoBehaviour:
   trapsCosts: 0400000008000000
   cursorTexture: {fileID: 2800000, guid: da673e8f48c6c5e4b9bbd30c1aa6e20c, type: 3}
   headCoach: {fileID: 0}
-  startResources: 150
+  startResources: 100
   totalResources: 0
   trapIsBeingPlaced: 0
   isPlaceable: 0

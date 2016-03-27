@@ -40,9 +40,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 182060, guid: 0933db53ceda7443a925a4e12f67a4d2, type: 2}
-  - {fileID: 182060, guid: 0933db53ceda7443a925a4e12f67a4d2, type: 2}
-  - {fileID: 182060, guid: 0933db53ceda7443a925a4e12f67a4d2, type: 2}
+  - {fileID: 182060, guid: b95fc614dae41bd46bb87df9334013e9, type: 2}
+  - {fileID: 182060, guid: b95fc614dae41bd46bb87df9334013e9, type: 2}
+  - {fileID: 182060, guid: b95fc614dae41bd46bb87df9334013e9, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
