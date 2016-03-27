@@ -6,6 +6,8 @@ public class StartMenuController : MonoBehaviour {
     public CanvasRenderer mainPanel;
     public CanvasRenderer levelPanel;
     public CanvasRenderer loadingPanel;
+    public Texture2D cursorTexture;
+    private Vector2 hotSpot = Vector2.zero;
     public Slider trainSlider;
     public Text sliderText;
 
@@ -15,6 +17,7 @@ public class StartMenuController : MonoBehaviour {
     void Start()
     {
         isLoading = false;
+        Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.Auto);
     }
 	
 	// Update is called once per frame

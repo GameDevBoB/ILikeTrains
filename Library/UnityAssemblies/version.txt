@@ -3,8 +3,6 @@ StandaloneWindows
 F:/Programmi/Unity/Editor/Data/Managed/UnityEngine.dll
 f:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 f:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 F:/Programmi/Unity/Editor/Data/Managed/UnityEditor.dll
 f:\Programmi\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Xcode.dll
 f:\Programmi\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Common.dll
@@ -24,9 +22,3 @@ f:/Programmi/Unity/Editor/Data/PlaybackEngines/STVPlayer/UnityEditor.SamsungTV.E
 f:/Programmi/Unity/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
 f:/Programmi/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll
-F:/Programmi/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
