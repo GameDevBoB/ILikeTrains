@@ -769,12 +769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4911207bfdb649a8aee480b0b121e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 20
-  actualLife: 20
+  life: 15
+  actualLife: 15
   earnValue: 3
   walkSpeed: 1.4
   runSpeed: 2
-  damage: 50
+  damage: 20
   maxDistance: 10
   target: {fileID: 0}
   spawnPointBullet: {fileID: 438108}
@@ -1022,7 +1022,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 4
   m_TargetDisplay: 0
@@ -1212,11 +1211,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: life
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: actualLife
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -1313,6 +1312,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

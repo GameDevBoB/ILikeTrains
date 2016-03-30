@@ -146,15 +146,19 @@ public class GameController : MonoBehaviour
         trapIsBeingPlaced = false;
         isPlaceable = false;
         //WE SELECT THE NEXT TRAP ONLY IF WE CAN AFFORD IT
-        if ((totalResources - trapsCosts[index]) >= 0)
+        if ((totalResources - trapsCosts[index]) > 0)
         //
         {
             //WE INSTANTIATE THE SELECTED TRAP
             selectedTrap = Instantiate(trapsPrefabs[index], new Vector3(0, -1, 0), trapsPrefabs[index].transform.rotation) as GameObject;
             selectedTrapCost = trapsCosts[index];
             GUIController.instance.DeactivateTrapsButton();
+            GUIController.instance.startButton.interactable = false;
+        }else
+        {
+            GUIController.instance.startButton.interactable = true;
         }
-        GUIController.instance.startButton.interactable = false;
+        
     }
 
 

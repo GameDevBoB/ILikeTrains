@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class GUIController : MonoBehaviour
@@ -224,9 +225,9 @@ public class GUIController : MonoBehaviour
 	public void CompleteLevel()
 	{
 		completeLevelView.gameObject.SetActive(true);
-		GameController.instance.isPaused = true;
+		//GameController.instance.isPaused = true;
 
-		float lifePercentage = Train.instance.actualLife / Train.instance.life * 100;
+		float lifePercentage = GameController.instance.headCoach.actualLife / GameController.instance.headCoach.life * 100;
 		if (lifePercentage >= 25f)
 		{
 			// attiva prima stellina
@@ -235,14 +236,11 @@ public class GUIController : MonoBehaviour
 		if (lifePercentage >= 50f)
 		{
 			// attiva seconda stellina
-			star1.gameObject.SetActive(true);
 			star2.gameObject.SetActive(true);
 		}
 		if (lifePercentage >= 75f)
 		{
 			// attiva terza stellina
-			star1.gameObject.SetActive(true);
-			star2.gameObject.SetActive(true);
 			star3.gameObject.SetActive(true);
 		}
 
@@ -251,15 +249,19 @@ public class GUIController : MonoBehaviour
 	// prima di utilizzarli bisogna definirli bene i numeri sono casuali 
 	public void RestartLevel()
 	{
-		Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel 
+		//Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel 
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 	}
 	public void GoToMenu()
 	{
-		Application.LoadLevel(0); 
+		//Application.LoadLevel(0);
+		SceneManager.LoadScene(0);
 	}
 	public void NextLevel()
 	{
-		Application.LoadLevel(Application.loadedLevel+1);
+		//Application.LoadLevel(Application.loadedLevel+1);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+
 	}
 }

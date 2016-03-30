@@ -774,7 +774,7 @@ MonoBehaviour:
   earnValue: 1
   walkSpeed: 1.2
   runSpeed: 1.5
-  damage: 25
+  damage: 10
   maxDistance: 4
   target: {fileID: 0}
   spawnPointBullet: {fileID: 438108}
@@ -1022,7 +1022,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 4
   m_TargetDisplay: 0
@@ -1313,7 +1312,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

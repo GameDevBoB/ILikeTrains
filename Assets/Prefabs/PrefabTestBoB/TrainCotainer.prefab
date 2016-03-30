@@ -386,7 +386,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177930}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -17.9, y: 0.5, z: 8.45}
+  m_LocalPosition: {x: -18.23, y: 0.5, z: 1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442438}
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  sprint: 0.5
+  sprint: 3
   sprintCooldown: 5
   speed: 1
   loop: 0
@@ -695,6 +695,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   upgradeHealthPointsArray:
   - 120
   - 140
@@ -702,11 +709,11 @@ MonoBehaviour:
   - 180
   - 200
   upgradeSprintArray:
-  - 1
-  - 1.5
-  - 2
-  - 2.5
-  - 3
+  - 5
+  - 7
+  - 8
+  - 9
+  - 10
   upgradeSpeedArray:
   - 1.2
   - 1.4
@@ -719,7 +726,7 @@ MonoBehaviour:
   maxDistance: 0
   distance: 0
   rotationSpeed: 0
-  sprintRatio: 0.5
+  sprintRatio: 1
   slowRatio: 0.5
 --- !u!114 &11455856
 MonoBehaviour:
@@ -733,8 +740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  sprint: 5
-  sprintCooldown: 0
+  sprint: 3
+  sprintCooldown: 5
   speed: 1
   loop: 0
   slowDelay: 0
@@ -791,7 +798,7 @@ MonoBehaviour:
   maxDistance: 3.5
   distance: 1
   rotationSpeed: 5
-  sprintRatio: 0.5
+  sprintRatio: 1
   slowRatio: 0.5
 --- !u!114 &11497604
 MonoBehaviour:
@@ -805,8 +812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  sprint: 5
-  sprintCooldown: 0
+  sprint: 3
+  sprintCooldown: 5
   speed: 1
   loop: 0
   slowDelay: 0
@@ -863,7 +870,7 @@ MonoBehaviour:
   maxDistance: 3.5
   distance: 1
   rotationSpeed: 5
-  sprintRatio: 0.5
+  sprintRatio: 1
   slowRatio: 0.5
 --- !u!212 &21239628
 SpriteRenderer:

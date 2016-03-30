@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Train : MonoBehaviour
 {
-	public static Train instance;
+
 
     //HQ VARIABLES
     public float life;
@@ -76,12 +76,11 @@ public class Train : MonoBehaviour
     //
 
     private Vector3 initPos;
+    private bool firstTime;
 
 
     void Awake()
     {
-		instance = this;
-
 		if(!isCoach)
 		mySpriteRenderer = transform.GetChild(2).GetComponent<SpriteRenderer> ();
 		else
@@ -100,6 +99,7 @@ public class Train : MonoBehaviour
         sprintUpgradeCounter = 0;
         speedUpgradeCounter = 0;
         actualLife = life;
+        firstTime = false;
 
 
         countWaypoints = 0;
@@ -126,8 +126,6 @@ public class Train : MonoBehaviour
 
     void FixedUpdate()
     {
-
-
 
         CheckButtonInteractable();
         if (!GameController.instance.isPaused)

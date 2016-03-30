@@ -576,6 +576,18 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 107004, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 159922, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390900, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
   m_IsPrefabParent: 0
@@ -786,7 +798,35 @@ Prefab:
       objectReference: {fileID: 1544003807}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116888, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496602, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1544003807}
+    - target: {fileID: 11496602, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482214, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1544003807}
+    - target: {fileID: 11482214, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448836, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1544003807}
+    - target: {fileID: 11448836, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}
@@ -1079,6 +1119,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e87535456cc13e429384849c5cd3120, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1229798156 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 159922, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+  m_PrefabInternal: {fileID: 447108845}
+--- !u!64 &1229798162
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1229798156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300028, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
 --- !u!1001 &1233054540
 Prefab:
   m_ObjectHideFlags: 0
@@ -1247,6 +1303,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e87535456cc13e429384849c5cd3120, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1353501278 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 107004, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+  m_PrefabInternal: {fileID: 447108845}
+--- !u!64 &1353501284
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353501278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
 --- !u!1001 &1403562748
 Prefab:
   m_ObjectHideFlags: 0
@@ -1398,6 +1470,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11441752, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
+      propertyPath: waypoints.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 457636, guid: fd688280969b7ea4ca431d3fcf5c0134, type: 2}
       propertyPath: m_LocalPosition.x
       value: -17.9
@@ -1716,7 +1792,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447490, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5.5
+      value: 5.73
       objectReference: {fileID: 0}
     - target: {fileID: 447490, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1736,15 +1812,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447490, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 13569386, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: m_Radius
-      value: 4.5
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 11441086, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: distanceTrigger
-      value: 4.5
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 11441086, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: spawnDelay
@@ -1765,6 +1841,10 @@ Prefab:
     - target: {fileID: 21251968, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441086, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}
+      propertyPath: cooldown
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24e8973b573ee18489af7f156482bf7d, type: 2}

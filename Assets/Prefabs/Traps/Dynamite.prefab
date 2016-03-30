@@ -198,7 +198,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &8260040
 AudioSource:
   m_ObjectHideFlags: 1
@@ -304,7 +304,7 @@ MonoBehaviour:
   colliderRadius: 2
   damage: 10
   explosionSpeed: 0.5
-  explosionCooldown: 10
+  explosionCooldown: 5
   upgradeDamage:
   - 12
   - 14
@@ -318,11 +318,11 @@ MonoBehaviour:
   - 4
   - 4.5
   upgradeCooldown:
-  - 9
-  - 8
-  - 7
-  - 6
-  - 5
+  - 4
+  - 3
+  - 2.5
+  - 2
+  - 1.5
   upgradeCost: 050000000a0000000f0000001900000028000000
   trapAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
@@ -635,7 +635,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosionCooldown
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
@@ -696,6 +696,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Volume
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[2]
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[4]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
