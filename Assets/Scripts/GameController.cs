@@ -82,42 +82,43 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             StopGame();
         }
         //trapIsBeingPlaced = true;
-        if (!trapIsBeingPlaced && selectedTrap != null)
-        {
+        if (!trapIsBeingPlaced && selectedTrap != null) {
 
-            //MOUSE POSITION LETTING PLAYER TO PLACE TRAP ON SCENE
-            var mousePos = Input.mousePosition;
-            screenPoint = Camera.main.ScreenToWorldPoint(mousePos);
+			//MOUSE POSITION LETTING PLAYER TO PLACE TRAP ON SCENE
+			var mousePos = Input.mousePosition;
+			screenPoint = Camera.main.ScreenToWorldPoint (mousePos);
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.SphereCast(ray, 1.5f, out hit, 100.0f, placeableLayer | unplaceableLayer))
-            {
-                //WE CHANGE THE COLOR OF THE TRAP DEPENDING ON WICH LAYER IT IS BEING PLACED
-                selectedTrap.SendMessage("ChangeColor", (hit.transform.gameObject.layer == LayerMask.NameToLayer("Placeable")) ? Color.green : Color.red);
-                isPlaceable = (hit.transform.gameObject.layer == LayerMask.NameToLayer("Placeable"));
-                //AFTER SELECTING TRAP WE CAN MOVE IT CALLING THE METHOD
-                MoveTrap();
-                //
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                //AT LEFT CLICK WE PLACE THE TRAP ON MOUSE POSITION
-                if (isPlaceable)
-                    PlaceTrap();
-                else
-                {
-                    DeselectTrap();
-                }
-            }
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			if (Physics.SphereCast (ray, 1.5f, out hit, 100.0f, placeableLayer | unplaceableLayer)) {
+				//WE CHANGE THE COLOR OF THE TRAP DEPENDING ON WICH LAYER IT IS BEING PLACED
+				selectedTrap.SendMessage ("ChangeColor", (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Placeable")) ? Color.green : Color.red);
+				isPlaceable = (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Placeable"));
+				//AFTER SELECTING TRAP WE CAN MOVE IT CALLING THE METHOD
+				MoveTrap ();
+				//
+			}
+
+			if (Input.GetMouseButtonDown (0)) {
+				//AT LEFT CLICK WE PLACE THE TRAP ON MOUSE POSITION
+				if (isPlaceable)
+					PlaceTrap ();
+				else {
+					DeselectTrap ();
+					if (selectedTrap != null)
+						trapIsBeingPlaced = true;
+				}
+			}
 
 
-        }
-    }
+		} 
+
+	}
 
     private void MoveTrap()
     {

@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public enum trapType
 {
     MinaTesla,
-    Dynamite
+    Dynamite,
+	Gatling,
+	Barrel
 };
 public class Traps : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class Traps : MonoBehaviour
     public float colliderRadius = 10;
     public float damage;
     public float explosionSpeed;
+	public float burnDelay;
+	public float burnDuration;
     public float explosionCooldown;
     //
 
@@ -48,6 +52,8 @@ public class Traps : MonoBehaviour
     //SUPPORT VARIABLES
     private SphereCollider myTrigger;
     private float explosionStart;
+	private float burnStartTimer;
+	private float barrelStartTimer;
     private Vector3 explosionStartScale;
     private Vector3 rangeSpriteStartScale;
     private Vector3 explosionSpriteAdder;
@@ -107,12 +113,21 @@ public class Traps : MonoBehaviour
                 myTrigger.radius += explosionSpeed;
                 explosionSprite.transform.localScale = new Vector3(explosionSprite.transform.localScale.x + explosionSpriteAdder.x, explosionSprite.transform.localScale.y + explosionSpriteAdder.y, explosionSprite.transform.localScale.z + explosionSpriteAdder.z);
             }
-            else
+            else if(myTrigger.enabled)
             {
-                myTrigger.enabled = false;
-                explosionSprite.gameObject.SetActive(false);
+				switch(myType)
+				{
+					case trapType.Dynamite:
+					case trapType.MinaTesla:
+					EndExplosion();
+					break;
+				}
             }
-
+			if(myType == trapType.Barrel && myTrigger.enabled)
+			{
+				if((Time.time - barrelStartTimer) > burnDuration)
+					EndExplosion();
+			}
             if (trapCanvas.gameObject.activeSelf)
             {
 
@@ -156,6 +171,14 @@ public class Traps : MonoBehaviour
 
     }
 
+	private void EndExplosion()
+	{
+		myTrigger.enabled = false;
+		explosionSprite.gameObject.SetActive (false);
+		explosionStart = Time.time;
+		trapCanvas.gameObject.SetActive (true);
+	}
+
     void OnMouseOver()
     {
         //UI VISUALIZATION OF THE TRAP EXPLOSION
@@ -163,13 +186,13 @@ public class Traps : MonoBehaviour
         {
             myTrigger.enabled = true;
             explosionSprite.SetActive(true);
-            explosionStart = Time.time;
-            trapCanvas.gameObject.SetActive(true);
             myTrigger.radius = explosionSpeed;
             explosionSprite.transform.localScale = explosionStartScale;
             //AUDIO MANAGEMENT
             SoundType(damageSoundIndex);
             CameraShake.isShaking = true;
+			if(myType == trapType.Barrel)
+				barrelStartTimer = Time.time;
             //
         }
         //AUDIO MANAGEMENT
@@ -180,7 +203,7 @@ public class Traps : MonoBehaviour
         }
         //
         //UI VISUALIZATION OF THE TRAP UPGRADES
-        else if (Input.GetMouseButtonDown(1) && GameController.instance.trapIsBeingPlaced)
+        else if (GameController.instance.trapIsBeingPlaced)
         {
             GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
             GUIController.instance.SetCanvasOpener(this.gameObject);
@@ -199,6 +222,8 @@ public class Traps : MonoBehaviour
 
     void OnMouseEnter()
     {
+		if (GameController.instance.trapIsBeingPlaced && GUIController.instance.upgradeCanvas.gameObject.activeSelf)
+			GUIController.instance.CloseUpgrade ();
         rangePreviewSprite.SetActive(true);
         rangePreviewSprite.transform.localScale = rangeSpriteStartScale * colliderRadius * 2;
     }
@@ -206,7 +231,7 @@ public class Traps : MonoBehaviour
     void OnMouseExit()
     {
         rangePreviewSprite.SetActive(false);
-
+		//GUIController.instance.upgradeCanvas.gameObject.SetActive(false);
     }
 
     void OnCollisionStay(Collision col)
@@ -240,6 +265,24 @@ public class Traps : MonoBehaviour
         }
 
     }
+
+	void OnTriggerStay(Collider col)
+	{
+		if (col.gameObject.tag == "Enemy")
+		{
+			switch (myType)
+			{
+			case trapType.Barrel:
+				//DAMAGE TRAP
+				if((Time.time - burnStartTimer) > burnDelay || burnStartTimer == 0)
+				{
+					burnStartTimer = Time.time;
+					col.gameObject.SendMessage("GetDamage", damage);
+				}
+				break;
+			}
+		}
+	}
 
     //COLOR CHANGER ON TRAP GIVING IMMEDIATE FEEDBACK TO THE PLAYER IF ITS PLACEABLE OR NOT
     public void BackToNormalColor()

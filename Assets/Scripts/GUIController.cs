@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class GUIController : MonoBehaviour
@@ -29,6 +28,7 @@ public class GUIController : MonoBehaviour
     public Text trainSprintUpgradeText;
     public Slider healthSlider;
     public Button trainSpeedUpgradeButton;
+	public Text trainSpeedUpgradeButtonText;
     public Button trainHealthUpgradeButton;
     public Button trainSprintUpgradeButton;
     //
@@ -42,6 +42,8 @@ public class GUIController : MonoBehaviour
     public Button damageUpgradeButton;
     public Button radiusUpgradeButton;
     public Button cooldownUpgradeButton;
+	public GameObject PanelUpgrade;
+	public Button activateUpgradeButton;
     [HideInInspector]
     public GameObject canvasOpener;
 
@@ -89,6 +91,16 @@ public class GUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetMouseButton(0)) {
+			RaycastHit hit;
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			if (!Physics.Raycast (ray, out hit, 100.0f ,1 << LayerMask.NameToLayer("Trap")| 1 << LayerMask.NameToLayer("UI"))) {
+				if (upgradeCanvas.gameObject.activeSelf) {
+					upgradeCanvas.gameObject.SetActive(false);
+
+				}
+			}
+		}
         ResourcesText.text = "Resources: " + GameController.instance.totalResources.ToString();
         FlashWhenTrainIsDamaged();
     }
@@ -135,6 +147,8 @@ public class GUIController : MonoBehaviour
 
     public void CloseUpgrade()
     {
+		PanelUpgrade.SetActive (false);
+		activateUpgradeButton.gameObject.SetActive (true);
         upgradeCanvas.gameObject.SetActive(false);
 
     }
@@ -179,6 +193,12 @@ public class GUIController : MonoBehaviour
         trigger.triggers.Add(exit);
         // .delegates.Add(entry);
     }
+
+	public void ActivatePanelUpgrade()
+	{
+		PanelUpgrade.SetActive (true);
+		activateUpgradeButton.gameObject.SetActive (false);
+	}
 
     public void FlashWhenTrainIsDamaged()
     {
@@ -249,19 +269,15 @@ public class GUIController : MonoBehaviour
 	// prima di utilizzarli bisogna definirli bene i numeri sono casuali 
 	public void RestartLevel()
 	{
-		//Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel 
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel 
 
 	}
 	public void GoToMenu()
 	{
-		//Application.LoadLevel(0);
-		SceneManager.LoadScene(0);
+		Application.LoadLevel(0); 
 	}
 	public void NextLevel()
 	{
-		//Application.LoadLevel(Application.loadedLevel+1);
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-
+		Application.LoadLevel(Application.loadedLevel+1);
 	}
 }

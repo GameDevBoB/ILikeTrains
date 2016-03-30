@@ -325,7 +325,8 @@ public class Train : MonoBehaviour
     {
 
         GUIController.instance.trainSpeedUpgradeText.text = "Speed " + upgradeSpeedArray[speedUpgradeCounter];
-        GUIController.instance.trainSpeedUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[speedUpgradeCounter];
+		GUIController.instance.trainSpeedUpgradeButtonText.text =  "Cost " + upgradeCost[speedUpgradeCounter];
+        //GUIController.instance.trainSpeedUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[speedUpgradeCounter];
 
     }
     private void SetHealthGui()
@@ -410,40 +411,40 @@ public class Train : MonoBehaviour
 
 	void SpriteSwapper()
 	{
-
-	if(transform.localRotation.eulerAngles.y > 355f || transform.localRotation.eulerAngles.y < 5f )
+		float angle;
+		angle = (transform.localRotation.eulerAngles.y>=0)? transform.localRotation.eulerAngles.y : 360 + transform.localRotation.eulerAngles.y;
+	if(angle > 355f || angle < 5f )
 	{
 			mySpriteRenderer.sprite=up;
 	}
-		if(transform.localRotation.eulerAngles.y > 5f && transform.localRotation.eulerAngles.y < 85f )
+		if(angle > 5f && angle < 85f )
 	{
 			mySpriteRenderer.sprite=upRight;
 	}
-		if(transform.localRotation.eulerAngles.y > 85f && transform.localRotation.eulerAngles.y < 95f )
+		if(angle > 85f && angle < 95f )
 	{
 			mySpriteRenderer.sprite=right;
 	}
-		if(transform.localRotation.eulerAngles.y > 95f && transform.localRotation.eulerAngles.y < 175f )
+		if(angle > 95f && angle < 175f )
 	{
 			mySpriteRenderer.sprite=downRight;
 	}
-		if(transform.localRotation.eulerAngles.y > 175f && transform.localRotation.eulerAngles.y < 185f )
+		if(angle > 175f && angle < 185f )
 	{
 			mySpriteRenderer.sprite=down;
 	}
-		if(transform.localRotation.eulerAngles.y > 185f && transform.localRotation.eulerAngles.y < 265f )
+		if(angle > 185f && angle < 265f )
 	{
 			mySpriteRenderer.sprite=downLeft;
 	}
-		if(transform.localRotation.eulerAngles.y > 265f && transform.localRotation.eulerAngles.y < 275f )
+		if(angle > 265f && angle < 275f )
 	{
 			mySpriteRenderer.sprite=left;
 	}
-		if(transform.localRotation.eulerAngles.y > 275f && transform.localRotation.eulerAngles.y < 355f )
+		if(angle > 275f && angle < 355f )
 	{
 			mySpriteRenderer.sprite=upLeft;
 	}
-	
 	}
 
 }
