@@ -36,13 +36,14 @@ public class GUIController : MonoBehaviour
     //UI ELEMENTS FOR UPGRADES
 
     public Canvas upgradeCanvas;
-    public Text damageUpgradeText;
-    public Text radiusUpgradeText;
-    public Text cooldownUpgradeText;
-    public Button damageUpgradeButton;
-    public Button radiusUpgradeButton;
-    public Button cooldownUpgradeButton;
-	public GameObject PanelUpgrade;
+    //public Text damageUpgradeText;
+    //public Text radiusUpgradeText;
+    //public Text cooldownUpgradeText;
+	//public Button damageUpgradeButton;
+    //public Button radiusUpgradeButton;
+    //public Button cooldownUpgradeButton;
+	//public GameObject PanelUpgrade;
+	public Text upgradeButtonText;
 	public Button activateUpgradeButton;
     [HideInInspector]
     public GameObject canvasOpener;
@@ -147,12 +148,12 @@ public class GUIController : MonoBehaviour
 
     public void CloseUpgrade()
     {
-		PanelUpgrade.SetActive (false);
-		activateUpgradeButton.gameObject.SetActive (true);
+		//PanelUpgrade.SetActive (false);
+		//activateUpgradeButton.gameObject.SetActive (true);
         upgradeCanvas.gameObject.SetActive(false);
 
     }
-
+	/*
     public void SetCanvasElements(trapType inputMyType, float inputDamage, float inputRange, float inputCooldown,
         float inputCostDamage, float inputCostRange, float inputCostCooldown)
     {
@@ -173,11 +174,17 @@ public class GUIController : MonoBehaviour
 
 
     }
+*/
+	public void SetCanvasElements(float inputCost){
+
+		upgradeButtonText.text = ("COST: "+inputCost.ToString());
+
+	}
 
     public void SetCanvasOpener(GameObject myOpener)
     {
         canvasOpener = myOpener;
-        EventTrigger trigger = radiusUpgradeButton.GetComponent<EventTrigger>();
+        EventTrigger trigger =  activateUpgradeButton.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         EventTrigger.Entry click = new EventTrigger.Entry();
         EventTrigger.Entry exit = new EventTrigger.Entry();
@@ -196,7 +203,7 @@ public class GUIController : MonoBehaviour
 
 	public void ActivatePanelUpgrade()
 	{
-		PanelUpgrade.SetActive (true);
+		//PanelUpgrade.SetActive (true);
 		activateUpgradeButton.gameObject.SetActive (false);
 	}
 

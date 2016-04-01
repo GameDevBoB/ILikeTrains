@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 488720}
   - 212: {fileID: 21274112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 224: {fileID: 22461428}
   - 222: {fileID: 22282192}
   - 114: {fileID: 11467950}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TextCooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11441876}
   - 54: {fileID: 5413016}
   - 82: {fileID: 8224824}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tesla
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421790}
   - 212: {fileID: 21250388}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpriteExplosionPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - 224: {fileID: 22424744}
   - 222: {fileID: 22228262}
   - 114: {fileID: 11486988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ImageCoodown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 468922}
   - 212: {fileID: 21237020}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpriteExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - 223: {fileID: 22393298}
   - 114: {fileID: 11478828}
   - 114: {fileID: 11403598}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CanvasMina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -1.1462765, y: 0.0000026552923, z: -3.0394697}
+  m_LocalPosition: {x: 4.8294067, y: 0.0000021982473, z: -0.48348808}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
@@ -250,7 +250,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -261,7 +261,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -272,7 +272,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
 --- !u!114 &11403598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,26 +304,27 @@ MonoBehaviour:
   colliderRadius: 2
   damage: 3
   explosionSpeed: 0.5
+  burnDelay: 0
+  burnDuration: 0
   explosionCooldown: 10
+  spriteUpgrade: {fileID: 21274112}
   upgradeDamage:
   - 3.5
   - 4
   - 4.5
-  - 5
-  - 5.5
   upgradeRadius:
   - 2.5
   - 3
   - 3.5
-  - 4
-  - 4.5
   upgradeCooldown:
   - 9
   - 8
   - 7
-  - 6
-  - 5
-  upgradeCost: 050000000a0000000f0000001900000028000000
+  upgradeCost: 050000000a0000000f000000
+  arraySpriteTrap:
+  - {fileID: 21300000, guid: ab5937d1ff586d346aef1bd46238eea5, type: 3}
+  - {fileID: 21300000, guid: 0a432aa46a3d5fb4a9c30e31f23921fa, type: 3}
+  - {fileID: 21300000, guid: 6e9c61f251f41e44a9bf65e5869bfd4e, type: 3}
   trapAudioClips:
   - {fileID: 8300000, guid: 56818b0aeacf0cb4b8068b187897da49, type: 3}
   - {fileID: 8300000, guid: 277f14ea84e917e45b8fb0fe57092553, type: 3}
@@ -335,7 +336,6 @@ MonoBehaviour:
   cooldownText: {fileID: 11467950}
   cooldownImage: {fileID: 11486988}
   sprite: {fileID: 101874}
-  SlowRatio: 0
 --- !u!114 &11467950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,7 +515,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2719ab230c283b242bac513b80ed0c90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17ae368aadf79e044b33a857e5dd4ddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -615,7 +615,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z

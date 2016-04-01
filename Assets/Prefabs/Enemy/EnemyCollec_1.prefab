@@ -51,9 +51,13 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: enemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: enemyPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemyPrefabs.Array.data[3]
       value: 
@@ -65,7 +69,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemyPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemyPrefabs.Array.data[4]
       value: 

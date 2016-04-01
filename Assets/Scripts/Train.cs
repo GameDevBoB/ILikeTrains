@@ -68,7 +68,7 @@ public class Train : MonoBehaviour
     private int healthUpgradeCounter;
     private int sprintUpgradeCounter;
     private int speedUpgradeCounter;
-    private float initialSpeed;
+   
     private float slowTimer;
     private float startSprint;
     private bool trainIsSlowed;
@@ -76,7 +76,7 @@ public class Train : MonoBehaviour
     //
 
     private Vector3 initPos;
-    private bool firstTime;
+
 
 
     void Awake()
@@ -94,12 +94,11 @@ public class Train : MonoBehaviour
         //SETTING INITIAL PARAMETERS
         initPos = transform.position;
         transform.position = initPos;
-        initialSpeed = speed;
         healthUpgradeCounter = 0;
         sprintUpgradeCounter = 0;
         speedUpgradeCounter = 0;
         actualLife = life;
-        firstTime = false;
+       
 
 
         countWaypoints = 0;

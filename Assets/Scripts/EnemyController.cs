@@ -14,8 +14,8 @@ public class EnemyController : MonoBehaviour
 {
 
     //ENEMY HEALTH VARIABLES
-    public int life;
-    public int actualLife;
+    public float life;
+    public float actualLife;
     //
     //REWARD VALUE FOR KILLING THE ENEMY 
     public int earnValue;
@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
 
     //SPEED VARIABLES FOR ENEMY PREFABS
     public float walkSpeed;
-    public float runSpeed = 5f;
+    public float runRatio = 1.5f;
     //
 
     //DAMAGE VALUE PER ENEMY
@@ -128,17 +128,17 @@ public class EnemyController : MonoBehaviour
                 {
                     case EnemyType.Base:
                         isRunning = true;
-                        Run(runSpeed);
+                        Run(walkSpeed);
                         break;
 
                     case EnemyType.Shooter:
                         isRunning = true;
-                        Run(walkSpeed / 2 * 3);
+                        Run(walkSpeed);
                         Shoot();
                         break;
                     case EnemyType.Stunner:
                         isRunning = true;
-                        Run(runSpeed);
+                        Run(walkSpeed);
                         break;
                 }
             }
@@ -189,7 +189,7 @@ public class EnemyController : MonoBehaviour
         }
     }*/
 
-    void GetDamage(int damage)
+    void GetDamage(float damage)
     {
         //ENEMY CAN GET DAMAGE FROM SOURCES
         //SO WE NEED TO ARRANGE THE VALUE ACCORDINGLY
@@ -213,13 +213,22 @@ public class EnemyController : MonoBehaviour
     public void Run(float actualSpeed)
     {
         if (((Time.time - startSlow) < slowTime) && startSlow != 0)
-            actualSpeed /= slowRatio;
+			actualSpeed /= slowRatio;
+		else {
+			upSprite.GetComponent<SpriteRenderer>().color = Color.white;
+			rightSprite.GetComponent<SpriteRenderer>().color = Color.white;
+			leftSprite.GetComponent<SpriteRenderer>().color = Color.white;
+			downSprite.GetComponent<SpriteRenderer>().color = Color.white;
+		}
+		if (isRunning)
+			actualSpeed *= runRatio;
         //CHANGE ENEMY SPEED DEPENDING ON THE INPUT VALUE
         if ((Time.time - startMovement) > updateMovementTime || startMovement == 0)
         {
             distance = target.transform.position - transform.position;
             startMovement = Time.time;
         }
+
         if (Mathf.Abs(distance.x) < Mathf.Abs(distance.z))
         {
             if (distance.z >= 0)
@@ -313,6 +322,10 @@ public class EnemyController : MonoBehaviour
     {
         slowRatio = input_slowRatio;
         startSlow = Time.time;
+		upSprite.GetComponent<SpriteRenderer>().color = Color.grey;
+		rightSprite.GetComponent<SpriteRenderer>().color = Color.grey;
+		leftSprite.GetComponent<SpriteRenderer>().color = Color.grey;
+		downSprite.GetComponent<SpriteRenderer>().color = Color.grey;
     }
 
     void Deactivate()

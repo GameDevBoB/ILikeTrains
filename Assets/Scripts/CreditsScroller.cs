@@ -7,14 +7,12 @@ public class CreditsScroller : MonoBehaviour {
 
     public GameObject creditContainer;
     public float speed;
-    private float finalPosition;
     private Vector3 initialPosition;
  
     
 	// Use this for initialization
 	void Start () {
 
-        finalPosition = 1300f;
         initialPosition = creditContainer.transform.position;
         
 	

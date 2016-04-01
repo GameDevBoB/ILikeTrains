@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 402392}
   - 212: {fileID: 21281770}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 224: {fileID: 22477626}
   - 222: {fileID: 22201024}
   - 114: {fileID: 11449876}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22433188}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22425764}
   - 114: {fileID: 11405866}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - 4: {fileID: 404696}
   - 212: {fileID: 21281028}
   - 95: {fileID: 9564858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - 4: {fileID: 412906}
   - 212: {fileID: 21259134}
   - 95: {fileID: 9597028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22410732}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - 224: {fileID: 22482740}
   - 222: {fileID: 22284146}
   - 114: {fileID: 11411512}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - 224: {fileID: 22424038}
   - 222: {fileID: 22250580}
   - 114: {fileID: 11477650}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - 4: {fileID: 483536}
   - 212: {fileID: 21269876}
   - 95: {fileID: 9539642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22476812}
   - 114: {fileID: 11402590}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - 224: {fileID: 22469154}
   - 222: {fileID: 22206832}
   - 114: {fileID: 11425832}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - 4: {fileID: 483450}
   - 212: {fileID: 21287534}
   - 95: {fileID: 9574354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - 223: {fileID: 22319282}
   - 114: {fileID: 11442718}
   - 114: {fileID: 11400684}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: CanvasEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -474,7 +474,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -485,7 +485,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
 --- !u!95 &9539642
 Animator:
   serializedVersion: 3
@@ -779,11 +779,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4911207bfdb649a8aee480b0b121e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
-  actualLife: 10
+  life: 20
+  actualLife: 20
   earnValue: 2
   walkSpeed: 1.2
-  runSpeed: 1.5
+  runRatio: 1.5
   damage: 0.5
   maxDistance: 10
   target: {fileID: 0}

@@ -306,10 +306,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
       objectReference: {fileID: 0}
-    - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
-      propertyPath: startResources
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}
   m_IsPrefabParent: 0
@@ -1630,10 +1626,6 @@ Prefab:
       propertyPath: enemyCollectionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 160210, guid: c8cac72e82816478391691fd29768e00, type: 2}
-    - target: {fileID: 11451430, guid: 1c0548069bf48ea4498f732e1378eca1, type: 2}
-      propertyPath: cooldown
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c0548069bf48ea4498f732e1378eca1, type: 2}
   m_IsPrefabParent: 0
