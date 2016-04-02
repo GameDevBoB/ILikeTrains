@@ -47,6 +47,7 @@ public class Traps : MonoBehaviour
 
     public Canvas trapCanvas;
     public GameObject explosionSprite;
+    public ParticleSystem explosionParticle;
     public GameObject rangePreviewSprite;
     public Text cooldownText;
     public Image cooldownImage;
@@ -104,7 +105,8 @@ public class Traps : MonoBehaviour
         //radiusUpgradeCounter = 0;
         //cooldownUpgradeCounter = 0;
         explosionStart = 0;
-        explosionStartScale = explosionSprite.transform.localScale;
+        if(myType == trapType.Tar)
+            explosionStartScale = explosionSprite.transform.localScale;
         rangeSpriteStartScale = rangePreviewSprite.transform.localScale;
         explosionSpriteAdder = explosionStartScale * explosionSpeed * 2;
         //rangeSpriteAdder = rangeSpriteStartScale * 2;
@@ -123,7 +125,16 @@ public class Traps : MonoBehaviour
             if (myTrigger.radius < colliderRadius)
             {
                 myTrigger.radius += explosionSpeed;
-                explosionSprite.transform.localScale = new Vector3(explosionSprite.transform.localScale.x + explosionSpriteAdder.x, explosionSprite.transform.localScale.y + explosionSpriteAdder.y, explosionSprite.transform.localScale.z + explosionSpriteAdder.z);
+                switch (myType)
+                {
+                    case trapType.Dynamite:
+                    case trapType.MinaTesla:
+                        explosionParticle.gameObject.transform.localScale = new Vector3(explosionParticle.gameObject.transform.localScale.x + explosionSpeed, explosionParticle.gameObject.transform.localScale.y + explosionSpeed, explosionParticle.gameObject.transform.localScale.z + explosionSpeed);
+                        break;
+                    case trapType.Tar:
+                        explosionSprite.transform.localScale = new Vector3(explosionSprite.transform.localScale.x + explosionSpriteAdder.x, explosionSprite.transform.localScale.y + explosionSpriteAdder.y, explosionSprite.transform.localScale.z + explosionSpriteAdder.z);
+                        break;
+                }
             }
             else if(myTrigger.enabled)
             {
@@ -172,7 +183,16 @@ public class Traps : MonoBehaviour
 	private void EndExplosion()
 	{
 		myTrigger.enabled = false;
-		explosionSprite.gameObject.SetActive (false);
+        switch(myType)
+        {
+            case trapType.Tar:
+                explosionSprite.gameObject.SetActive(false);
+                break;
+            case trapType.Barrel:
+                explosionParticle.gameObject.SetActive(false);
+                break;
+        }
+		
 		explosionStart = Time.time;
 		trapCanvas.gameObject.SetActive (true);
 	}
@@ -183,9 +203,23 @@ public class Traps : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && (((Time.time - explosionStart) > explosionCooldown) || explosionStart == 0) && !GameController.instance.isPaused)
         {
             myTrigger.enabled = true;
-            explosionSprite.SetActive(true);
+            switch(myType)
+            {
+                case trapType.Tar:
+                    explosionSprite.SetActive(true);
+                    break;
+                case trapType.Barrel:
+                    explosionParticle.gameObject.SetActive(true);
+                    break;
+                case trapType.Dynamite:
+                case trapType.MinaTesla:
+                    explosionParticle.Play();
+                    break;
+            }
+            
             myTrigger.radius = explosionSpeed;
-            explosionSprite.transform.localScale = explosionStartScale;
+            if(myType == trapType.Tar)
+                explosionSprite.transform.localScale = explosionStartScale;
             //AUDIO MANAGEMENT
             SoundType(damageSoundIndex);
             CameraShake.isShaking = true;
@@ -390,7 +424,7 @@ public class Traps : MonoBehaviour
 		{
 			upgradeArrayIsEnded = true;
 		}
-		
+		Debug.Log (upgradeCounter);
 		GUIController.instance.SetCanvasElements (upgradeCost [upgradeCounter]);
 
 	}

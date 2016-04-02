@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 7.702286, y: 0.0000024210422, z: -1.7294474}
+  m_LocalPosition: {x: -9.93, y: 0, z: 6.74}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 22432252}
@@ -250,7 +250,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -272,7 +272,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &11403598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,11 +327,12 @@ MonoBehaviour:
   - {fileID: 0}
   trapAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
-  - {fileID: 8300000, guid: 970a8e6bae4a07445bb661b1c21a1675, type: 3}
+  - {fileID: 8300000, guid: 66729041812392143ba92742f0807097, type: 3}
   cooldownSoundIndex: 0
   damageSoundIndex: 1
   trapCanvas: {fileID: 22393298}
   explosionSprite: {fileID: 118368}
+  explosionParticle: {fileID: 0}
   rangePreviewSprite: {fileID: 177452}
   cooldownText: {fileID: 11467950}
   cooldownImage: {fileID: 11486988}

@@ -27,6 +27,8 @@ public class Train : MonoBehaviour
 	public Sprite left;
 	public Sprite upLeft;
 	private SpriteRenderer mySpriteRenderer;
+    public ParticleSystem smokeParticle;
+    public ParticleSystem smokeSpeedParticle;
 	
 
 	//
@@ -76,8 +78,6 @@ public class Train : MonoBehaviour
     //
 
     private Vector3 initPos;
-
-
 
     void Awake()
     {
@@ -150,6 +150,17 @@ public class Train : MonoBehaviour
                 if (Vector3.Distance(transform.position, waypoints[waypoints.Length - 1].GetChild(0).position) <= 0.01)
                     GameController.instance.WinGame();
 
+                if (trainIsSprinted)
+                {
+                    smokeParticle.gameObject.SetActive(false);
+                    smokeSpeedParticle.gameObject.SetActive(true);
+                }
+                else
+                {
+                    smokeParticle.gameObject.SetActive(true);
+                    smokeSpeedParticle.gameObject.SetActive(false);
+                }
+
                 ChangeWaypoint();
 
                 MoveTrain(1);
@@ -164,6 +175,7 @@ public class Train : MonoBehaviour
                 speed = GameController.instance.headCoach.speed;
                 trainIsSprinted = GameController.instance.headCoach.trainIsSprinted;
                 trainIsSlowed = GameController.instance.headCoach.trainIsSlowed;
+                sprintRatio = GameController.instance.headCoach.sprintRatio;
 
                 //
 

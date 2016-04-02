@@ -683,6 +683,8 @@ MonoBehaviour:
   downLeft: {fileID: 21300000, guid: ed12cbf8012ee5f42bd5fae111553938, type: 3}
   left: {fileID: 21300000, guid: fc718df2602a51d42a4c2ef4f8da1296, type: 3}
   upLeft: {fileID: 21300000, guid: f9b06dd76f4acb84d9e5f8474ccae9ea, type: 3}
+  smokeParticle: {fileID: 0}
+  smokeSpeedParticle: {fileID: 0}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -748,6 +750,8 @@ MonoBehaviour:
   downLeft: {fileID: 21300000, guid: 90e36de0f58234c4299726b6da56dd8c, type: 3}
   left: {fileID: 21300000, guid: 1377dc4fb5b579a47b21f298b8116609, type: 3}
   upLeft: {fileID: 21300000, guid: 0eff3ed7ea88e324d87be9f8e02c6b1d, type: 3}
+  smokeParticle: {fileID: 0}
+  smokeSpeedParticle: {fileID: 0}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -820,6 +824,8 @@ MonoBehaviour:
   downLeft: {fileID: 21300000, guid: 90e36de0f58234c4299726b6da56dd8c, type: 3}
   left: {fileID: 21300000, guid: 1377dc4fb5b579a47b21f298b8116609, type: 3}
   upLeft: {fileID: 21300000, guid: 0eff3ed7ea88e324d87be9f8e02c6b1d, type: 3}
+  smokeParticle: {fileID: 0}
+  smokeSpeedParticle: {fileID: 0}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

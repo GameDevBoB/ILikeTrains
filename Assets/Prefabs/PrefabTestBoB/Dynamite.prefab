@@ -346,6 +346,7 @@ MonoBehaviour:
   damageSoundIndex: 1
   trapCanvas: {fileID: 22393298}
   explosionSprite: {fileID: 118368}
+  explosionParticle: {fileID: 0}
   rangePreviewSprite: {fileID: 177452}
   cooldownText: {fileID: 11467950}
   cooldownImage: {fileID: 11486988}
