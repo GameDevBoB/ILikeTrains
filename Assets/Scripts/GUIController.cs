@@ -247,7 +247,8 @@ public class GUIController : MonoBehaviour
 	{
 		gameOverView.gameObject.SetActive(true);
 		GameController.instance.isPaused = true;
-	}
+        Time.timeScale = 0;
+    }
 
 	public void CompleteLevel()
 	{
@@ -270,15 +271,18 @@ public class GUIController : MonoBehaviour
 			// attiva terza stellina
 			star3.gameObject.SetActive(true);
 		}
+        Time.timeScale = 0;
 
 	}
 	//BUTTON ENDLEVEL
 	// prima di utilizzarli bisogna definirli bene i numeri sono casuali 
 	public void RestartLevel()
 	{
-		Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel 
+       
+        Application.LoadLevel(Application.loadedLevel);  //bisogna definire il currentLevel
+        Time.timeScale = 1;
 
-	}
+    }
 	public void GoToMenu()
 	{
 		Application.LoadLevel(0); 

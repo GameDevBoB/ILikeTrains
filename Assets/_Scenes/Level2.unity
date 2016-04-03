@@ -389,7 +389,7 @@ Transform:
   - {fileID: 1033969334}
   - {fileID: 1142704192}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &725748218 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 169560, guid: a6e1d2bf92212c34aa906be0341af6dc, type: 2}
@@ -1666,11 +1666,19 @@ Prefab:
       objectReference: {fileID: 1638891798}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: startResources
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288966, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288966, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}
@@ -2171,11 +2179,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19822920, guid: 3fa7e9ee95075754783f247ab442eccf, type: 2}
       propertyPath: lengthInSec
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19822920, guid: 3fa7e9ee95075754783f247ab442eccf, type: 2}
       propertyPath: EmissionModule.rate.scalar
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 19822920, guid: 3fa7e9ee95075754783f247ab442eccf, type: 2}
       propertyPath: startDelay.scalar
