@@ -43,6 +43,8 @@ MonoBehaviour:
   - {fileID: 182060, guid: 62c604e556020714d90674fbd4a2992a, type: 2}
   - {fileID: 182060, guid: 3e3ade7ea6a8350418a2e6baf3529287, type: 2}
   - {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
+  - {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
+  - {fileID: 182060, guid: 8217f5331eb1c4742b821e87c593eb43, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -50,6 +52,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemyPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemyPrefabs.Array.data[1]
       value: 

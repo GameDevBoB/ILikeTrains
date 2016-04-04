@@ -249,7 +249,6 @@ public class Traps : MonoBehaviour
 
 		if (GameController.instance.trapIsBeingPlaced)
 		{
-			Debug.Log (upgradeCounter);
 			GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
 			GUIController.instance.SetCanvasOpener(this.gameObject);
 			GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up + Vector3.right * 4;
