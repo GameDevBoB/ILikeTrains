@@ -307,24 +307,20 @@ MonoBehaviour:
   burnDelay: 0.01
   burnDuration: 5
   explosionCooldown: 5
-  spriteUpgrade: {fileID: 0}
+  spriteUpgrade: {fileID: 21280796}
   upgradeDamage:
   - 1
   - 1.5
-  - 2
   upgradeRadius:
   - 2.5
   - 3
-  - 3.5
   upgradeCooldown:
   - 9
   - 8
-  - 7
-  upgradeCost: 050000000a0000000f000000
+  upgradeCost: 050000000a000000
   arraySpriteTrap:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d81eb78c5e674764b905ee3cf868c465, type: 3}
+  - {fileID: 21300000, guid: dfb176f1ca4336c41be60ac892fb1bad, type: 3}
   trapAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
   - {fileID: 8300000, guid: 66729041812392143ba92742f0807097, type: 3}
@@ -516,7 +512,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e433406fa251dcd48b04e1b22492bee3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e258d5db543ae54e995182c9aabe00d, type: 3}
   m_Color: {r: 0.2824245, g: 0.29411763, b: 0.17301036, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -611,6 +607,26 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: upgradeCost.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeDamage.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeRadius.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: arraySpriteTrap.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: damage
       value: 5
       objectReference: {fileID: 0}
@@ -702,6 +718,37 @@ Prefab:
       propertyPath: myType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeDamage.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeRadius.Array.data[2]
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCost.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e258d5db543ae54e995182c9aabe00d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: arraySpriteTrap.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d81eb78c5e674764b905ee3cf868c465,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: arraySpriteTrap.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: dfb176f1ca4336c41be60ac892fb1bad,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125406}

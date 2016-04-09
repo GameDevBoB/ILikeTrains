@@ -11,6 +11,8 @@ public class GUIController : MonoBehaviour
     public Button startButton;
     public Button instantiateDynamiteButton;
     public Button instantiateTeslaButton;
+    public Button instantiateBarrelButton;
+    public Button instantiateTarButton;
     
     //
 	/*LEVEL TRANSITION VARIABLES
@@ -44,7 +46,7 @@ public class GUIController : MonoBehaviour
     //public Button cooldownUpgradeButton;
 	//public GameObject PanelUpgrade;
 	public Text upgradeButtonText;
-	public Button activateUpgradeButton;
+	//public Button activateUpgradeButton;
     [HideInInspector]
     public GameObject canvasOpener;
 
@@ -86,6 +88,10 @@ public class GUIController : MonoBehaviour
     {
 		
         phaseText.text = "PLANNING PHASE";
+        instantiateDynamiteButton.transform.GetChild(0).GetComponent<Text>().text = "$" + GameController.instance.trapsCosts[0].ToString();
+        instantiateTeslaButton.transform.GetChild(0).GetComponent<Text>().text = "$" + GameController.instance.trapsCosts[1].ToString();
+        instantiateTarButton.transform.GetChild(0).GetComponent<Text>().text = "$" + GameController.instance.trapsCosts[3].ToString();
+        instantiateBarrelButton.transform.GetChild(0).GetComponent<Text>().text = "$" + GameController.instance.trapsCosts[2].ToString();
 
     }
 
@@ -102,7 +108,7 @@ public class GUIController : MonoBehaviour
 				}
 			}
 		}
-        ResourcesText.text = "Resources: " + GameController.instance.totalResources.ToString();
+        ResourcesText.text = "Resources: $" + GameController.instance.totalResources.ToString();
         FlashWhenTrainIsDamaged();
     }
 
@@ -114,7 +120,6 @@ public class GUIController : MonoBehaviour
         trainSprintButton.gameObject.SetActive(true);
         //if (upgradeTrainCanvas.gameObject.activeSelf)
         //     upgradeTrainCanvas.gameObject.SetActive(false);
-
         planningCanvas.gameObject.SetActive(false);
     }
 
@@ -124,15 +129,19 @@ public class GUIController : MonoBehaviour
 
         instantiateDynamiteButton.interactable = true;
         instantiateTeslaButton.interactable = true;
+        instantiateBarrelButton.interactable = true;
+        instantiateTarButton.interactable = true;
     }
 
     public void DeactivateTrapsButton()
     {
         instantiateDynamiteButton.interactable = false;
         instantiateTeslaButton.interactable = false;
+        instantiateBarrelButton.interactable = false;
+        instantiateTarButton.interactable = false;
 
 
-    }
+}
     //CANVAS HQ UPGRADE ACTIVATION/DEACTIVATION
     public void ActivateTrainUpgradeCanvas()
     {
@@ -177,14 +186,14 @@ public class GUIController : MonoBehaviour
 */
 	public void SetCanvasElements(float inputCost){
 
-		upgradeButtonText.text = ("COST: "+inputCost.ToString());
+		upgradeButtonText.text = ("UPGRADE: $"+inputCost.ToString());
 
 	}
 
     public void SetCanvasOpener(GameObject myOpener)
     {
         canvasOpener = myOpener;
-        EventTrigger trigger =  activateUpgradeButton.GetComponent<EventTrigger>();
+        /*EventTrigger trigger =  activateUpgradeButton.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         EventTrigger.Entry click = new EventTrigger.Entry();
         EventTrigger.Entry exit = new EventTrigger.Entry();
@@ -197,14 +206,14 @@ public class GUIController : MonoBehaviour
         trigger.triggers.Clear();
         trigger.triggers.Add(entry);
         trigger.triggers.Add(click);
-        trigger.triggers.Add(exit);
+        trigger.triggers.Add(exit);*/
         // .delegates.Add(entry);
     }
 
 	public void ActivatePanelUpgrade()
 	{
 		//PanelUpgrade.SetActive (true);
-		activateUpgradeButton.gameObject.SetActive (false);
+		//activateUpgradeButton.gameObject.SetActive (false);
 	}
 
     public void FlashWhenTrainIsDamaged()

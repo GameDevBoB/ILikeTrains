@@ -1408,10 +1408,6 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 178256, guid: 29b4bc20e6040334a91a4b9e3cbe4a84, type: 2}
   m_PrefabInternal: {fileID: 959775909}
---- !u!1 &959775913 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 147354, guid: 29b4bc20e6040334a91a4b9e3cbe4a84, type: 2}
-  m_PrefabInternal: {fileID: 959775909}
 --- !u!1 &959775914 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 137388, guid: 29b4bc20e6040334a91a4b9e3cbe4a84, type: 2}
@@ -1452,18 +1448,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 0}
---- !u!64 &959775918
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 959775913}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 985b6ff48213dee488b7804974bd6716, type: 3}
 --- !u!64 &959775919
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2659,19 +2643,15 @@ Prefab:
       objectReference: {fileID: 1577998648}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8288966, guid: f2a4bde232548274e845c745bba39748, type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8288966, guid: f2a4bde232548274e845c745bba39748, type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
-      propertyPath: startResources
-      value: 400
+    - target: {fileID: 11430544, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1577998648}
+    - target: {fileID: 11430544, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSprint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}

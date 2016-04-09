@@ -341,19 +341,15 @@ MonoBehaviour:
   upgradeDamage:
   - 12
   - 14
-  - 16
   upgradeRadius:
   - 2.5
   - 3
-  - 3.5
   upgradeCooldown:
   - 9
   - 8
-  - 7
-  upgradeCost: 050000000a0000000f000000
+  upgradeCost: 050000000a000000
   arraySpriteTrap:
   - {fileID: 21300000, guid: 1f075a01a44a9d147a639a39111d6659, type: 3}
-  - {fileID: 21300000, guid: 1d056a7b78e09bf45972350981530d09, type: 3}
   - {fileID: 21300000, guid: 1d056a7b78e09bf45972350981530d09, type: 3}
   trapAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
@@ -2171,6 +2167,26 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: upgradeCost.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeDamage.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeRadius.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: arraySpriteTrap.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: damage
       value: 5
       objectReference: {fileID: 0}
@@ -2258,6 +2274,27 @@ Prefab:
       propertyPath: m_Volume
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeDamage.Array.data[2]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeRadius.Array.data[2]
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCooldown.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeCost.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: arraySpriteTrap.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d056a7b78e09bf45972350981530d09,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125406}

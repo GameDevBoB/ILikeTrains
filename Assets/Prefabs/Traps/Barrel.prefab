@@ -355,24 +355,20 @@ MonoBehaviour:
   burnDelay: 0.1
   burnDuration: 5
   explosionCooldown: 5
-  spriteUpgrade: {fileID: 0}
+  spriteUpgrade: {fileID: 21280796}
   upgradeDamage:
   - 12
   - 14
-  - 16
   upgradeRadius:
   - 2.5
   - 3
-  - 3.5
   upgradeCooldown:
   - 9
   - 8
-  - 7
-  upgradeCost: 050000000a0000000f000000
+  upgradeCost: 050000000a000000
   arraySpriteTrap:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 422be0a43af82ae4b8663ccb0fbaa8ee, type: 3}
+  - {fileID: 21300000, guid: f03a40dff7d1edc419d7e3db3c555840, type: 3}
   trapAudioClips:
   - {fileID: 8300000, guid: 5225a9499a9ff7a44a71e80100e7dd4f, type: 3}
   - {fileID: 8300000, guid: 970a8e6bae4a07445bb661b1c21a1675, type: 3}
@@ -2094,7 +2090,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e433406fa251dcd48b04e1b22492bee3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7675459d3606df4b9bc622be8a8e921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
