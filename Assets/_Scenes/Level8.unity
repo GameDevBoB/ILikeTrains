@@ -324,6 +324,18 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 138706, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347442, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
   m_IsPrefabParent: 0
@@ -365,7 +377,7 @@ GameObject:
   m_PrefabInternal: {fileID: 112190298}
 --- !u!1 &112190308 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 137076, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+  m_PrefabParentObject: {fileID: 173848, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
   m_PrefabInternal: {fileID: 112190298}
 --- !u!1 &112190309 stripped
 GameObject:
@@ -418,6 +430,10 @@ GameObject:
 --- !u!1 &112190321 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 110890, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+  m_PrefabInternal: {fileID: 112190298}
+--- !u!1 &112190322 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 114836, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
   m_PrefabInternal: {fileID: 112190298}
 --- !u!64 &112190323
 MeshCollider:
@@ -527,18 +543,10 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300030, guid: 2fd1b75f97f4c0745ba6d50193603500, type: 3}
---- !u!64 &112190332
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 112190308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300028, guid: 2fd1b75f97f4c0745ba6d50193603500, type: 3}
+--- !u!1 &112190332 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 154500, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+  m_PrefabInternal: {fileID: 112190298}
 --- !u!64 &112190333
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -695,6 +703,74 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 2fd1b75f97f4c0745ba6d50193603500, type: 3}
+--- !u!1 &112190346 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 138706, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+  m_PrefabInternal: {fileID: 112190298}
+--- !u!1 &112190347 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130896, guid: f9e8f7f46720c984aa8ded131533286c, type: 2}
+  m_PrefabInternal: {fileID: 112190298}
+--- !u!64 &112190348
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112190308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
+--- !u!64 &112190349
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112190322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300028, guid: 2fd1b75f97f4c0745ba6d50193603500, type: 3}
+--- !u!64 &112190350
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112190332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
+--- !u!64 &112190351
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112190346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 2fd1b75f97f4c0745ba6d50193603500, type: 3}
+--- !u!64 &112190352
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112190347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
 --- !u!1 &119440163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1326,38 @@ Prefab:
     - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: startResources
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430544, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1986380127}
+    - target: {fileID: 11430544, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSprint
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496602, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1986380127}
+    - target: {fileID: 11496602, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482214, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1986380127}
+    - target: {fileID: 11482214, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448836, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1986380127}
+    - target: {fileID: 11448836, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}

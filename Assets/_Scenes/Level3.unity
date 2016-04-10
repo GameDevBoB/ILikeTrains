@@ -854,9 +854,53 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 195612, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 180080, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370478, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &447108846 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 180080, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+  m_PrefabInternal: {fileID: 447108845}
+--- !u!1 &447108847 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 195612, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+  m_PrefabInternal: {fileID: 447108845}
+--- !u!64 &447108848
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 447108846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300028, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
+--- !u!64 &447108849
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 447108847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
 --- !u!4 &449505605 stripped
 Transform:
   m_PrefabParentObject: {fileID: 431646, guid: 3e87535456cc13e429384849c5cd3120, type: 2}
@@ -943,22 +987,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 474620, guid: 55efccc15cfc3284f94ae76cdd0ed7e2, type: 2}
   m_PrefabInternal: {fileID: 254437768}
---- !u!1 &617555458 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 196640, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
-  m_PrefabInternal: {fileID: 447108845}
---- !u!64 &617555464
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 617555458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300028, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
 --- !u!1 &668514178 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 176328, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
@@ -1077,14 +1105,14 @@ Prefab:
     - target: {fileID: 11430544, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2096396143}
     - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: headCoach
       value: 
       objectReference: {fileID: 2096396143}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 116888, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_IsActive
@@ -1093,7 +1121,7 @@ Prefab:
     - target: {fileID: 11496602, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2096396143}
     - target: {fileID: 11496602, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
@@ -1101,7 +1129,7 @@ Prefab:
     - target: {fileID: 11482214, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2096396143}
     - target: {fileID: 11482214, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
@@ -1109,7 +1137,7 @@ Prefab:
     - target: {fileID: 11448836, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2096396143}
     - target: {fileID: 11448836, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
@@ -1125,6 +1153,10 @@ Prefab:
     - target: {fileID: 8288966, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: MaxDistance
       value: 595.02734
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430544, guid: f2a4bde232548274e845c745bba39748, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSprint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}
@@ -1495,22 +1527,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 449ece7e29b9e7f439c7eff1fc1f01c5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1239141932 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 182888, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
-  m_PrefabInternal: {fileID: 447108845}
---- !u!64 &1239141938
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1239141932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
 --- !u!1 &1249746299 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 143122, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
