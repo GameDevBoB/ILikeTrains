@@ -105,9 +105,12 @@ public class Train : MonoBehaviour
         GUIController.instance.healthSlider.value = actualLife;
         GUIController.instance.healthSlider.maxValue = actualLife;
 
-        SetSpeedGui();
-        SetSprintGui();
-        SetHealthGui();
+		if (!isCoach) {
+			SetSpeedGui ();
+			SetSprintGui ();
+			SetHealthGui ();
+		}
+
 
         if (isCoach)
         {
@@ -294,7 +297,7 @@ public class Train : MonoBehaviour
                 if (healthUpgradeCounter < upgradeHealthPointsArray.Length)
                 {
                     SetHealthGui();
-                }
+				}
                 break;
             //
 
@@ -335,8 +338,8 @@ public class Train : MonoBehaviour
     private void SetSpeedGui()
     {
 
-        GUIController.instance.trainSpeedUpgradeText.text = "Speed " + upgradeSpeedArray[speedUpgradeCounter];
-		GUIController.instance.trainSpeedUpgradeButtonText.text =  "Cost " + upgradeCost[speedUpgradeCounter];
+        GUIController.instance.trainSpeedUpgradeText.text = "Speed " + upgradeSpeedArray[speedUpgradeCounter].ToString();
+		GUIController.instance.trainSpeedUpgradeButtonText.text =  "Cost " + upgradeCost[speedUpgradeCounter].ToString();
         //GUIController.instance.trainSpeedUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[speedUpgradeCounter];
 
     }
@@ -344,7 +347,8 @@ public class Train : MonoBehaviour
     {
 
         GUIController.instance.trainHealthUpgradeText.text = "Health " + upgradeHealthPointsArray[healthUpgradeCounter];
-        GUIController.instance.trainHealthUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = "Cost " + upgradeCost[healthUpgradeCounter];
+        GUIController.instance.trainHealthUpgradeButton.transform.GetChild(0).GetComponent<Text>().text = ("Cost " + upgradeCost[healthUpgradeCounter].ToString());
+		Debug.Log (upgradeCost [healthUpgradeCounter]);
 
     }
     private void SetSprintGui()

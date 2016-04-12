@@ -767,7 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 10
   actualLife: 10
-  earnValue: 1
+  earnValue: 2
   walkSpeed: 1.5
   runRatio: 1.20000005
   damage: 10

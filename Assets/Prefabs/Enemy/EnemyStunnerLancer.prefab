@@ -775,8 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4911207bfdb649a8aee480b0b121e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 16
-  actualLife: 16
+  life: 15
+  actualLife: 15
   earnValue: 3
   walkSpeed: 1.39999998
   runRatio: 1.20000005
@@ -1186,11 +1186,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: life
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: actualLife
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString

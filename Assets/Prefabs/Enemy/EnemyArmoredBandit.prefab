@@ -767,7 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 20
   actualLife: 20
-  earnValue: 2
+  earnValue: 4
   walkSpeed: 1.5
   runRatio: 1.20000005
   damage: 10
@@ -1198,7 +1198,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: earnValue
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Constraints

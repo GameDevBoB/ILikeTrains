@@ -83,7 +83,7 @@ public class Traps : MonoBehaviour
     */
 	[HideInInspector]
 	private bool upgradeArrayIsEnded = false;
-
+	private bool isClickable;
     //
 
     void Awake()
@@ -113,6 +113,7 @@ public class Traps : MonoBehaviour
         //GUIController.instance.SetCanvasElements(myType, upgradeDamage[upgradeCounter], upgradeRadius[upgradeCounter], upgradeCooldown[upgradeCounter],
           //   upgradeCost[upgradeCounter], upgradeCost[upgradeCounter], upgradeCost[upgradeCounter]);
 		GUIController.instance.SetCanvasElements (upgradeCost [upgradeCounter]);
+		isClickable = true;
 
     }
 
@@ -156,8 +157,10 @@ public class Traps : MonoBehaviour
 
                 cooldownText.text = (explosionCooldown - (Time.time - explosionStart)).ToString("00.00");
                 cooldownImage.fillAmount = (explosionCooldown - (Time.time - explosionStart)) / explosionCooldown;
-                if ((Time.time - explosionStart) > explosionCooldown)
+                if ((Time.time - explosionStart) > explosionCooldown){
                     trapCanvas.gameObject.SetActive(false);
+					isClickable=true;
+				}
             }
         }
         //
@@ -204,7 +207,7 @@ public class Traps : MonoBehaviour
     void OnMouseOver()
     {
         //UI VISUALIZATION OF THE TRAP EXPLOSION
-        if (Input.GetMouseButtonDown(0) && (((Time.time - explosionStart) > explosionCooldown) || explosionStart == 0) && !GameController.instance.isPaused)
+        if (Input.GetMouseButtonDown(0) && (((Time.time - explosionStart) > explosionCooldown) || explosionStart == 0) && !GameController.instance.isPaused && isClickable)
         {
             myTrigger.enabled = true;
             switch(myType)
@@ -220,6 +223,7 @@ public class Traps : MonoBehaviour
                     explosionParticle.Play();
                     break;
             }
+			isClickable=false;
             
             myTrigger.radius = explosionSpeed;
             if(myType == trapType.Tar)
@@ -261,7 +265,7 @@ public class Traps : MonoBehaviour
 		{
 			GUIController.instance.upgradeCanvas.gameObject.SetActive(true);
 			GUIController.instance.SetCanvasOpener(this.gameObject);
-			GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up + Vector3.right;
+			GUIController.instance.upgradeCanvas.transform.position = transform.position + Vector3.up*2 + Vector3.right;
 			//GUIController.instance.activateUpgradeButton.onClick.RemoveAllListeners();
 			//GUIController.instance.radiusUpgradeButton.onClick.RemoveAllListeners();
 			//GUIController.instance.cooldownUpgradeButton.onClick.RemoveAllListeners();
@@ -434,7 +438,7 @@ public class Traps : MonoBehaviour
 		}
 		//Debug.Log (upgradeCounter);
 		GUIController.instance.SetCanvasElements (upgradeCost [upgradeCounter]);
-        ShowPreviewRange();
+        rangePreviewSprite.transform.localScale = rangeSpriteStartScale * colliderRadius * 2;
 
     }
 
