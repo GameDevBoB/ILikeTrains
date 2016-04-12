@@ -1016,6 +1016,7 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 2338270, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
       propertyPath: m_SortingOrder
       value: 0
@@ -1027,17 +1028,38 @@ Prefab:
     - target: {fileID: 165176, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
       propertyPath: m_Layer
       value: 8
+=======
+    - target: {fileID: 195612, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 180080, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370478, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
+>>>>>>> origin/master
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &447108846 stripped
 GameObject:
+<<<<<<< HEAD
   m_PrefabParentObject: {fileID: 165176, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
   m_PrefabInternal: {fileID: 447108845}
 --- !u!1 &447108847 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 181410, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+=======
+  m_PrefabParentObject: {fileID: 180080, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+  m_PrefabInternal: {fileID: 447108845}
+--- !u!1 &447108847 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 195612, guid: 9948462af5c0dd440b08d738f5cc9af1, type: 2}
+>>>>>>> origin/master
   m_PrefabInternal: {fileID: 447108845}
 --- !u!64 &447108848
 MeshCollider:
@@ -1050,7 +1072,11 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
+<<<<<<< HEAD
   m_Mesh: {fileID: 4300000, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
+=======
+  m_Mesh: {fileID: 4300028, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
+>>>>>>> origin/master
 --- !u!64 &447108849
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1062,7 +1088,11 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
+<<<<<<< HEAD
   m_Mesh: {fileID: 4300028, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
+=======
+  m_Mesh: {fileID: 4300000, guid: 616f23f75070a4548869acc32afa13ce, type: 3}
+>>>>>>> origin/master
 --- !u!4 &449505605 stripped
 Transform:
   m_PrefabParentObject: {fileID: 431646, guid: 3e87535456cc13e429384849c5cd3120, type: 2}
@@ -1760,7 +1790,7 @@ Prefab:
       objectReference: {fileID: 2096396143}
     - target: {fileID: 22460910, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 116888, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: m_IsActive
@@ -1806,10 +1836,13 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetSprint
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 11413464, guid: f2a4bde232548274e845c745bba39748, type: 2}
       propertyPath: startResources
       value: 200
       objectReference: {fileID: 0}
+=======
+>>>>>>> origin/master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2a4bde232548274e845c745bba39748, type: 2}
   m_IsPrefabParent: 0
@@ -2397,6 +2430,7 @@ GameObject:
   m_PrefabInternal: {fileID: 447108845}
 --- !u!64 &1249746301
 MeshCollider:
+<<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2437,6 +2471,8 @@ Transform:
   m_RootOrder: 2
 --- !u!212 &1276094547
 SpriteRenderer:
+=======
+>>>>>>> origin/master
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
